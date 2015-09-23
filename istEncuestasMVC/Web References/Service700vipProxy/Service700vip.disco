@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<discovery xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://schemas.xmlsoap.org/disco/">
+  <contractRef ref="http://200.6.78.113/WebService700vip/Service700vip.asmx?wsdl" docRef="http://200.6.78.113/WebService700vip/Service700vip.asmx" xmlns="http://schemas.xmlsoap.org/disco/scl/" />
+  <soap address="http://200.6.78.113/WebService700vip/Service700vip.asmx" xmlns:q1="http://tempuri.org/WebService700vip/Service700vip.asmx" binding="q1:Service700vipSoap" xmlns="http://schemas.xmlsoap.org/disco/soap/" />
+  <soap address="http://200.6.78.113/WebService700vip/Service700vip.asmx" xmlns:q2="http://tempuri.org/WebService700vip/Service700vip.asmx" binding="q2:Service700vipSoap12" xmlns="http://schemas.xmlsoap.org/disco/soap/" />
+</discovery>

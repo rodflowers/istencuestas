@@ -1,0 +1,12 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="istEncuestasMVC.Properties" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="istEncuestasMVC_Service700vipProxy_Service700vip" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://200.6.78.113/WebService700vip/Service700vip.asmx</Value>
+    </Setting>
+    <Setting Name="istEncuestasMVC_servMEDAtencionProxy_servMEDAtencion" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://200.6.78.112/ServiceMEDATE/servMEDAtencion.asmx</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>

@@ -1,0 +1,711 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:tns="http://tempuri.org/wsMEDATE/servMEDAtencion" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" targetNamespace="http://tempuri.org/wsMEDATE/servMEDAtencion" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/wsMEDATE/servMEDAtencion">
+      <s:element name="wsValidaEmpSiso">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="RutEmpresa" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="wsValidaEmpSisoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="wsValidaEmpSisoResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="wsValidaEmp">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="RutEmpresa" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Clave" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="wsValidaEmpResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="wsValidaEmpResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="wsToken">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="RutEmpresa" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Clave" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="wsTokenResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="wsTokenResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="wsConsultaAdherente">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Token" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="RutEmpresa" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="wsConsultaAdherenteResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="wsConsultaAdherenteResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="wsTraerAtencion">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Token" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="RutEmpresa" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="FolAte" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="FecIni" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="FecFin" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="wsTraerAtencionResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="wsTraerAtencionResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="FichaDIAT">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Token" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="RutEmpleador" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="FolioAtencion" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="CodigoDelCaso" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="TipoDeIngreso" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="FechaDeEmision" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="CategoriaOcupacional" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="TipoDeContrato" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="FechaDelAccidente" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Etnia" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="EtniaOtro" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="HoraDelAccidente" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="HoraDeIngresoAlTrabajo" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="HoraDeSalidaDelTrabajo" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="DireccionDelAccidente" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="ComunaDelAccidente" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="QueHaciaElTrabajadorAlMomentoDelAccidente" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="LugarDelAccidente" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="NumeroDeTrabajadoresHombres" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="NumeroDeTrabajadoresMujeres" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="DescribaComoOcurrioElAccidente" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="SeñaleCualEraSuTrabajoHabitual" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="DesarrollabaSuTrabajoHabitual" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="ClasificacionDelAccidente" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="TipoDeAccidente" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="TipoDeAccidenteDeTrayecto" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="MedioDePrueba" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="DetalleDelMedioDePrueba" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="NombreCompletoDelDenunciante" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="NumeroDeTelefonoDelDenunciante" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="ClasificacionDelDenuncianteSegunLey" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="FichaDIATResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="FichaDIATResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="FichaDIEP">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Token" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="RutEmpleador" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="FolioAtencion" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="CodigoDelCaso" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="FechaDeEmision" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="NumeroDeTrabajadoresHombres" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="NumeroDeTrabajadoresMujeres" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Etnia" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="EtniaOtro" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="TipoDeContrato" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="TipoDeIngreso" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="CategoriaOcupacional" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="DescribaLasMolestiasosintomasqueactualmentetieneeltrabajador" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="HaceCuantoTiempoTieneEstasMolestias" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="HabiaTenidoEstasMolestiasAnteriormente" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="ParteDelCuerpoAfectada" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="DescribaElTrabajoOActividadQueRealizabaCuandoComenzaronLasMolestias" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="NombreDelPuestoDeTrabajoQueRealizabaCuandoComenzaronLasMolestias" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="ExistenCompañerosDeTrabajoConLasMismasMolestias" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="QueAgentesDelTrabajoCreeUdQueCausanLasMolestias" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="CuantoTiempoHaEstadoExpuestoAEstosAgentes" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="NombreCompletoDelDenunciante" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="NumeroDeTelefonoDelDenunciante" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="ClasificacionDelDenuncianteSegunLey" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="FichaDIEPResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="FichaDIEPResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="string" nillable="true" type="s:string" />
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="wsValidaEmpSisoSoapIn">
+    <wsdl:part name="parameters" element="tns:wsValidaEmpSiso" />
+  </wsdl:message>
+  <wsdl:message name="wsValidaEmpSisoSoapOut">
+    <wsdl:part name="parameters" element="tns:wsValidaEmpSisoResponse" />
+  </wsdl:message>
+  <wsdl:message name="wsValidaEmpSoapIn">
+    <wsdl:part name="parameters" element="tns:wsValidaEmp" />
+  </wsdl:message>
+  <wsdl:message name="wsValidaEmpSoapOut">
+    <wsdl:part name="parameters" element="tns:wsValidaEmpResponse" />
+  </wsdl:message>
+  <wsdl:message name="wsTokenSoapIn">
+    <wsdl:part name="parameters" element="tns:wsToken" />
+  </wsdl:message>
+  <wsdl:message name="wsTokenSoapOut">
+    <wsdl:part name="parameters" element="tns:wsTokenResponse" />
+  </wsdl:message>
+  <wsdl:message name="wsConsultaAdherenteSoapIn">
+    <wsdl:part name="parameters" element="tns:wsConsultaAdherente" />
+  </wsdl:message>
+  <wsdl:message name="wsConsultaAdherenteSoapOut">
+    <wsdl:part name="parameters" element="tns:wsConsultaAdherenteResponse" />
+  </wsdl:message>
+  <wsdl:message name="wsTraerAtencionSoapIn">
+    <wsdl:part name="parameters" element="tns:wsTraerAtencion" />
+  </wsdl:message>
+  <wsdl:message name="wsTraerAtencionSoapOut">
+    <wsdl:part name="parameters" element="tns:wsTraerAtencionResponse" />
+  </wsdl:message>
+  <wsdl:message name="FichaDIATSoapIn">
+    <wsdl:part name="parameters" element="tns:FichaDIAT" />
+  </wsdl:message>
+  <wsdl:message name="FichaDIATSoapOut">
+    <wsdl:part name="parameters" element="tns:FichaDIATResponse" />
+  </wsdl:message>
+  <wsdl:message name="FichaDIEPSoapIn">
+    <wsdl:part name="parameters" element="tns:FichaDIEP" />
+  </wsdl:message>
+  <wsdl:message name="FichaDIEPSoapOut">
+    <wsdl:part name="parameters" element="tns:FichaDIEPResponse" />
+  </wsdl:message>
+  <wsdl:message name="wsValidaEmpSisoHttpGetIn">
+    <wsdl:part name="RutEmpresa" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="wsValidaEmpSisoHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="wsValidaEmpHttpGetIn">
+    <wsdl:part name="RutEmpresa" type="s:string" />
+    <wsdl:part name="Clave" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="wsValidaEmpHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="wsTokenHttpGetIn">
+    <wsdl:part name="RutEmpresa" type="s:string" />
+    <wsdl:part name="Clave" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="wsTokenHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="wsConsultaAdherenteHttpGetIn">
+    <wsdl:part name="Token" type="s:string" />
+    <wsdl:part name="RutEmpresa" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="wsConsultaAdherenteHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="wsTraerAtencionHttpGetIn">
+    <wsdl:part name="Token" type="s:string" />
+    <wsdl:part name="RutEmpresa" type="s:string" />
+    <wsdl:part name="FolAte" type="s:string" />
+    <wsdl:part name="FecIni" type="s:string" />
+    <wsdl:part name="FecFin" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="wsTraerAtencionHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="FichaDIATHttpGetIn">
+    <wsdl:part name="Token" type="s:string" />
+    <wsdl:part name="RutEmpleador" type="s:string" />
+    <wsdl:part name="FolioAtencion" type="s:string" />
+    <wsdl:part name="CodigoDelCaso" type="s:string" />
+    <wsdl:part name="TipoDeIngreso" type="s:string" />
+    <wsdl:part name="FechaDeEmision" type="s:string" />
+    <wsdl:part name="CategoriaOcupacional" type="s:string" />
+    <wsdl:part name="TipoDeContrato" type="s:string" />
+    <wsdl:part name="FechaDelAccidente" type="s:string" />
+    <wsdl:part name="Etnia" type="s:string" />
+    <wsdl:part name="EtniaOtro" type="s:string" />
+    <wsdl:part name="HoraDelAccidente" type="s:string" />
+    <wsdl:part name="HoraDeIngresoAlTrabajo" type="s:string" />
+    <wsdl:part name="HoraDeSalidaDelTrabajo" type="s:string" />
+    <wsdl:part name="DireccionDelAccidente" type="s:string" />
+    <wsdl:part name="ComunaDelAccidente" type="s:string" />
+    <wsdl:part name="QueHaciaElTrabajadorAlMomentoDelAccidente" type="s:string" />
+    <wsdl:part name="LugarDelAccidente" type="s:string" />
+    <wsdl:part name="NumeroDeTrabajadoresHombres" type="s:string" />
+    <wsdl:part name="NumeroDeTrabajadoresMujeres" type="s:string" />
+    <wsdl:part name="DescribaComoOcurrioElAccidente" type="s:string" />
+    <wsdl:part name="SeñaleCualEraSuTrabajoHabitual" type="s:string" />
+    <wsdl:part name="DesarrollabaSuTrabajoHabitual" type="s:string" />
+    <wsdl:part name="ClasificacionDelAccidente" type="s:string" />
+    <wsdl:part name="TipoDeAccidente" type="s:string" />
+    <wsdl:part name="TipoDeAccidenteDeTrayecto" type="s:string" />
+    <wsdl:part name="MedioDePrueba" type="s:string" />
+    <wsdl:part name="DetalleDelMedioDePrueba" type="s:string" />
+    <wsdl:part name="NombreCompletoDelDenunciante" type="s:string" />
+    <wsdl:part name="NumeroDeTelefonoDelDenunciante" type="s:string" />
+    <wsdl:part name="ClasificacionDelDenuncianteSegunLey" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="FichaDIATHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="FichaDIEPHttpGetIn">
+    <wsdl:part name="Token" type="s:string" />
+    <wsdl:part name="RutEmpleador" type="s:string" />
+    <wsdl:part name="FolioAtencion" type="s:string" />
+    <wsdl:part name="CodigoDelCaso" type="s:string" />
+    <wsdl:part name="FechaDeEmision" type="s:string" />
+    <wsdl:part name="NumeroDeTrabajadoresHombres" type="s:string" />
+    <wsdl:part name="NumeroDeTrabajadoresMujeres" type="s:string" />
+    <wsdl:part name="Etnia" type="s:string" />
+    <wsdl:part name="EtniaOtro" type="s:string" />
+    <wsdl:part name="TipoDeContrato" type="s:string" />
+    <wsdl:part name="TipoDeIngreso" type="s:string" />
+    <wsdl:part name="CategoriaOcupacional" type="s:string" />
+    <wsdl:part name="DescribaLasMolestiasosintomasqueactualmentetieneeltrabajador" type="s:string" />
+    <wsdl:part name="HaceCuantoTiempoTieneEstasMolestias" type="s:string" />
+    <wsdl:part name="HabiaTenidoEstasMolestiasAnteriormente" type="s:string" />
+    <wsdl:part name="ParteDelCuerpoAfectada" type="s:string" />
+    <wsdl:part name="DescribaElTrabajoOActividadQueRealizabaCuandoComenzaronLasMolestias" type="s:string" />
+    <wsdl:part name="NombreDelPuestoDeTrabajoQueRealizabaCuandoComenzaronLasMolestias" type="s:string" />
+    <wsdl:part name="ExistenCompañerosDeTrabajoConLasMismasMolestias" type="s:string" />
+    <wsdl:part name="QueAgentesDelTrabajoCreeUdQueCausanLasMolestias" type="s:string" />
+    <wsdl:part name="CuantoTiempoHaEstadoExpuestoAEstosAgentes" type="s:string" />
+    <wsdl:part name="NombreCompletoDelDenunciante" type="s:string" />
+    <wsdl:part name="NumeroDeTelefonoDelDenunciante" type="s:string" />
+    <wsdl:part name="ClasificacionDelDenuncianteSegunLey" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="FichaDIEPHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="wsValidaEmpSisoHttpPostIn">
+    <wsdl:part name="RutEmpresa" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="wsValidaEmpSisoHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="wsValidaEmpHttpPostIn">
+    <wsdl:part name="RutEmpresa" type="s:string" />
+    <wsdl:part name="Clave" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="wsValidaEmpHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="wsTokenHttpPostIn">
+    <wsdl:part name="RutEmpresa" type="s:string" />
+    <wsdl:part name="Clave" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="wsTokenHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="wsConsultaAdherenteHttpPostIn">
+    <wsdl:part name="Token" type="s:string" />
+    <wsdl:part name="RutEmpresa" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="wsConsultaAdherenteHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="wsTraerAtencionHttpPostIn">
+    <wsdl:part name="Token" type="s:string" />
+    <wsdl:part name="RutEmpresa" type="s:string" />
+    <wsdl:part name="FolAte" type="s:string" />
+    <wsdl:part name="FecIni" type="s:string" />
+    <wsdl:part name="FecFin" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="wsTraerAtencionHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="FichaDIATHttpPostIn">
+    <wsdl:part name="Token" type="s:string" />
+    <wsdl:part name="RutEmpleador" type="s:string" />
+    <wsdl:part name="FolioAtencion" type="s:string" />
+    <wsdl:part name="CodigoDelCaso" type="s:string" />
+    <wsdl:part name="TipoDeIngreso" type="s:string" />
+    <wsdl:part name="FechaDeEmision" type="s:string" />
+    <wsdl:part name="CategoriaOcupacional" type="s:string" />
+    <wsdl:part name="TipoDeContrato" type="s:string" />
+    <wsdl:part name="FechaDelAccidente" type="s:string" />
+    <wsdl:part name="Etnia" type="s:string" />
+    <wsdl:part name="EtniaOtro" type="s:string" />
+    <wsdl:part name="HoraDelAccidente" type="s:string" />
+    <wsdl:part name="HoraDeIngresoAlTrabajo" type="s:string" />
+    <wsdl:part name="HoraDeSalidaDelTrabajo" type="s:string" />
+    <wsdl:part name="DireccionDelAccidente" type="s:string" />
+    <wsdl:part name="ComunaDelAccidente" type="s:string" />
+    <wsdl:part name="QueHaciaElTrabajadorAlMomentoDelAccidente" type="s:string" />
+    <wsdl:part name="LugarDelAccidente" type="s:string" />
+    <wsdl:part name="NumeroDeTrabajadoresHombres" type="s:string" />
+    <wsdl:part name="NumeroDeTrabajadoresMujeres" type="s:string" />
+    <wsdl:part name="DescribaComoOcurrioElAccidente" type="s:string" />
+    <wsdl:part name="SeñaleCualEraSuTrabajoHabitual" type="s:string" />
+    <wsdl:part name="DesarrollabaSuTrabajoHabitual" type="s:string" />
+    <wsdl:part name="ClasificacionDelAccidente" type="s:string" />
+    <wsdl:part name="TipoDeAccidente" type="s:string" />
+    <wsdl:part name="TipoDeAccidenteDeTrayecto" type="s:string" />
+    <wsdl:part name="MedioDePrueba" type="s:string" />
+    <wsdl:part name="DetalleDelMedioDePrueba" type="s:string" />
+    <wsdl:part name="NombreCompletoDelDenunciante" type="s:string" />
+    <wsdl:part name="NumeroDeTelefonoDelDenunciante" type="s:string" />
+    <wsdl:part name="ClasificacionDelDenuncianteSegunLey" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="FichaDIATHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="FichaDIEPHttpPostIn">
+    <wsdl:part name="Token" type="s:string" />
+    <wsdl:part name="RutEmpleador" type="s:string" />
+    <wsdl:part name="FolioAtencion" type="s:string" />
+    <wsdl:part name="CodigoDelCaso" type="s:string" />
+    <wsdl:part name="FechaDeEmision" type="s:string" />
+    <wsdl:part name="NumeroDeTrabajadoresHombres" type="s:string" />
+    <wsdl:part name="NumeroDeTrabajadoresMujeres" type="s:string" />
+    <wsdl:part name="Etnia" type="s:string" />
+    <wsdl:part name="EtniaOtro" type="s:string" />
+    <wsdl:part name="TipoDeContrato" type="s:string" />
+    <wsdl:part name="TipoDeIngreso" type="s:string" />
+    <wsdl:part name="CategoriaOcupacional" type="s:string" />
+    <wsdl:part name="DescribaLasMolestiasosintomasqueactualmentetieneeltrabajador" type="s:string" />
+    <wsdl:part name="HaceCuantoTiempoTieneEstasMolestias" type="s:string" />
+    <wsdl:part name="HabiaTenidoEstasMolestiasAnteriormente" type="s:string" />
+    <wsdl:part name="ParteDelCuerpoAfectada" type="s:string" />
+    <wsdl:part name="DescribaElTrabajoOActividadQueRealizabaCuandoComenzaronLasMolestias" type="s:string" />
+    <wsdl:part name="NombreDelPuestoDeTrabajoQueRealizabaCuandoComenzaronLasMolestias" type="s:string" />
+    <wsdl:part name="ExistenCompañerosDeTrabajoConLasMismasMolestias" type="s:string" />
+    <wsdl:part name="QueAgentesDelTrabajoCreeUdQueCausanLasMolestias" type="s:string" />
+    <wsdl:part name="CuantoTiempoHaEstadoExpuestoAEstosAgentes" type="s:string" />
+    <wsdl:part name="NombreCompletoDelDenunciante" type="s:string" />
+    <wsdl:part name="NumeroDeTelefonoDelDenunciante" type="s:string" />
+    <wsdl:part name="ClasificacionDelDenuncianteSegunLey" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="FichaDIEPHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:portType name="servMEDAtencionSoap">
+    <wsdl:operation name="wsValidaEmpSiso">
+      <wsdl:input message="tns:wsValidaEmpSisoSoapIn" />
+      <wsdl:output message="tns:wsValidaEmpSisoSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="wsValidaEmp">
+      <wsdl:input message="tns:wsValidaEmpSoapIn" />
+      <wsdl:output message="tns:wsValidaEmpSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="wsToken">
+      <wsdl:input message="tns:wsTokenSoapIn" />
+      <wsdl:output message="tns:wsTokenSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="wsConsultaAdherente">
+      <wsdl:input message="tns:wsConsultaAdherenteSoapIn" />
+      <wsdl:output message="tns:wsConsultaAdherenteSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="wsTraerAtencion">
+      <wsdl:input message="tns:wsTraerAtencionSoapIn" />
+      <wsdl:output message="tns:wsTraerAtencionSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="FichaDIAT">
+      <wsdl:input message="tns:FichaDIATSoapIn" />
+      <wsdl:output message="tns:FichaDIATSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="FichaDIEP">
+      <wsdl:input message="tns:FichaDIEPSoapIn" />
+      <wsdl:output message="tns:FichaDIEPSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="servMEDAtencionHttpGet">
+    <wsdl:operation name="wsValidaEmpSiso">
+      <wsdl:input message="tns:wsValidaEmpSisoHttpGetIn" />
+      <wsdl:output message="tns:wsValidaEmpSisoHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="wsValidaEmp">
+      <wsdl:input message="tns:wsValidaEmpHttpGetIn" />
+      <wsdl:output message="tns:wsValidaEmpHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="wsToken">
+      <wsdl:input message="tns:wsTokenHttpGetIn" />
+      <wsdl:output message="tns:wsTokenHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="wsConsultaAdherente">
+      <wsdl:input message="tns:wsConsultaAdherenteHttpGetIn" />
+      <wsdl:output message="tns:wsConsultaAdherenteHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="wsTraerAtencion">
+      <wsdl:input message="tns:wsTraerAtencionHttpGetIn" />
+      <wsdl:output message="tns:wsTraerAtencionHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="FichaDIAT">
+      <wsdl:input message="tns:FichaDIATHttpGetIn" />
+      <wsdl:output message="tns:FichaDIATHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="FichaDIEP">
+      <wsdl:input message="tns:FichaDIEPHttpGetIn" />
+      <wsdl:output message="tns:FichaDIEPHttpGetOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="servMEDAtencionHttpPost">
+    <wsdl:operation name="wsValidaEmpSiso">
+      <wsdl:input message="tns:wsValidaEmpSisoHttpPostIn" />
+      <wsdl:output message="tns:wsValidaEmpSisoHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="wsValidaEmp">
+      <wsdl:input message="tns:wsValidaEmpHttpPostIn" />
+      <wsdl:output message="tns:wsValidaEmpHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="wsToken">
+      <wsdl:input message="tns:wsTokenHttpPostIn" />
+      <wsdl:output message="tns:wsTokenHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="wsConsultaAdherente">
+      <wsdl:input message="tns:wsConsultaAdherenteHttpPostIn" />
+      <wsdl:output message="tns:wsConsultaAdherenteHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="wsTraerAtencion">
+      <wsdl:input message="tns:wsTraerAtencionHttpPostIn" />
+      <wsdl:output message="tns:wsTraerAtencionHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="FichaDIAT">
+      <wsdl:input message="tns:FichaDIATHttpPostIn" />
+      <wsdl:output message="tns:FichaDIATHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="FichaDIEP">
+      <wsdl:input message="tns:FichaDIEPHttpPostIn" />
+      <wsdl:output message="tns:FichaDIEPHttpPostOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="servMEDAtencionSoap" type="tns:servMEDAtencionSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="wsValidaEmpSiso">
+      <soap:operation soapAction="http://tempuri.org/wsMEDATE/servMEDAtencion/wsValidaEmpSiso" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="wsValidaEmp">
+      <soap:operation soapAction="http://tempuri.org/wsMEDATE/servMEDAtencion/wsValidaEmp" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="wsToken">
+      <soap:operation soapAction="http://tempuri.org/wsMEDATE/servMEDAtencion/wsToken" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="wsConsultaAdherente">
+      <soap:operation soapAction="http://tempuri.org/wsMEDATE/servMEDAtencion/wsConsultaAdherente" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="wsTraerAtencion">
+      <soap:operation soapAction="http://tempuri.org/wsMEDATE/servMEDAtencion/wsTraerAtencion" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="FichaDIAT">
+      <soap:operation soapAction="http://tempuri.org/wsMEDATE/servMEDAtencion/FichaDIAT" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="FichaDIEP">
+      <soap:operation soapAction="http://tempuri.org/wsMEDATE/servMEDAtencion/FichaDIEP" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="servMEDAtencionHttpGet" type="tns:servMEDAtencionHttpGet">
+    <http:binding verb="GET" />
+    <wsdl:operation name="wsValidaEmpSiso">
+      <http:operation location="/wsValidaEmpSiso" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="wsValidaEmp">
+      <http:operation location="/wsValidaEmp" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="wsToken">
+      <http:operation location="/wsToken" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="wsConsultaAdherente">
+      <http:operation location="/wsConsultaAdherente" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="wsTraerAtencion">
+      <http:operation location="/wsTraerAtencion" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="FichaDIAT">
+      <http:operation location="/FichaDIAT" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="FichaDIEP">
+      <http:operation location="/FichaDIEP" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="servMEDAtencionHttpPost" type="tns:servMEDAtencionHttpPost">
+    <http:binding verb="POST" />
+    <wsdl:operation name="wsValidaEmpSiso">
+      <http:operation location="/wsValidaEmpSiso" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="wsValidaEmp">
+      <http:operation location="/wsValidaEmp" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="wsToken">
+      <http:operation location="/wsToken" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="wsConsultaAdherente">
+      <http:operation location="/wsConsultaAdherente" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="wsTraerAtencion">
+      <http:operation location="/wsTraerAtencion" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="FichaDIAT">
+      <http:operation location="/FichaDIAT" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="FichaDIEP">
+      <http:operation location="/FichaDIEP" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="servMEDAtencion">
+    <wsdl:port name="servMEDAtencionSoap" binding="tns:servMEDAtencionSoap">
+      <soap:address location="http://200.6.78.112/ServiceMEDATE/servMEDAtencion.asmx" />
+    </wsdl:port>
+    <wsdl:port name="servMEDAtencionHttpGet" binding="tns:servMEDAtencionHttpGet">
+      <http:address location="http://200.6.78.112/ServiceMEDATE/servMEDAtencion.asmx" />
+    </wsdl:port>
+    <wsdl:port name="servMEDAtencionHttpPost" binding="tns:servMEDAtencionHttpPost">
+      <http:address location="http://200.6.78.112/ServiceMEDATE/servMEDAtencion.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

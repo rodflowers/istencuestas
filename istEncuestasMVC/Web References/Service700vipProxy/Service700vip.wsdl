@@ -1,0 +1,455 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://tempuri.org/WebService700vip/Service700vip.asmx" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://tempuri.org/WebService700vip/Service700vip.asmx" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/WebService700vip/Service700vip.asmx">
+      <s:element name="WsIstSemEmpIngreso">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Rut" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Clave" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="WsIstSemEmpIngresoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="WsIstSemEmpIngresoResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="WsIstSemEmpListaSemaforo">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="RutPer" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="WsIstSemEmpListaSemaforoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="WsIstSemEmpListaSemaforoResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="WsIstSemEmpDetalleLista">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="RutPer" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Color" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="WsIstSemEmpDetalleListaResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="WsIstSemEmpDetalleListaResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="WsIstSemEmpEmpresaDet">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="CodVip" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="WsIstSemEmpEmpresaDetResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="WsIstSemEmpEmpresaDetResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="WsIstSemEmpGuardaestado">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="CodVip" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="RutEjeEmp" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="CodSitVip700" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="GlsSeguimiento" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="WsIstSemEmpGuardaestadoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="WsIstSemEmpGuardaestadoResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="string" nillable="true" type="s:string" />
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="WsIstSemEmpIngresoSoapIn">
+    <wsdl:part name="parameters" element="tns:WsIstSemEmpIngreso" />
+  </wsdl:message>
+  <wsdl:message name="WsIstSemEmpIngresoSoapOut">
+    <wsdl:part name="parameters" element="tns:WsIstSemEmpIngresoResponse" />
+  </wsdl:message>
+  <wsdl:message name="WsIstSemEmpListaSemaforoSoapIn">
+    <wsdl:part name="parameters" element="tns:WsIstSemEmpListaSemaforo" />
+  </wsdl:message>
+  <wsdl:message name="WsIstSemEmpListaSemaforoSoapOut">
+    <wsdl:part name="parameters" element="tns:WsIstSemEmpListaSemaforoResponse" />
+  </wsdl:message>
+  <wsdl:message name="WsIstSemEmpDetalleListaSoapIn">
+    <wsdl:part name="parameters" element="tns:WsIstSemEmpDetalleLista" />
+  </wsdl:message>
+  <wsdl:message name="WsIstSemEmpDetalleListaSoapOut">
+    <wsdl:part name="parameters" element="tns:WsIstSemEmpDetalleListaResponse" />
+  </wsdl:message>
+  <wsdl:message name="WsIstSemEmpEmpresaDetSoapIn">
+    <wsdl:part name="parameters" element="tns:WsIstSemEmpEmpresaDet" />
+  </wsdl:message>
+  <wsdl:message name="WsIstSemEmpEmpresaDetSoapOut">
+    <wsdl:part name="parameters" element="tns:WsIstSemEmpEmpresaDetResponse" />
+  </wsdl:message>
+  <wsdl:message name="WsIstSemEmpGuardaestadoSoapIn">
+    <wsdl:part name="parameters" element="tns:WsIstSemEmpGuardaestado" />
+  </wsdl:message>
+  <wsdl:message name="WsIstSemEmpGuardaestadoSoapOut">
+    <wsdl:part name="parameters" element="tns:WsIstSemEmpGuardaestadoResponse" />
+  </wsdl:message>
+  <wsdl:message name="WsIstSemEmpIngresoHttpGetIn">
+    <wsdl:part name="Rut" type="s:string" />
+    <wsdl:part name="Clave" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="WsIstSemEmpIngresoHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="WsIstSemEmpListaSemaforoHttpGetIn">
+    <wsdl:part name="RutPer" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="WsIstSemEmpListaSemaforoHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="WsIstSemEmpDetalleListaHttpGetIn">
+    <wsdl:part name="RutPer" type="s:string" />
+    <wsdl:part name="Color" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="WsIstSemEmpDetalleListaHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="WsIstSemEmpEmpresaDetHttpGetIn">
+    <wsdl:part name="CodVip" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="WsIstSemEmpEmpresaDetHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="WsIstSemEmpGuardaestadoHttpGetIn">
+    <wsdl:part name="CodVip" type="s:string" />
+    <wsdl:part name="RutEjeEmp" type="s:string" />
+    <wsdl:part name="CodSitVip700" type="s:string" />
+    <wsdl:part name="GlsSeguimiento" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="WsIstSemEmpGuardaestadoHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="WsIstSemEmpIngresoHttpPostIn">
+    <wsdl:part name="Rut" type="s:string" />
+    <wsdl:part name="Clave" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="WsIstSemEmpIngresoHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="WsIstSemEmpListaSemaforoHttpPostIn">
+    <wsdl:part name="RutPer" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="WsIstSemEmpListaSemaforoHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="WsIstSemEmpDetalleListaHttpPostIn">
+    <wsdl:part name="RutPer" type="s:string" />
+    <wsdl:part name="Color" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="WsIstSemEmpDetalleListaHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="WsIstSemEmpEmpresaDetHttpPostIn">
+    <wsdl:part name="CodVip" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="WsIstSemEmpEmpresaDetHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="WsIstSemEmpGuardaestadoHttpPostIn">
+    <wsdl:part name="CodVip" type="s:string" />
+    <wsdl:part name="RutEjeEmp" type="s:string" />
+    <wsdl:part name="CodSitVip700" type="s:string" />
+    <wsdl:part name="GlsSeguimiento" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="WsIstSemEmpGuardaestadoHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:portType name="Service700vipSoap">
+    <wsdl:operation name="WsIstSemEmpIngreso">
+      <wsdl:input message="tns:WsIstSemEmpIngresoSoapIn" />
+      <wsdl:output message="tns:WsIstSemEmpIngresoSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="WsIstSemEmpListaSemaforo">
+      <wsdl:input message="tns:WsIstSemEmpListaSemaforoSoapIn" />
+      <wsdl:output message="tns:WsIstSemEmpListaSemaforoSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="WsIstSemEmpDetalleLista">
+      <wsdl:input message="tns:WsIstSemEmpDetalleListaSoapIn" />
+      <wsdl:output message="tns:WsIstSemEmpDetalleListaSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="WsIstSemEmpEmpresaDet">
+      <wsdl:input message="tns:WsIstSemEmpEmpresaDetSoapIn" />
+      <wsdl:output message="tns:WsIstSemEmpEmpresaDetSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="WsIstSemEmpGuardaestado">
+      <wsdl:input message="tns:WsIstSemEmpGuardaestadoSoapIn" />
+      <wsdl:output message="tns:WsIstSemEmpGuardaestadoSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="Service700vipHttpGet">
+    <wsdl:operation name="WsIstSemEmpIngreso">
+      <wsdl:input message="tns:WsIstSemEmpIngresoHttpGetIn" />
+      <wsdl:output message="tns:WsIstSemEmpIngresoHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="WsIstSemEmpListaSemaforo">
+      <wsdl:input message="tns:WsIstSemEmpListaSemaforoHttpGetIn" />
+      <wsdl:output message="tns:WsIstSemEmpListaSemaforoHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="WsIstSemEmpDetalleLista">
+      <wsdl:input message="tns:WsIstSemEmpDetalleListaHttpGetIn" />
+      <wsdl:output message="tns:WsIstSemEmpDetalleListaHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="WsIstSemEmpEmpresaDet">
+      <wsdl:input message="tns:WsIstSemEmpEmpresaDetHttpGetIn" />
+      <wsdl:output message="tns:WsIstSemEmpEmpresaDetHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="WsIstSemEmpGuardaestado">
+      <wsdl:input message="tns:WsIstSemEmpGuardaestadoHttpGetIn" />
+      <wsdl:output message="tns:WsIstSemEmpGuardaestadoHttpGetOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="Service700vipHttpPost">
+    <wsdl:operation name="WsIstSemEmpIngreso">
+      <wsdl:input message="tns:WsIstSemEmpIngresoHttpPostIn" />
+      <wsdl:output message="tns:WsIstSemEmpIngresoHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="WsIstSemEmpListaSemaforo">
+      <wsdl:input message="tns:WsIstSemEmpListaSemaforoHttpPostIn" />
+      <wsdl:output message="tns:WsIstSemEmpListaSemaforoHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="WsIstSemEmpDetalleLista">
+      <wsdl:input message="tns:WsIstSemEmpDetalleListaHttpPostIn" />
+      <wsdl:output message="tns:WsIstSemEmpDetalleListaHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="WsIstSemEmpEmpresaDet">
+      <wsdl:input message="tns:WsIstSemEmpEmpresaDetHttpPostIn" />
+      <wsdl:output message="tns:WsIstSemEmpEmpresaDetHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="WsIstSemEmpGuardaestado">
+      <wsdl:input message="tns:WsIstSemEmpGuardaestadoHttpPostIn" />
+      <wsdl:output message="tns:WsIstSemEmpGuardaestadoHttpPostOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="Service700vipSoap" type="tns:Service700vipSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="WsIstSemEmpIngreso">
+      <soap:operation soapAction="http://tempuri.org/WebService700vip/Service700vip.asmx/WsIstSemEmpIngreso" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="WsIstSemEmpListaSemaforo">
+      <soap:operation soapAction="http://tempuri.org/WebService700vip/Service700vip.asmx/WsIstSemEmpListaSemaforo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="WsIstSemEmpDetalleLista">
+      <soap:operation soapAction="http://tempuri.org/WebService700vip/Service700vip.asmx/WsIstSemEmpDetalleLista" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="WsIstSemEmpEmpresaDet">
+      <soap:operation soapAction="http://tempuri.org/WebService700vip/Service700vip.asmx/WsIstSemEmpEmpresaDet" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="WsIstSemEmpGuardaestado">
+      <soap:operation soapAction="http://tempuri.org/WebService700vip/Service700vip.asmx/WsIstSemEmpGuardaestado" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="Service700vipSoap12" type="tns:Service700vipSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="WsIstSemEmpIngreso">
+      <soap12:operation soapAction="http://tempuri.org/WebService700vip/Service700vip.asmx/WsIstSemEmpIngreso" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="WsIstSemEmpListaSemaforo">
+      <soap12:operation soapAction="http://tempuri.org/WebService700vip/Service700vip.asmx/WsIstSemEmpListaSemaforo" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="WsIstSemEmpDetalleLista">
+      <soap12:operation soapAction="http://tempuri.org/WebService700vip/Service700vip.asmx/WsIstSemEmpDetalleLista" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="WsIstSemEmpEmpresaDet">
+      <soap12:operation soapAction="http://tempuri.org/WebService700vip/Service700vip.asmx/WsIstSemEmpEmpresaDet" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="WsIstSemEmpGuardaestado">
+      <soap12:operation soapAction="http://tempuri.org/WebService700vip/Service700vip.asmx/WsIstSemEmpGuardaestado" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="Service700vipHttpGet" type="tns:Service700vipHttpGet">
+    <http:binding verb="GET" />
+    <wsdl:operation name="WsIstSemEmpIngreso">
+      <http:operation location="/WsIstSemEmpIngreso" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="WsIstSemEmpListaSemaforo">
+      <http:operation location="/WsIstSemEmpListaSemaforo" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="WsIstSemEmpDetalleLista">
+      <http:operation location="/WsIstSemEmpDetalleLista" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="WsIstSemEmpEmpresaDet">
+      <http:operation location="/WsIstSemEmpEmpresaDet" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="WsIstSemEmpGuardaestado">
+      <http:operation location="/WsIstSemEmpGuardaestado" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="Service700vipHttpPost" type="tns:Service700vipHttpPost">
+    <http:binding verb="POST" />
+    <wsdl:operation name="WsIstSemEmpIngreso">
+      <http:operation location="/WsIstSemEmpIngreso" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="WsIstSemEmpListaSemaforo">
+      <http:operation location="/WsIstSemEmpListaSemaforo" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="WsIstSemEmpDetalleLista">
+      <http:operation location="/WsIstSemEmpDetalleLista" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="WsIstSemEmpEmpresaDet">
+      <http:operation location="/WsIstSemEmpEmpresaDet" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="WsIstSemEmpGuardaestado">
+      <http:operation location="/WsIstSemEmpGuardaestado" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="Service700vip">
+    <wsdl:port name="Service700vipSoap" binding="tns:Service700vipSoap">
+      <soap:address location="http://200.6.78.113/WebService700vip/Service700vip.asmx" />
+    </wsdl:port>
+    <wsdl:port name="Service700vipSoap12" binding="tns:Service700vipSoap12">
+      <soap12:address location="http://200.6.78.113/WebService700vip/Service700vip.asmx" />
+    </wsdl:port>
+    <wsdl:port name="Service700vipHttpGet" binding="tns:Service700vipHttpGet">
+      <http:address location="http://200.6.78.113/WebService700vip/Service700vip.asmx" />
+    </wsdl:port>
+    <wsdl:port name="Service700vipHttpPost" binding="tns:Service700vipHttpPost">
+      <http:address location="http://200.6.78.113/WebService700vip/Service700vip.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
