@@ -7,13 +7,6 @@
 
 @model IEnumerable<istEncuestasMVC.Models.Encuesta>
 
-<script language="javascript" type="text/javascript">
-    $(document).ready(function () {
-        $('#target').click(function () {
-            alert();
-        });
-    });
-</script>
 
 <br />
 <div class="panel panel-primary">
@@ -34,3 +27,18 @@
 </div>
 
 
+@section Scripts {
+    @Scripts.Render("~/Scripts/jquery-1.10.2.js")
+    @Scripts.Render("~/bundles/jqueryval")
+
+    <script type='text/javascript'>
+        $(document).ready(function () {
+            $('.list-group-item').click(function () {
+                alert();
+            });
+
+        });
+
+    </script>
+
+}
