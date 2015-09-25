@@ -1,4 +1,5 @@
-﻿using System;
+﻿using istEncuestasMVC.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -10,6 +11,16 @@ namespace istEncuestasMVC.Controllers
     {
         // GET: Encuesta
         public ActionResult Index()
+        {
+
+            XMLReader readXML = new XMLReader();
+            var data = readXML.RetrunListOfEncuesta();
+
+            return View(data.ToList());
+            
+        }
+
+        public ActionResult SubFamilia()
         {
             return View();
         }

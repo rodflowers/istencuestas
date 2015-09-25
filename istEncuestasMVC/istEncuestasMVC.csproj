@@ -131,6 +131,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\Empresa.cs" />
+    <Compile Include="Models\Encuesta.cs" />
     <Compile Include="Models\Login.cs" />
     <Compile Include="Models\NewDataSet.cs" />
     <Compile Include="Models\XMLReader.cs" />
@@ -157,6 +158,9 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="App_Data\DetalleSubFamilia.xml" />
+    <Content Include="App_Data\SelectEncuesta.xml" />
+    <Content Include="App_Data\SubFamilia.xml" />
     <Content Include="App_Data\XMLFile1.xml" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
@@ -201,6 +205,7 @@
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\MiCuenta\Logout.cshtml" />
     <Content Include="Views\Encuesta\Index.cshtml" />
+    <Content Include="Views\Encuesta\SubFamilia.cshtml" />
     <None Include="Web References\Service700vipProxy\Service700vip.disco" />
     <Content Include="Web References\servMEDAtencionProxy\Reference.map">
       <Generator>MSDiscoCodeGenerator</Generator>
@@ -288,6 +293,8 @@
           <DevelopmentServerPort>51380</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
           <IISUrl>http://localhost:51380/</IISUrl>
+          <OverrideIISAppRootUrl>True</OverrideIISAppRootUrl>
+          <IISAppRootUrl>http://localhost:51380/</IISAppRootUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>

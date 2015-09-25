@@ -3,36 +3,34 @@
     ViewBag.Title = "Encuestas";
 }
 
+@using istEncuestasMVC.Models;
+
+@model IEnumerable<istEncuestasMVC.Models.Encuesta>
+
+<script language="javascript" type="text/javascript">
+    $(document).ready(function () {
+        $('#target').click(function () {
+            alert();
+        });
+    });
+</script>
+
 <br />
 <div class="panel panel-primary">
     <div class="panel-heading">
-        <h3 class="panel-title">Encuestas</h3>
+        <h3 class="panel-title">Seleccione Encuestas</h3>
     </div>
-    <div class="panel-body">
-        <div class="list-group">
-            <a href="#" class="list-group-item">
-                <h4 class="list-group-item-heading">Encuesta 1</h4>
-                <p class="list-group-item-text">Dapibus ac facilisis in Morbi leo risus Porta ac consec</p>
-            </a>
-        </div>
-        <div class="list-group">
-            <a href="#" class="list-group-item">
-                <h4 class="list-group-item-heading">Encuesta 2</h4>
-                <p class="list-group-item-text">Dapibus ac facilisis in Morbi leo risus Porta ac consec</p>
-            </a>
-        </div>
-        <div class="list-group">
-            <a href="#" class="list-group-item">
-                <h4 class="list-group-item-heading">Encuesta 3</h4>
-                <p class="list-group-item-text">Dapibus ac facilisis in Morbi leo risus Porta ac consec</p>
-            </a>
-        </div>
-        <div class="list-group">
-            <a href="#" class="list-group-item">
-                <h4 class="list-group-item-heading">Encuesta 4</h4>
-                <p class="list-group-item-text">Dapibus ac facilisis in Morbi leo risus Porta ac consec</p>
-            </a>
-        </div>
+    
+    <br />
+
+    <div class="list-group">
+        @foreach (var item in Model)
+        {
+            @*<button id="target" type="button" class="list-group-item" onclick="javascript: SubmitClick();">@Html.DisplayFor(modelItem => item.Gls_Par_Alf_Num)</button>*@
+            <button id="target" type="button" class="list-group-item">@Html.DisplayFor(modelItem => item.Gls_Par_Alf_Num)</button>
+        }
     </div>
+    <br />
 </div>
+
 

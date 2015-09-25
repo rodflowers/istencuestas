@@ -30,5 +30,20 @@ namespace istEncuestasMVC.Models
 
             return newempresa;
         }
+
+        public List<Encuesta> RetrunListOfEncuesta()
+        {
+            string xmlData = HttpContext.Current.Server.MapPath("~/App_Data/SelectEncuesta.xml");//Path of the xml script  
+            DataSet ds = new DataSet();//Using dataset to read xml file  
+            ds.ReadXml(xmlData);
+            var encuesta = new List<Encuesta>();
+            encuesta = (from rows in ds.Tables[0].AsEnumerable()
+                        select new Encuesta
+                        {
+                            Cod_Par_Acceso = rows[0].ToString(), //Convert row to int  
+                            Gls_Par_Alf_Num = rows[1].ToString(),                           
+                        }).ToList();
+            return encuesta;
+        }
     }
 }

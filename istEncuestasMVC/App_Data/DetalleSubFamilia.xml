@@ -1,0 +1,80 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Data>
+  <Datas>
+    <Cod_Par_Acceso>ITL1</Cod_Par_Acceso>
+    <Val_Par_Alf_Num>1</Val_Par_Alf_Num>
+    <Cod_Num>1</Cod_Num>
+    <Num_Orden>1</Num_Orden>
+    <Gls_Pregunta>¿Se entregan EPP certificados según los riesgos presentes?</Gls_Pregunta>
+  </Datas>
+  <Datas>
+    <Cod_Par_Acceso>ITL1</Cod_Par_Acceso>
+    <Val_Par_Alf_Num>1</Val_Par_Alf_Num>
+    <Cod_Num>2</Cod_Num>
+    <Num_Orden>2</Num_Orden>
+    <Gls_Pregunta>¿Se utilizan correctamente los EPP entregados?</Gls_Pregunta>
+  </Datas>
+  <Datas>
+    <Cod_Par_Acceso>ITL1</Cod_Par_Acceso>
+    <Val_Par_Alf_Num>1</Val_Par_Alf_Num>
+    <Cod_Num>3</Cod_Num>
+    <Num_Orden>3</Num_Orden>
+    <Gls_Pregunta>¿Existen registros firmados de la entrega de EPP?</Gls_Pregunta>
+  </Datas>
+  <Datas>
+    <Cod_Par_Acceso>ITL1</Cod_Par_Acceso>
+    <Val_Par_Alf_Num>2</Val_Par_Alf_Num>
+    <Cod_Num>4</Cod_Num>
+    <Num_Orden>1</Num_Orden>
+    <Gls_Pregunta>¿Se les informa acerca de los riesgos de sus labores, las medidas preventivas y los métodos de trabajo correctos que deben aplicar?</Gls_Pregunta>
+  </Datas>
+  <Datas>
+    <Cod_Par_Acceso>ITL1</Cod_Par_Acceso>
+    <Val_Par_Alf_Num>2</Val_Par_Alf_Num>
+    <Cod_Num>5</Cod_Num>
+    <Num_Orden>2</Num_Orden>
+    <Gls_Pregunta>¿Existe resgistro firmado de la actividad descrita en el punto anterior?</Gls_Pregunta>
+  </Datas>
+  <Datas>
+    <Cod_Par_Acceso>ITL1</Cod_Par_Acceso>
+    <Val_Par_Alf_Num>3</Val_Par_Alf_Num>
+    <Cod_Num>6</Cod_Num>
+    <Num_Orden>1</Num_Orden>
+    <Gls_Pregunta>¿Existe y está al día el Reglamento Interno de (Orden) Higiene y Seguridad?</Gls_Pregunta>
+  </Datas>
+  <Datas>
+    <Cod_Par_Acceso>ITL1</Cod_Par_Acceso>
+    <Val_Par_Alf_Num>3</Val_Par_Alf_Num>
+    <Cod_Num>7</Cod_Num>
+    <Num_Orden>2</Num_Orden>
+    <Gls_Pregunta>¿Existen registros firmados que acreditan la entrega gratuita de este Reglamento?</Gls_Pregunta>
+  </Datas>
+  <Datas>
+    <Cod_Par_Acceso>ITL1</Cod_Par_Acceso>
+    <Val_Par_Alf_Num>4</Val_Par_Alf_Num>
+    <Cod_Num>8</Cod_Num>
+    <Num_Orden>1</Num_Orden>
+    <Gls_Pregunta>¿Está constituido y funcionando el Comité Paritario de la empresa?</Gls_Pregunta>
+  </Datas>
+  <Datas>
+    <Cod_Par_Acceso>ITL1</Cod_Par_Acceso>
+    <Val_Par_Alf_Num>4</Val_Par_Alf_Num>
+    <Cod_Num>9</Cod_Num>
+    <Num_Orden>2</Num_Orden>
+    <Gls_Pregunta>¿Mantiene este Comité el registro de todas las actas de sus reuniones periódicas?</Gls_Pregunta>
+  </Datas>
+  <Datas>
+    <Cod_Par_Acceso>ITL1</Cod_Par_Acceso>
+    <Val_Par_Alf_Num>5</Val_Par_Alf_Num>
+    <Cod_Num>10</Cod_Num>
+    <Num_Orden>1</Num_Orden>
+    <Gls_Pregunta>¿Cuenta la empresa con un Departamento de Prevención de Riesgos?</Gls_Pregunta>
+  </Datas>
+  <Datas>
+    <Cod_Par_Acceso>ITL1</Cod_Par_Acceso>
+    <Val_Par_Alf_Num>5</Val_Par_Alf_Num>
+    <Cod_Num>11</Cod_Num>
+    <Num_Orden>2</Num_Orden>
+    <Gls_Pregunta>¿El tiempo de atención del experto cumple con lo especificado en el Art. 11 del D.S. N° 40?</Gls_Pregunta>
+  </Datas>
+</Data>
