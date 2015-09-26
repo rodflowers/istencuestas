@@ -45,5 +45,40 @@ namespace istEncuestasMVC.Models
                         }).ToList();
             return encuesta;
         }
+
+        public List<Encuesta> RetrunListOfSubFamilia()
+        {
+            string xmlData = HttpContext.Current.Server.MapPath("~/App_Data/SubFamilia.xml");//Path of the xml script  
+            DataSet ds = new DataSet();//Using dataset to read xml file  
+            ds.ReadXml(xmlData);
+            var subfamilia = new List<Encuesta>();
+            subfamilia = (from rows in ds.Tables[0].AsEnumerable()
+                        select new Encuesta
+                        {
+                            Cod_Par_Acceso = rows[0].ToString(), //Convert row to int  
+                            Val_Par_Alf_Num = rows[1].ToString(),
+                            Gls_Par_Alf_Num = rows[2].ToString(),
+                            Cant_Preguntas = Convert.ToInt32(rows[3].ToString()),
+                        }).ToList();
+            return subfamilia;
+        }
+
+        public List<Encuesta> RetrunListOfDetSubFamilia()
+        {
+            string xmlData = HttpContext.Current.Server.MapPath("~/App_Data/DetalleSubFamilia.xml");//Path of the xml script  
+            DataSet ds = new DataSet();//Using dataset to read xml file  
+            ds.ReadXml(xmlData);
+            var detsubfamilia = new List<Encuesta>();
+            detsubfamilia = (from rows in ds.Tables[0].AsEnumerable()
+                          select new Encuesta
+                          {
+                              Cod_Par_Acceso = rows[0].ToString(), //Convert row to int  
+                              Val_Par_Alf_Num = rows[1].ToString(),
+                              Cod_Num = Convert.ToInt32(rows[2].ToString()),
+                              Num_Orden = Convert.ToInt32(rows[3].ToString()),
+                              Gls_Pregunta = rows[4].ToString(),
+                          }).ToList();
+            return detsubfamilia;
+        }
     }
 }

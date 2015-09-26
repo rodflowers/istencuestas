@@ -20,9 +20,39 @@ namespace istEncuestasMVC.Controllers
             
         }
 
-        public ActionResult SubFamilia()
+        [HttpPost]
+        public ActionResult SubFamilia(string encuestaid)
         {
-            return View();
+
+            return Json(new { result = "Redirect", url = Url.Action("ListSubFamilia", "Encuesta", new  { iddet = encuestaid }) });
         }
+
+        // GET: Encuesta
+        public ActionResult ListSubFamilia(string iddet)
+        {
+            XMLReader readXML = new XMLReader();
+            var data = readXML.RetrunListOfSubFamilia();
+
+            return View(data.ToList());
+        }
+
+        [HttpPost]
+        public ActionResult DetalleSubFamilia(string subfamid)
+        {
+            return Json(new { result = "Redirect", url = Url.Action("ListDetalleSubFamilia", "Encuesta", new { iddet = subfamid }) });
+        }
+
+        // GET: Encuesta
+        public ActionResult ListDetalleSubFamilia(string iddet)
+        {
+            XMLReader readXML = new XMLReader();
+            var data = readXML.RetrunListOfDetSubFamilia();
+            var query = data.Where(p => p.Val_Par_Alf_Num == iddet);
+
+            return View(query.ToList());
+        }
+
+
+
     }
 }

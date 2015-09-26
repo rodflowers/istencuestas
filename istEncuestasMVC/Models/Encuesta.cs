@@ -19,5 +19,6 @@ namespace istEncuestasMVC.Models
         public string Val_Par_Alf_Num { get; set; }        
         public string Gls_Pregunta { get; set; }
         public string Gls_Par_Alf_Num { get; set; }
+        public int Cant_Preguntas { get; set; }
     }
 }
