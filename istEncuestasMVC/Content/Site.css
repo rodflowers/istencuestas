@@ -22,3 +22,10 @@ select,
 textarea {
     max-width: 280px;
 }
+
+.navbar-inverse { background-color: #180C33 !important; }
+
+/*.panel-heading { background-color: #3E207E !important; }*/
+
+/*.panel-primary { background-color: #56207E !important; }*/
+

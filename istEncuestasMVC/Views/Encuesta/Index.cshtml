@@ -16,13 +16,23 @@
     
     <br />
 
+    @*<div class="list-group">
+        @foreach (var item in Model)
+        {           
+            <button id="target" type="button" data-encuestaid="@item.Cod_Par_Acceso" class="list-group-item">@Html.DisplayFor(modelItem => item.Gls_Par_Alf_Num)</button>
+        }
+    </div>*@
+
     <div class="list-group">
         @foreach (var item in Model)
         {
-            @*<button id="target" type="button" class="list-group-item" onclick="javascript: SubmitClick();">@Html.DisplayFor(modelItem => item.Gls_Par_Alf_Num)</button>*@
-            <button id="target" type="button" data-encuestaid="@item.Cod_Par_Acceso" class="list-group-item">@Html.DisplayFor(modelItem => item.Gls_Par_Alf_Num)</button>
+            <a class="list-group-item">
+                <h5 class="list-group-item-heading" data-encuestaid="@item.Cod_Par_Acceso">@Html.DisplayFor(modelItem => item.Gls_Par_Alf_Num)</h5>                
+            </a>
         }
+        
     </div>
+
     <br />
 </div>
 
@@ -40,7 +50,7 @@
     <script type='text/javascript'>
 
         $(document).ready(function () {
-            $('.list-group-item').click(function () {
+            $('.list-group-item-heading').click(function () {
                 var eid = $(this).data('encuestaid');
                 var url = '@Url.Action("SubFamilia", "Encuesta")';
                 $.post(url, { encuestaid: eid }, function (response) {

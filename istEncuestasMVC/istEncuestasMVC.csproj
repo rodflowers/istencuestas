@@ -126,7 +126,6 @@
     <Compile Include="Controllers\EncuestaController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\MiCuentaController.cs" />
-    <Compile Include="Controllers\StoreController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -229,7 +228,6 @@
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Home\Help.cshtml" />
     <None Include="Service References\UszipProxy\uszip.wsdl" />
-    <Content Include="Views\Store\Index.cshtml" />
     <None Include="Web References\Service700vipProxy\Service700vip.wsdl" />
     <None Include="Web References\servMEDAtencionProxy\servMEDAtencion.wsdl" />
   </ItemGroup>

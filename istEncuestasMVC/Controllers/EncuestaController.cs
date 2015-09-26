@@ -37,18 +37,18 @@ namespace istEncuestasMVC.Controllers
         }
 
         [HttpPost]
-        public ActionResult DetalleSubFamilia(string subfamid)
+        public ActionResult DetalleSubFamilia(string subfamid, int totpreg, int numpreg)
         {
-            return Json(new { result = "Redirect", url = Url.Action("ListDetalleSubFamilia", "Encuesta", new { iddet = subfamid }) });
+            return Json(new { result = "Redirect", url = Url.Action("ListDetalleSubFamilia", "Encuesta", new { iddet = subfamid, totnum = totpreg, preg = numpreg }) });
         }
 
         // GET: Encuesta
-        public ActionResult ListDetalleSubFamilia(string iddet)
+        public ActionResult ListDetalleSubFamilia(string iddet, int totnum, int preg)
         {
             XMLReader readXML = new XMLReader();
             var data = readXML.RetrunListOfDetSubFamilia();
             var query = data.Where(p => p.Val_Par_Alf_Num == iddet);
-
+            query = query.Where(p => p.Num_Orden == preg);
             return View(query.ToList());
         }
 
