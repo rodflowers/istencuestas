@@ -1,0 +1,77 @@
+﻿
+@{
+    ViewBag.Title = "ListDetalleSubFamilia";
+}
+
+@using istEncuestasMVC.Models;
+
+@model IEnumerable<istEncuestasMVC.Models.Encuesta>
+
+<br />
+<div class="panel panel-primary">
+    <div class="panel-heading">
+        <h3 class="panel-title">Detalle Encuesta</h3>
+    </div>
+
+    <br />
+
+    <div class="list-group">
+        @foreach (var item in Model)
+        {
+            <button id="target" type="button" data-encuestaid="@item.Val_Par_Alf_Num" data-numpreg="@item.Num_Orden" class="list-group-item">@Html.DisplayFor(modelItem => item.Gls_Pregunta)</button>
+        }
+
+        <br />
+
+        <div class="progress">
+            <div class="progress-bar" role="progressbar" aria-valuenow="2" aria-valuemin="0" aria-valuemax="100" style="min-width: 2em; width: 2%;">
+                2%
+            </div>
+        </div>
+
+        <nav>
+            <ul class="pager">
+                <li><a href="#" id="btnAnterior">Anterior</a></li>
+                <li><a href="#" id="btnSiguiente">Siguiente</a></li>
+            </ul>
+        </nav>
+
+    </div>
+    <br />
+</div>
+
+<nav>
+    <ul class="pager">
+        <li class="previous"><a href="#"><span aria-hidden="true">&larr;</span> Volver</a></li>
+        <li class="next"><a href="#">Adelante <span aria-hidden="true">&rarr;</span></a></li>
+    </ul>
+</nav>
+
+
+@section Scripts {
+    @Scripts.Render("~/Scripts/jquery-1.10.2.js")
+    @Scripts.Render("~/bundles/jqueryval")
+
+    <script type='text/javascript'>
+
+         $(document).ready(function () {
+             $('#btnSiguiente').click(function () {
+                 debugger;
+                var eid = $(this).data('encuestaid');
+                var num = $(this).data('numpreg');
+                var preg = num + 1;
+                
+                $.ajax({
+                    url: '@Url.Action("ListDetalleSubFamilia", "Encuesta")',
+                    data: { subfamid: eid, totpreg: num, numpreg: preg },
+                    success: function (response) {
+                        window.location = response.url;
+                        }
+                    });
+
+                });
+
+            });
+
+    </script>
+}
