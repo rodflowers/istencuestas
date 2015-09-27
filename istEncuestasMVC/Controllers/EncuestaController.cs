@@ -43,6 +43,7 @@ namespace istEncuestasMVC.Controllers
         }
 
         // GET: Encuesta
+        [AcceptVerbs(HttpVerbs.Get | HttpVerbs.Post)]
         public ActionResult ListDetalleSubFamilia(string iddet, int totnum, int preg)
         {
             XMLReader readXML = new XMLReader();
@@ -51,6 +52,8 @@ namespace istEncuestasMVC.Controllers
             query = query.Where(p => p.Num_Orden == preg);
             return View(query.ToList());
         }
+
+       
 
 
 

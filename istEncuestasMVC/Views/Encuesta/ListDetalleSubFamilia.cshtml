@@ -18,9 +18,19 @@
     <div class="list-group">
         @foreach (var item in Model)
         {
-            <button id="target" type="button" data-encuestaid="@item.Val_Par_Alf_Num" data-numpreg="@item.Num_Orden" class="list-group-item">@Html.DisplayFor(modelItem => item.Gls_Pregunta)</button>
+            @*<button id="target" type="button" data-encuestaid="@item.Val_Par_Alf_Num" data-numpreg="@item.Num_Orden" class="list-group-item">@Html.DisplayFor(modelItem => item.Gls_Pregunta)</button>*@
+            <h3>@Html.DisplayFor(modelItem => item.Gls_Pregunta)</h3>
         }
+        
+        <br />
 
+        <div class="btn-group" role="group" aria-label="...">
+            <button type="button" class="btn btn-default">Siempre</button>
+            <button type="button" class="btn btn-default">A veces</button>
+            <button type="button" class="btn btn-default">Casi Siempre</button>
+            <button type="button" class="btn btn-default">Nunca</button>
+        </div>
+           
         <br />
 
         <div class="progress">
@@ -32,7 +42,7 @@
         <nav>
             <ul class="pager">
                 <li><a href="#" id="btnAnterior">Anterior</a></li>
-                <li><a href="#" id="btnSiguiente">Siguiente</a></li>
+                <li><a href="@Url.Action("ListDetalleSubFamilia","Encuesta", new { iddet = 1, totnum = 2, preg = 2 })" id="btnSiguiente">Siguiente</a></li>
             </ul>
         </nav>
 
@@ -47,31 +57,3 @@
     </ul>
 </nav>
 
-
-@section Scripts {
-    @Scripts.Render("~/Scripts/jquery-1.10.2.js")
-    @Scripts.Render("~/bundles/jqueryval")
-
-    <script type='text/javascript'>
-
-         $(document).ready(function () {
-             $('#btnSiguiente').click(function () {
-                 debugger;
-                var eid = $(this).data('encuestaid');
-                var num = $(this).data('numpreg');
-                var preg = num + 1;
-                
-                $.ajax({
-                    url: '@Url.Action("ListDetalleSubFamilia", "Encuesta")',
-                    data: { subfamid: eid, totpreg: num, numpreg: preg },
-                    success: function (response) {
-                        window.location = response.url;
-                        }
-                    });
-
-                });
-
-            });
-
-    </script>
-}
