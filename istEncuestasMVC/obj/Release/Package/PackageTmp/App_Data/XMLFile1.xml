@@ -1,0 +1,150 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<NewDataSet>
+  <Table>
+    <CITY>1</CITY>
+    <STATE>NY</STATE>
+    <ZIP>12886</ZIP>
+    <AREA_CODE>518</AREA_CODE>
+    <TIME_ZONE>E</TIME_ZONE>
+  </Table>
+  <Table>
+    <CITY>2</CITY>
+    <STATE>NY</STATE>
+    <ZIP>12995</ZIP>
+    <AREA_CODE>518</AREA_CODE>
+    <TIME_ZONE>E</TIME_ZONE>
+  </Table>
+  <Table>
+    <CITY>3 Lake</CITY>
+    <STATE>NY</STATE>
+    <ZIP>12786</ZIP>
+    <AREA_CODE>914</AREA_CODE>
+    <TIME_ZONE>E</TIME_ZONE>
+  </Table>
+  <Table>
+    <CITY>4 Plains</CITY>
+    <STATE>NY</STATE>
+    <ZIP>10601</ZIP>
+    <AREA_CODE>914</AREA_CODE>
+    <TIME_ZONE>E</TIME_ZONE>
+  </Table>
+  <Table>
+    <CITY>5 Plains</CITY>
+    <STATE>NY</STATE>
+    <ZIP>10602</ZIP>
+    <AREA_CODE>914</AREA_CODE>
+    <TIME_ZONE>E</TIME_ZONE>
+  </Table>
+  <Table>
+    <CITY>White Plains</CITY>
+    <STATE>NY</STATE>
+    <ZIP>10603</ZIP>
+    <AREA_CODE>914</AREA_CODE>
+    <TIME_ZONE>E</TIME_ZONE>
+  </Table>
+  <Table>
+    <CITY>White Plains</CITY>
+    <STATE>NY</STATE>
+    <ZIP>10603</ZIP>
+    <AREA_CODE>914</AREA_CODE>
+    <TIME_ZONE>E</TIME_ZONE>
+  </Table>
+  <Table>
+    <CITY>Wevertown</CITY>
+    <STATE>NY</STATE>
+    <ZIP>12886</ZIP>
+    <AREA_CODE>518</AREA_CODE>
+    <TIME_ZONE>E</TIME_ZONE>
+  </Table>
+  <Table>
+    <CITY>Whippleville</CITY>
+    <STATE>NY</STATE>
+    <ZIP>12995</ZIP>
+    <AREA_CODE>518</AREA_CODE>
+    <TIME_ZONE>E</TIME_ZONE>
+  </Table>
+  <Table>
+    <CITY>White Lake</CITY>
+    <STATE>NY</STATE>
+    <ZIP>12786</ZIP>
+    <AREA_CODE>914</AREA_CODE>
+    <TIME_ZONE>E</TIME_ZONE>
+  </Table>
+  <Table>
+    <CITY>White Plains</CITY>
+    <STATE>NY</STATE>
+    <ZIP>10601</ZIP>
+    <AREA_CODE>914</AREA_CODE>
+    <TIME_ZONE>E</TIME_ZONE>
+  </Table>
+  <Table>
+    <CITY>White Plains</CITY>
+    <STATE>NY</STATE>
+    <ZIP>10602</ZIP>
+    <AREA_CODE>914</AREA_CODE>
+    <TIME_ZONE>E</TIME_ZONE>
+  </Table>
+  <Table>
+    <CITY>White Plains</CITY>
+    <STATE>NY</STATE>
+    <ZIP>10603</ZIP>
+    <AREA_CODE>914</AREA_CODE>
+    <TIME_ZONE>E</TIME_ZONE>
+  </Table>
+  <Table>
+    <CITY>White Plains</CITY>
+    <STATE>NY</STATE>
+    <ZIP>10603</ZIP>
+    <AREA_CODE>914</AREA_CODE>
+    <TIME_ZONE>E</TIME_ZONE>
+  </Table>
+  <Table>
+    <CITY>Wevertown</CITY>
+    <STATE>NY</STATE>
+    <ZIP>12886</ZIP>
+    <AREA_CODE>518</AREA_CODE>
+    <TIME_ZONE>E</TIME_ZONE>
+  </Table>
+  <Table>
+    <CITY>Whippleville</CITY>
+    <STATE>NY</STATE>
+    <ZIP>12995</ZIP>
+    <AREA_CODE>518</AREA_CODE>
+    <TIME_ZONE>E</TIME_ZONE>
+  </Table>
+  <Table>
+    <CITY>White Lake</CITY>
+    <STATE>NY</STATE>
+    <ZIP>12786</ZIP>
+    <AREA_CODE>914</AREA_CODE>
+    <TIME_ZONE>E</TIME_ZONE>
+  </Table>
+  <Table>
+    <CITY>White Plains</CITY>
+    <STATE>NY</STATE>
+    <ZIP>10601</ZIP>
+    <AREA_CODE>914</AREA_CODE>
+    <TIME_ZONE>E</TIME_ZONE>
+  </Table>
+  <Table>
+    <CITY>White Plains</CITY>
+    <STATE>NY</STATE>
+    <ZIP>10602</ZIP>
+    <AREA_CODE>914</AREA_CODE>
+    <TIME_ZONE>E</TIME_ZONE>
+  </Table>
+  <Table>
+    <CITY>White Plains</CITY>
+    <STATE>NY</STATE>
+    <ZIP>10603</ZIP>
+    <AREA_CODE>914</AREA_CODE>
+    <TIME_ZONE>E</TIME_ZONE>
+  </Table>
+  <Table>
+    <CITY>White Plains</CITY>
+    <STATE>NY</STATE>
+    <ZIP>10603</ZIP>
+    <AREA_CODE>914</AREA_CODE>
+    <TIME_ZONE>E</TIME_ZONE>
+  </Table>
+</NewDataSet>

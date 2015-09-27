@@ -1,0 +1,67 @@
+﻿
+@{
+    ViewBag.Title = "Encuestas";
+}
+
+@using istEncuestasMVC.Models;
+
+@model IEnumerable<istEncuestasMVC.Models.Encuesta>
+
+
+<br />
+<div class="panel panel-primary">
+    <div class="panel-heading">
+        <h3 class="panel-title">Seleccione Encuestas</h3>
+    </div>
+    
+    <br />
+
+    @*<div class="list-group">
+        @foreach (var item in Model)
+        {           
+            <button id="target" type="button" data-encuestaid="@item.Cod_Par_Acceso" class="list-group-item">@Html.DisplayFor(modelItem => item.Gls_Par_Alf_Num)</button>
+        }
+    </div>*@
+
+    <div class="list-group">
+        @foreach (var item in Model)
+        {
+            <a class="list-group-item">
+                <h5 class="list-group-item-heading" data-encuestaid="@item.Cod_Par_Acceso">@Html.DisplayFor(modelItem => item.Gls_Par_Alf_Num)</h5>                
+            </a>
+        }
+        
+    </div>
+
+    <br />
+</div>
+
+<nav>
+    <ul class="pager">
+        <li class="previous"><a href="#"><span aria-hidden="true">&larr;</span> Volver</a></li>
+        <li class="next"><a href="#">Adelante <span aria-hidden="true">&rarr;</span></a></li>
+    </ul>
+</nav>
+
+@section Scripts {
+    @Scripts.Render("~/Scripts/jquery-1.10.2.js")
+    @Scripts.Render("~/bundles/jqueryval")
+
+    <script type='text/javascript'>
+
+        $(document).ready(function () {
+            $('.list-group-item-heading').click(function () {
+                var eid = $(this).data('encuestaid');
+                var url = '@Url.Action("SubFamilia", "Encuesta")';
+                $.post(url, { encuestaid: eid }, function (response) {
+                    
+                    window.location = response.url;
+                    });
+
+                });
+              
+            });       
+
+    </script>
+
+}

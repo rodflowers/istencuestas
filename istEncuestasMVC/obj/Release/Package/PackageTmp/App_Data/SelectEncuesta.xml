@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Data>
+  <Datas>
+    <Cod_Par_Acceso>ITL1</Cod_Par_Acceso>
+    <Gls_Par_Alf_Num>Nombre ITL1</Gls_Par_Alf_Num>
+  </Datas>
+  <Datas>
+    <Cod_Par_Acceso>ITL2</Cod_Par_Acceso>
+    <Gls_Par_Alf_Num>Nombre ITL2</Gls_Par_Alf_Num>
+  </Datas>
+  <Datas>
+    <Cod_Par_Acceso>ITL3</Cod_Par_Acceso>
+    <Gls_Par_Alf_Num>Nombre ITL3</Gls_Par_Alf_Num>
+  </Datas>
+</Data>

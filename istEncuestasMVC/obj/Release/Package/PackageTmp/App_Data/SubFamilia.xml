@@ -1,0 +1,34 @@
+﻿<?xml version="1.0" encoding="utf-8" ?> 
+<Data>
+		<Datas>
+			<Cod_Par_Acceso>ITL1</Cod_Par_Acceso>
+			<Val_Par_Alf_Num>1</Val_Par_Alf_Num>
+			<Gls_Par_Alf_Num>ELEMENTOS DE PROTECCIÓN PERSONAL (EPP)</Gls_Par_Alf_Num>
+			<Cant_Preguntas>3</Cant_Preguntas>
+		</Datas>
+		<Datas>
+			<Cod_Par_Acceso>ITL1</Cod_Par_Acceso>
+			<Val_Par_Alf_Num>2</Val_Par_Alf_Num>
+			<Gls_Par_Alf_Num>OBLIGACIÓN DE INFORMAR A LOS TRABAJADORES</Gls_Par_Alf_Num>
+			<Cant_Preguntas>2</Cant_Preguntas>
+		</Datas>
+		<Datas>
+			<Cod_Par_Acceso>ITL1</Cod_Par_Acceso>
+			<Val_Par_Alf_Num>3</Val_Par_Alf_Num>
+			<Gls_Par_Alf_Num>REGLAMENTO INTERNO DE (ORDEN) HIGIENE Y SEGURIDAD</Gls_Par_Alf_Num>
+			<Cant_Preguntas>2</Cant_Preguntas>
+		</Datas>
+		<Datas>
+			<Cod_Par_Acceso>ITL1</Cod_Par_Acceso>
+			<Val_Par_Alf_Num>4</Val_Par_Alf_Num>
+			<Gls_Par_Alf_Num>COMITÉ PARITARIO DE HIGIENE Y SEGURIDAD</Gls_Par_Alf_Num>
+			<Cant_Preguntas>2</Cant_Preguntas>
+		</Datas>
+		<Datas>
+			<Cod_Par_Acceso>ITL1</Cod_Par_Acceso>
+			<Val_Par_Alf_Num>5</Val_Par_Alf_Num>
+			<Gls_Par_Alf_Num>DEPARTAMENTO DE PREVENCIÓN DE RIESGOS</Gls_Par_Alf_Num>
+			<Cant_Preguntas>2</Cant_Preguntas>
+		</Datas>
+</Data>
+

@@ -1,0 +1,60 @@
+﻿
+@{
+    ViewBag.Title = "ListSubFamilia";
+}
+
+@using istEncuestasMVC.Models;
+
+@model IEnumerable<istEncuestasMVC.Models.Encuesta>
+
+<br />
+<div class="panel panel-primary">
+    <div class="panel-heading">
+        <h3 class="panel-title">Seleccione SubFamilia</h3>
+    </div>
+
+    <br />
+
+    <div class="list-group">
+        @foreach (var item in Model)
+        {
+            <button id="target" type="button" data-encuestaid="@item.Val_Par_Alf_Num" data-numpag="@item.Cant_Preguntas" class="list-group-item">@Html.DisplayFor(modelItem => item.Gls_Par_Alf_Num)</button>
+        }
+    </div>
+    <br />
+</div>
+
+<nav>
+    <ul class="pager">
+        <li class="previous"><a href="#"><span aria-hidden="true">&larr;</span> Volver</a></li>
+        <li class="next"><a href="#">Adelante <span aria-hidden="true">&rarr;</span></a></li>
+    </ul>
+</nav>
+
+@section Scripts {
+    @Scripts.Render("~/Scripts/jquery-1.10.2.js")
+    @Scripts.Render("~/bundles/jqueryval")
+
+    <script type='text/javascript'>
+
+         $(document).ready(function () {
+            $('.list-group-item').click(function () {
+                var eid = $(this).data('encuestaid');
+                var num = $(this).data('numpag');
+                var preg = 1;
+                var url = '@Url.Action("DetalleSubFamilia", "Encuesta")';
+                $.post(url, { subfamid: eid, totpreg: num, numpreg: preg }, function (response) {
+                    window.location = response.url;
+                    });
+
+                });
+
+            });
+
+    </script>
+
+}
+
+
+
+
