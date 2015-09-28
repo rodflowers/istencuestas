@@ -48,8 +48,7 @@
     @Scripts.Render("~/bundles/jqueryval")
 
     <script type='text/javascript'>
-
-        $(document).ready(function () {
+        $(document).ready(function () {           
             $('.list-group-item-heading').click(function () {
                 var eid = $(this).data('encuestaid');
                 var url = '@Url.Action("SubFamilia", "Encuesta")';
@@ -61,7 +60,7 @@
                 });
               
             });       
-
+       
     </script>
 
 }

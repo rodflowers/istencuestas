@@ -33,6 +33,9 @@ namespace istEncuestasMVC.Controllers
             XMLReader readXML = new XMLReader();
             var data = readXML.RetrunListOfSubFamilia();
 
+            //guardo datos de subencuesta
+            TempData["SubFamilia"] = data.ToList();
+
             return View(data.ToList());
         }
 
@@ -43,17 +46,24 @@ namespace istEncuestasMVC.Controllers
         }
 
         // GET: Encuesta
-        [AcceptVerbs(HttpVerbs.Get | HttpVerbs.Post)]
         public ActionResult ListDetalleSubFamilia(string iddet, int totnum, int preg)
         {
+          
+            ViewBag.grupoen = iddet;
+            ViewBag.totpreg = totnum;
+            ViewBag.pregunta = preg;
+            
             XMLReader readXML = new XMLReader();
             var data = readXML.RetrunListOfDetSubFamilia();
-            var query = data.Where(p => p.Val_Par_Alf_Num == iddet);
-            query = query.Where(p => p.Num_Orden == preg);
+            var query = data.Where(p => p.Val_Par_Alf_Num == ViewBag.grupoen);
+            query = query.Where(p => p.Num_Orden == ViewBag.pregunta);
             return View(query.ToList());
         }
 
        
+
+
+
 
 
 

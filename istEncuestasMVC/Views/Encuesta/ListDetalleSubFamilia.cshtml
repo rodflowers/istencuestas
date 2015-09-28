@@ -1,11 +1,16 @@
 ﻿
+@using istEncuestasMVC.Models;
+@model IEnumerable<istEncuestasMVC.Models.Encuesta>
+
 @{
     ViewBag.Title = "ListDetalleSubFamilia";
+    var porcentaje = (ViewBag.pregunta * 100) / ViewBag.totpreg ;
+    var min_width = string.Concat(porcentaje , "em");
+    var width = string.Concat(porcentaje, "%");
+
 }
 
-@using istEncuestasMVC.Models;
 
-@model IEnumerable<istEncuestasMVC.Models.Encuesta>
 
 <br />
 <div class="panel panel-primary">
@@ -15,34 +20,48 @@
 
     <br />
 
-    <div class="list-group">
+    <div class="list-group"> 
         @foreach (var item in Model)
         {
-            @*<button id="target" type="button" data-encuestaid="@item.Val_Par_Alf_Num" data-numpreg="@item.Num_Orden" class="list-group-item">@Html.DisplayFor(modelItem => item.Gls_Pregunta)</button>*@
-            <h3>@Html.DisplayFor(modelItem => item.Gls_Pregunta)</h3>
-        }
+            <h3>@Html.DisplayFor(modelItem => item.Num_Orden) .- @Html.DisplayFor(modelItem => item.Gls_Pregunta)</h3>
+    
+            ViewBag.grupoen = item.Val_Par_Alf_Num;
+            ViewBag.idpregunta = item.Cod_Num;
+            ViewBag.numorden = item.Num_Orden;
+            
+         }
+        
+        <h5>Aplica</h5>
+        <div class="btn-group" role="group" aria-label="...">
+            <button type="button" id="btnAplicaSi" class="btn btn-default">Si</button>
+            <button type="button" id="btnAplicaNo" class="btn btn-default">No</button>            
+        </div>
         
         <br />
-
+        <h5>Cumple</h5>
         <div class="btn-group" role="group" aria-label="...">
-            <button type="button" class="btn btn-default">Siempre</button>
-            <button type="button" class="btn btn-default">A veces</button>
-            <button type="button" class="btn btn-default">Casi Siempre</button>
-            <button type="button" class="btn btn-default">Nunca</button>
+            <button type="button" id="btnCumpleSi" class="btn btn-default">Si</button>
+            <button type="button" id="btnCumplePar" class="btn btn-default">Parcial</button>
+            <button type="button" id="btnCumpleNo" class="btn btn-default">No</button>
         </div>
-           
-        <br />
 
-        <div class="progress">
-            <div class="progress-bar" role="progressbar" aria-valuenow="2" aria-valuemin="0" aria-valuemax="100" style="min-width: 2em; width: 2%;">
-                2%
+        <br />
+        <br />
+      
+        
+        <div class="c100 p12 small">
+            <span>12%</span>
+            <div class="slice">
+                <div class="bar"></div>
+                <div class="fill"></div>
             </div>
         </div>
+        
 
         <nav>
             <ul class="pager">
-                <li><a href="#" id="btnAnterior">Anterior</a></li>
-                <li><a href="@Url.Action("ListDetalleSubFamilia","Encuesta", new { iddet = 1, totnum = 2, preg = 2 })" id="btnSiguiente">Siguiente</a></li>
+                <li><a href="@Url.Action("ListDetalleSubFamilia","Encuesta", new { iddet = ViewBag.grupoen, totnum = ViewBag.totpreg, preg = ViewBag.numorden - 1 })" id="btnAnterior">Anterior</a></li>
+                <li><a href="@Url.Action("ListDetalleSubFamilia","Encuesta", new { iddet = ViewBag.grupoen, totnum = ViewBag.totpreg, preg = ViewBag.numorden + 1 })" id="btnSiguiente">Siguiente</a></li>
             </ul>
         </nav>
 
@@ -57,3 +76,44 @@
     </ul>
 </nav>
 
+@section Scripts {
+    @Scripts.Render("~/Scripts/jquery-1.10.2.js")
+    @Scripts.Render("~/bundles/jqueryval")
+
+    <script type='text/javascript'>
+
+        $(document).ready(function () {
+
+            $('#btnCumpleSi').attr('disabled', true);
+            $('#btnCumplePar').attr('disabled', true);
+            $('#btnCumpleNo').attr('disabled', true);
+
+            $('.list-group-item-heading').click(function () {
+                var eid = $(this).data('encuestaid');
+                var url = '@Url.Action("SubFamilia", "Encuesta")';
+                $.post(url, { encuestaid: eid }, function (response) {
+
+                    window.location = response.url;
+                    });
+
+            });
+
+            $('#btnAplicaSi').click(function () {
+               
+                $('#btnCumpleSi').attr('disabled', false);
+                $('#btnCumplePar').attr('disabled', false);
+                $('#btnCumpleNo').attr('disabled', false);
+            });
+
+            $('#btnAplicaNo').click(function () {
+               
+                $('#btnCumpleSi').attr('disabled', true);
+                $('#btnCumplePar').attr('disabled', true);
+                $('#btnCumpleNo').attr('disabled', true);
+            });
+
+        });
+
+    </script>
+
+}
