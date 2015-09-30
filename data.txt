@@ -1,0 +1,110 @@
+
+@{
+    ViewBag.Title = "SubFamilia";
+}
+
+<br />
+<div class="panel panel-primary">
+    <div class="panel-heading">
+        <h3 class="panel-title">Seleccione SubFamilia</h3>
+    </div>
+
+    <br />
+
+    <div class="list-group">
+        @foreach (var item in Model)
+        {
+            @*<button id="target" type="button" class="list-group-item" onclick="javascript: SubmitClick();">@Html.DisplayFor(modelItem => item.Gls_Par_Alf_Num)</button>*@
+            <button id="target" type="button" data-encuestaid="@item.Gls_Par_Alf_Num" class="list-group-item">@Html.DisplayFor(modelItem => item.Gls_Par_Alf_Num)</button>
+        }
+    </div>
+    <br />
+</div>
+
+
+@section Scripts {
+    @Scripts.Render("~/Scripts/jquery-1.10.2.js")
+    @Scripts.Render("~/bundles/jqueryval")
+
+    <script type='text/javascript'>
+
+        $(document).ready(function () {
+            $('.list-group-item').click(function () {
+                $.ajax({
+                    async: false,
+                    type: "post",
+                    url: "@Url.Action("SubFamilia", "Encuesta")"
+                });
+
+                });
+
+            });
+
+    </script>
+
+}
+
+
+
+//LISTA
+@section Scripts {
+    @Scripts.Render("~/Scripts/jquery-1.10.2.js")
+    @Scripts.Render("~/bundles/jqueryval")
+
+    <script type='text/javascript'>
+
+         $(document).ready(function () {
+             $('#btnSiguiente').click(function () {
+                 debugger;
+                var eid = $(this).data('encuestaid');
+                var num = $(this).data('numpreg');
+                var preg = num + 1;
+                var url = '@Url.Action("DetalleSubFamilia", "Encuesta")';
+                $.post(url, { subfamid: eid, totpreg: num, numpreg: preg }, function (response) {
+                    window.location = response.url;
+                    });
+
+                });
+
+            });
+
+    </script>
+	
+	
+					$.ajax({
+                    url: '@Url.Action("ListDetalleSubFamilia", "Encuesta")',
+                    data: { subfamid: eid, totpreg: num, numpreg: preg },
+                    success: function (response) {
+                        window.location = response.url;
+                        }
+                    });
+					
+<li><a href="@Url.Action("ListDetalleSubFamilia","Encuesta", new { iddet = 1, totnum = 2, preg = 2 })" id="btnSiguiente">Siguiente</a></li>					
+
+//encuesta
+ <Datas>
+    <Cod_Par_Acceso>ITL1</Cod_Par_Acceso>
+    <Val_Par_Alf_Num>1</Val_Par_Alf_Num>
+    <Cod_Num>3</Cod_Num>
+    <Num_Orden>3</Num_Orden>
+    <Gls_Pregunta>¿Existen registros firmados de la entrega de EPP?</Gls_Pregunta>
+  </Datas>
+
+//seleccion
+<Datas>
+	<Cod_Par_Acceso>ITL1</Cod_Par_Acceso>
+	<Val_Par_Alf_Num>3</Val_Par_Alf_Num>
+	<Gls_Par_Alf_Num>REGLAMENTO INTERNO DE (ORDEN) HIGIENE Y SEGURIDAD</Gls_Par_Alf_Num>
+	<Cant_Preguntas>2</Cant_Preguntas>
+</Datas>
+
+
+            $("#btnCumpleSi").attr("disabled");
+            $("#btnCumplePar").attr("disabled");
+            $("#btnCumpleNo").attr("disabled");
+			
+			 <div class="progress">
+            <div class="progress-bar col-md-6" role="progressbar" aria-valuenow="2" aria-valuemin="0" aria-valuemax="100" style="min-width: @min_width; width: @width;">
+                @width
+            </div>
+        </div>
