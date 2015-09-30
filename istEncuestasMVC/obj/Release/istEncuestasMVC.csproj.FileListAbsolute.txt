@@ -76,6 +76,7 @@ D:\Working\Projects\istEncuestasMVC\istEncuestasMVC\bin\System.Web.WebPages.Depl
 D:\Working\Projects\istEncuestasMVC\istEncuestasMVC\bin\System.Web.WebPages.Razor.xml
 D:\Working\Projects\istEncuestasMVC\istEncuestasMVC\bin\Antlr3.Runtime.pdb
 D:\Working\Projects\istEncuestasMVC\istEncuestasMVC\bin\Newtonsoft.Json.xml
+D:\Working\Projects\istEncuestasMVC\istEncuestasMVC\obj\Release\istEncuestasMVC.csprojResolveAssemblyReference.cache
 D:\Working\Projects\istEncuestasMVC\istEncuestasMVC\obj\Release\istEncuestasMVC.dll
 D:\Working\Projects\istEncuestasMVC\istEncuestasMVC\obj\Release\istEncuestasMVC.pdb
 D:\Working\Projects\istEncuestasMVC\istEncuestasMVC\obj\Release\istEncuestasMVC.XmlSerializers.dll

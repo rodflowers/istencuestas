@@ -57,7 +57,10 @@ namespace istEncuestasMVC.Controllers
             var data = readXML.RetrunListOfDetSubFamilia();
             var query = data.Where(p => p.Val_Par_Alf_Num == ViewBag.grupoen);
             query = query.Where(p => p.Num_Orden == ViewBag.pregunta);
+            
             return View(query.ToList());
+            
+            
         }
 
        

@@ -7,6 +7,7 @@
     var porcentaje = (ViewBag.pregunta * 100) / ViewBag.totpreg ;
     var min_width = string.Concat(porcentaje , "em");
     var width = string.Concat(porcentaje, "%");
+    var cla = string.Concat("c100 p", porcentaje, " small");
 
 }
 
@@ -49,17 +50,24 @@
         <br />
       
         
-        <div class="progress">
-            <div class="progress-bar col-md-6" role="progressbar" aria-valuenow="2" aria-valuemin="0" aria-valuemax="100" style="min-width: @min_width; width: @width;">
-                @width
+        <div class="clearfix">
+           
+            <div class="@cla">
+                <span>@width</span>
+                <div class="slice">
+                    <div class="bar"></div>
+                    <div class="fill"></div>
+                </div>
             </div>
+            
         </div>
         
 
         <nav>
             <ul class="pager">
                 <li><a href="@Url.Action("ListDetalleSubFamilia","Encuesta", new { iddet = ViewBag.grupoen, totnum = ViewBag.totpreg, preg = ViewBag.numorden - 1 })" id="btnAnterior">Anterior</a></li>
-                <li><a href="@Url.Action("ListDetalleSubFamilia","Encuesta", new { iddet = ViewBag.grupoen, totnum = ViewBag.totpreg, preg = ViewBag.numorden + 1 })" id="btnSiguiente">Siguiente</a></li>
+                @*<li><a href="@Url.Action("ListDetalleSubFamilia","Encuesta", new { iddet = ViewBag.grupoen, totnum = ViewBag.totpreg, preg = ViewBag.numorden + 1 })" id="btnSiguiente">Siguiente</a></li>*@
+                <li><a id="btnSiguiente">Siguiente</a></li>
             </ul>
         </nav>
 
@@ -74,9 +82,30 @@
     </ul>
 </nav>
 
+
+<!-- Modal -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+            </div>
+            <div class="modal-body">
+                <p>Ha finalizado encuesta.</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+                <button type="button" id="btnGuardaEnc" class="btn btn-primary">Guardar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
 @section Scripts {
     @Scripts.Render("~/Scripts/jquery-1.10.2.js")
     @Scripts.Render("~/bundles/jqueryval")
+    @Scripts.Render("~/Scripts/bootstrap.min.js")
 
     <script type='text/javascript'>
 
@@ -85,6 +114,20 @@
             $('#btnCumpleSi').attr('disabled', true);
             $('#btnCumplePar').attr('disabled', true);
             $('#btnCumpleNo').attr('disabled', true);
+            $('#btnSiguiente').attr('disabled', true);
+
+            //$('#myModal').modal('show');
+
+            var num_preg = parseInt(@ViewBag.pregunta);
+            var tot_preg = parseInt(@ViewBag.totpreg);
+            var grup_enc = parseInt(@ViewBag.grupoen);
+
+            if (num_preg == 1)
+            {
+                $('#btnAnterior').attr('disabled', true);
+            }
+
+
 
             $('.list-group-item-heading').click(function () {
                 var eid = $(this).data('encuestaid');
@@ -96,21 +139,75 @@
 
             });
 
+
             $('#btnAplicaSi').click(function () {
-               
+
                 $('#btnCumpleSi').attr('disabled', false);
                 $('#btnCumplePar').attr('disabled', false);
                 $('#btnCumpleNo').attr('disabled', false);
             });
 
             $('#btnAplicaNo').click(function () {
-               
+
                 $('#btnCumpleSi').attr('disabled', true);
                 $('#btnCumplePar').attr('disabled', true);
                 $('#btnCumpleNo').attr('disabled', true);
             });
 
+            $('#btnCumpleSi').click(function () {
+                $('#btnSiguiente').attr('disabled', false);
+            });
+
+            $('#btnCumplePar').click(function () {
+                $('#btnSiguiente').attr('disabled', false);
+            });
+
+            $('#btnCumpleNo').click(function () {
+                $('#btnSiguiente').attr('disabled', false);
+            });
+
+            $('#btnSiguiente').click(function () {
+                //var url = '@Url.Action("ListDetalleSubFamilia", "Encuesta")';
+
+                num_preg++;
+
+                if (tot_preg >= num_preg) {
+
+                    $.ajax({
+                        url: '@Url.Action("ListDetalleSubFamilia", "Encuesta")',
+                        type: 'GET',
+                        data: { iddet: grup_enc, totnum: tot_preg, preg: num_preg }
+                        })
+                        .done(function (response) {
+                            //debugger;
+                            $('#con-body-content').html(response);
+                        });
+
+
+                }
+                else {
+                    $('#myModal').modal('show');
+                }
+
+            });
+
+            $('#btnGuardaEnc').click(function () {
+                onsave();
+            });
+
+
         });
+
+        function onsave() {
+
+            $.ajax({
+                url: '@Url.Action("Index", "Encuesta")',
+                type: 'GET'
+
+            });
+
+        }
+
 
     </script>
 
