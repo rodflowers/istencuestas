@@ -164,11 +164,16 @@
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\circle.css" />
+    <Content Include="Content\Site.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
-    <Content Include="Content\Site.css" />
+    <Content Include="Content\Site_old.css" />
+    <Content Include="img\arrow-left.png" />
+    <Content Include="img\arrow-right.png" />
     <Content Include="img\foto_.png" />
+    <Content Include="img\logo-small-white.png" />
+    <Content Include="img\logo-small.png" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Properties\DataSources\System.Xml.XmlNode.datasource" />

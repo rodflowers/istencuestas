@@ -34,16 +34,16 @@
         
         <h5>Aplica</h5>
         <div class="btn-group" role="group" aria-label="...">
-            <button type="button" id="btnAplicaSi" class="btn btn-default">Si</button>
-            <button type="button" id="btnAplicaNo" class="btn btn-default">No</button>            
+            <button type="button" id="btnAplicaSi" class="btn btn-primary">Si</button>
+            <button type="button" id="btnAplicaNo" class="btn btn-primary">No</button>            
         </div>
         
         <br />
         <h5>Cumple</h5>
-        <div class="btn-group" role="group" aria-label="...">
-            <button type="button" id="btnCumpleSi" class="btn btn-default">Si</button>
-            <button type="button" id="btnCumplePar" class="btn btn-default">Parcial</button>
-            <button type="button" id="btnCumpleNo" class="btn btn-default">No</button>
+        <div class="btn-group-vertical" role="group" aria-label="...">
+            <button type="button" id="btnCumpleSi" class="btn btn-primary">Si</button>
+            <button type="button" id="btnCumplePar" class="btn btn-primary">Parcial</button>
+            <button type="button" id="btnCumpleNo" class="btn btn-primary">No</button>
         </div>
 
         <br />
@@ -63,12 +63,22 @@
         </div>
         
 
-        <nav>
+        @*<nav>
             <ul class="pager">
                 <li><a href="@Url.Action("ListDetalleSubFamilia","Encuesta", new { iddet = ViewBag.grupoen, totnum = ViewBag.totpreg, preg = ViewBag.numorden - 1 })" id="btnAnterior">Anterior</a></li>
-                @*<li><a href="@Url.Action("ListDetalleSubFamilia","Encuesta", new { iddet = ViewBag.grupoen, totnum = ViewBag.totpreg, preg = ViewBag.numorden + 1 })" id="btnSiguiente">Siguiente</a></li>*@
-                <li><a id="btnSiguiente">Siguiente</a></li>
+                <li><a href="@Url.Action("ListDetalleSubFamilia","Encuesta", new { iddet = ViewBag.grupoen, totnum = ViewBag.totpreg, preg = ViewBag.numorden + 1 })" id="btnSiguiente">Siguiente</a></li>             
             </ul>
+        </nav>*@
+
+        <nav>
+            <div class="row">
+                <div class="col-xs-6">
+                    <a href="@Url.Action("ListDetalleSubFamilia","Encuesta", new { iddet = ViewBag.grupoen, totnum = ViewBag.totpreg, preg = ViewBag.numorden - 1 })" id="btnAnterior"><span class="arrow-left"></span></a>
+                </div>
+                <div class="col-xs-6">
+                    <a href="@Url.Action("ListDetalleSubFamilia","Encuesta", new { iddet = ViewBag.grupoen, totnum = ViewBag.totpreg, preg = ViewBag.numorden + 1 })" id="btnSiguiente"><span class="arrow-right"></span></a>
+                </div>
+            </div>
         </nav>
 
     </div>
@@ -156,6 +166,16 @@
 
             $('#btnCumpleSi').click(function () {
                 $('#btnSiguiente').attr('disabled', false);
+                //debugger;
+
+                $.ajax({
+                    async: true,
+                    type: "post",
+                    url: "@Url.Action("ActualizaRespuesta", "Encuesta")",
+                    data: { codnum: 1, resp: 2 }
+                });
+
+
             });
 
             $('#btnCumplePar').click(function () {
@@ -171,22 +191,10 @@
 
                 num_preg++;
 
-                if (tot_preg >= num_preg) {
+                if (!(tot_preg >= num_preg)) {
 
-                    $.ajax({
-                        url: '@Url.Action("ListDetalleSubFamilia", "Encuesta")',
-                        type: 'GET',
-                        data: { iddet: grup_enc, totnum: tot_preg, preg: num_preg }
-                        })
-                        .done(function (response) {
-                            //debugger;
-                            $('#con-body-content').html(response);
-                        });
-
-
-                }
-                else {
                     $('#myModal').modal('show');
+                    return false;
                 }
 
             });
@@ -200,11 +208,12 @@
 
         function onsave() {
 
-            $.ajax({
-                url: '@Url.Action("Index", "Encuesta")',
-                type: 'GET'
+                var eid = $(this).data('encuestaid');
+                var url = '@Url.Action("SubFamilia", "Encuesta")';
+                $.post(url, { encuestaid: 1 }, function (response) {
 
-            });
+                    window.location = response.url;
+                    });
 
         }
 

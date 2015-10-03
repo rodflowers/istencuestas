@@ -108,3 +108,17 @@
                 @width
             </div>
         </div>
+		
+		
+		$.post(url, { iddet: grup_enc, totnum: tot_preg, preg: num_preg }, function (response) {                        
+                        //$('body').append(response);
+                        //$('body').prepend(response);
+                        //debugger;
+                        //$('.container').add($('.container').html($('.container').html() + response));
+                        //$("#body").html(response);
+                        //var con = $('#con-body-content').html();
+                        //var con2 = $('#con-body-content').html($('.container').html());
+                        //$('#con-body-content').empty();
+                        //$('#con-body-content').html(con2);
+                        window.location = response.url;
+                    });
