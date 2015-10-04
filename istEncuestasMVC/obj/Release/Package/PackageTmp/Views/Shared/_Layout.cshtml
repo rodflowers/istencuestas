@@ -28,11 +28,12 @@
     </div>
     <div class="container body-content" id="con-body-content">
         @RenderBody()
-        <hr />
-        <footer>
-            <p>&copy; @DateTime.Now.Year - IST</p>
-        </footer>
+        <hr />        
     </div>
+
+    <footer>
+        <p>&copy; @DateTime.Now.Year - IST</p>
+    </footer>
 
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")

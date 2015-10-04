@@ -26,8 +26,8 @@
 
 <nav>
     <ul class="pager">
-        <li class="previous"><a href="#"><span aria-hidden="true">&larr;</span> Volver</a></li>
-        <li class="next"><a href="#">Adelante <span aria-hidden="true">&rarr;</span></a></li>
+        <li class="previous" id="btnBack"><a href="#"><span aria-hidden="true">&larr;</span> Volver</a></li>
+        @*<li class="next"><a href="#">Adelante <span aria-hidden="true">&rarr;</span></a></li>*@
     </ul>
 </nav>
 
@@ -47,7 +47,12 @@
                     window.location = response.url;
                     });
 
-                });
+            });
+
+             $('#btnBack').click(function () {
+                 parent.history.back();
+                 return false;
+             });
 
             });
 

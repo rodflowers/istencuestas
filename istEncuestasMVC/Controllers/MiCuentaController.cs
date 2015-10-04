@@ -20,24 +20,28 @@ namespace istEncuestasMVC.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Login(Login l, string ReturnUrl = "" )
         {
+            if (ModelState.IsValid)
+            { 
 
-            Service700vipProxy.Service700vip obj = new Service700vipProxy.Service700vip();
-            var value = obj.WsIstSemEmpIngreso(l.Username.PadLeft(15, '0'), l.Password);
+                Service700vipProxy.Service700vip obj = new Service700vipProxy.Service700vip();
+                var value = obj.WsIstSemEmpIngreso(l.Username.PadLeft(15, '0'), l.Password);
 
-            if (value != null)
-            {
-                FormsAuthentication.SetAuthCookie(l.Username, l.RememberMe);
-                if (Url.IsLocalUrl(ReturnUrl))
+                if (value != null)
                 {
-                    return Redirect(ReturnUrl);
+                    FormsAuthentication.SetAuthCookie(l.Username, l.RememberMe);
+                    if (Url.IsLocalUrl(ReturnUrl))
+                    {
+                        return Redirect(ReturnUrl);
+                    }
+                    else
+                    {
+                        return RedirectToAction("ShowEmpresa", "Home");
+                    }
+
                 }
-                else
-                {
-                    return RedirectToAction("ShowEmpresa", "Home");
-                }
+                ModelState.Remove("Password");
 
             }
-            ModelState.Remove("Password");
             return View();
         }
 

@@ -33,32 +33,32 @@ namespace istEncuestasMVC.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult ShowEmpresa(Empresa e)
         {
-
-            servMEDAtencionProxy.servMEDAtencion  obj = new servMEDAtencionProxy.servMEDAtencion();
-            var sRespuesta = obj.wsValidaEmpSiso(e.RutEmpresa);
-
-            System.Xml.XmlDocument xDocumento = new System.Xml.XmlDocument();
-
-           
-
-            if (sRespuesta != null )
+            if (ModelState.IsValid)
             {
+                servMEDAtencionProxy.servMEDAtencion obj = new servMEDAtencionProxy.servMEDAtencion();
+                var sRespuesta = obj.wsValidaEmpSiso(e.RutEmpresa);
 
-                xDocumento.LoadXml(sRespuesta);
+                System.Xml.XmlDocument xDocumento = new System.Xml.XmlDocument();
 
-                //var xmlData = xDocumento.SelectSingleNode("//Data");
-                
-                XMLReader readXML = new XMLReader();
-                var data = readXML.ReturnListOfEmpresa(xDocumento);
 
-                if (data[0].Codigo == 1)
+
+                if (sRespuesta != null)
                 {
-                    return RedirectToAction("Index", "Encuesta");
+
+                    xDocumento.LoadXml(sRespuesta);
+                    
+
+                    XMLReader readXML = new XMLReader();
+                    var data = readXML.ReturnListOfEmpresa(xDocumento);
+
+                    if (data[0].Codigo == 1)
+                    {
+                        return RedirectToAction("Index", "Encuesta");
+                    }
+
+                    
                 }
-
-                //return View(data.ToList());
             }
-
             return View();
         }
 

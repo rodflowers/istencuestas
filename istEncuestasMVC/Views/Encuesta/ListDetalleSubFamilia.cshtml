@@ -7,7 +7,7 @@
     var porcentaje = (ViewBag.pregunta * 100) / ViewBag.totpreg ;
     var min_width = string.Concat(porcentaje , "em");
     var width = string.Concat(porcentaje, "%");
-    var cla = string.Concat("c100 p", porcentaje, " small");
+    var cla = string.Concat("c100 p", porcentaje, " small center");
 
 }
 
@@ -40,7 +40,7 @@
         
         <br />
         <h5>Cumple</h5>
-        <div class="btn-group-vertical" role="group" aria-label="...">
+        <div class="btn-group" role="group" aria-label="...">
             <button type="button" id="btnCumpleSi" class="btn btn-primary">Si</button>
             <button type="button" id="btnCumplePar" class="btn btn-primary">Parcial</button>
             <button type="button" id="btnCumpleNo" class="btn btn-primary">No</button>
@@ -62,14 +62,6 @@
             
         </div>
         
-
-        @*<nav>
-            <ul class="pager">
-                <li><a href="@Url.Action("ListDetalleSubFamilia","Encuesta", new { iddet = ViewBag.grupoen, totnum = ViewBag.totpreg, preg = ViewBag.numorden - 1 })" id="btnAnterior">Anterior</a></li>
-                <li><a href="@Url.Action("ListDetalleSubFamilia","Encuesta", new { iddet = ViewBag.grupoen, totnum = ViewBag.totpreg, preg = ViewBag.numorden + 1 })" id="btnSiguiente">Siguiente</a></li>             
-            </ul>
-        </nav>*@
-
         <nav>
             <div class="row">
                 <div class="col-xs-6">
@@ -85,12 +77,12 @@
     <br />
 </div>
 
-<nav>
+@*<nav>
     <ul class="pager">
         <li class="previous"><a href="#"><span aria-hidden="true">&larr;</span> Volver</a></li>
         <li class="next"><a href="#">Adelante <span aria-hidden="true">&rarr;</span></a></li>
     </ul>
-</nav>
+</nav>*@
 
 
 <!-- Modal -->
@@ -99,14 +91,14 @@
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+                <h4 class="modal-title" id="myModalLabel">Fin Encuesta</h4>
             </div>
             <div class="modal-body">
                 <p>Ha finalizado encuesta.</p>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
-                <button type="button" id="btnGuardaEnc" class="btn btn-primary">Guardar</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal">Finalizar</button>
+                <button type="button" id="btnGuardaEnc" class="btn btn-primary">Continuar</button>
             </div>
         </div>
     </div>
