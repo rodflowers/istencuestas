@@ -8,6 +8,7 @@
     var min_width = string.Concat(porcentaje , "em");
     var width = string.Concat(porcentaje, "%");
     var cla = string.Concat("c100 p", porcentaje, " small center");
+   
 
 }
 
@@ -98,7 +99,7 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal">Finalizar</button>
-                <button type="button" id="btnGuardaEnc" class="btn btn-primary">Continuar</button>
+                <button type="button" id="btnGuardaEnc" data-encuestaid="@ViewBag.grupoen" class="btn btn-primary">Continuar</button>
             </div>
         </div>
     </div>
@@ -192,17 +193,17 @@
             });
 
             $('#btnGuardaEnc').click(function () {
-                onsave();
+               
+                var eid = $(this).data('encuestaid');
+                onsave(eid);
             });
 
 
         });
 
-        function onsave() {
-
-                var eid = $(this).data('encuestaid');
+        function onsave(encid) {                            
                 var url = '@Url.Action("SubFamilia", "Encuesta")';
-                $.post(url, { encuestaid: 1 }, function (response) {
+            $.post(url, { encuestaid: encid, finalizada: "S" }, function (response) {
 
                     window.location = response.url;
                     });

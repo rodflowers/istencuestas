@@ -21,18 +21,30 @@ namespace istEncuestasMVC.Controllers
         }
 
         [HttpPost]
-        public ActionResult SubFamilia(string encuestaid)
+        public ActionResult SubFamilia(string encuestaid, string finalizada)
         {
 
-            return Json(new { result = "Redirect", url = Url.Action("ListSubFamilia", "Encuesta", new  { iddet = encuestaid }) });
+            return Json(new { result = "Redirect", url = Url.Action("ListSubFamilia", "Encuesta", new  { iddet = encuestaid, finalizada = finalizada }) });
         }
 
         // GET: Encuesta
-        public ActionResult ListSubFamilia(string iddet)
+        public ActionResult ListSubFamilia(string iddet, string finalizada)
         {
             XMLReader readXML = new XMLReader();
             var data = readXML.RetrunListOfSubFamilia();
-            
+
+
+
+            //inicializa datos de SubFamilia 
+            var myEnc = data.ToList();
+
+            var found = myEnc.FirstOrDefault(c => c.Val_Par_Alf_Num == iddet);
+            if (found != null)
+            {
+                found.Finalizada = "S";
+            }
+
+
             return View(data.ToList());
         }
 
@@ -70,7 +82,7 @@ namespace istEncuestasMVC.Controllers
             //manipulo datos encuesta
             var obj2 = TempData["Encuesta"] as List<Encuesta>;
             TempData.Keep("Encuesta");
-
+        
             var found = obj2.FirstOrDefault(c => c.Cod_Num == myList[0].Cod_Num);
             if (found != null)
             {
@@ -87,6 +99,7 @@ namespace istEncuestasMVC.Controllers
                 enc.Gls_Pregunta = myList[0].Gls_Pregunta;
                 enc.Cant_Preguntas = myList[0].Cant_Preguntas;
                 enc.Respuesta = "1";
+               
 
                 obj2.Add(enc);
                 TempData["Encuesta"] = obj2;

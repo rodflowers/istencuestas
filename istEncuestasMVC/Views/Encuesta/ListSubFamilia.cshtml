@@ -18,7 +18,7 @@
     <div class="list-group">
         @foreach (var item in Model)
         {
-            <button id="target" type="button" data-encuestaid="@item.Val_Par_Alf_Num" data-numpag="@item.Cant_Preguntas" class="list-group-item">@Html.DisplayFor(modelItem => item.Gls_Par_Alf_Num)</button>
+            <button id="target" type="button" data-encuestaid="@item.Val_Par_Alf_Num" data-numpag="@item.Cant_Preguntas" class="@(@item.Finalizada=="S" ? "list-group-item completed":"list-group-item")">@Html.DisplayFor(modelItem => item.Gls_Par_Alf_Num)</button>
         }
     </div>
     <br />

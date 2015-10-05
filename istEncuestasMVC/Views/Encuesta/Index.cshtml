@@ -45,7 +45,7 @@
             $('.list-group-item-heading').click(function () {
                 var eid = $(this).data('encuestaid');
                 var url = '@Url.Action("SubFamilia", "Encuesta")';
-                $.post(url, { encuestaid: eid }, function (response) {
+                $.post(url, { encuestaid: eid, finalizada: "N" }, function (response) {
                     
                     window.location = response.url;
                     });
