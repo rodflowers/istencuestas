@@ -11,10 +11,10 @@ namespace istEncuestasMVC.Models
     [XmlRoot("Empresa"), XmlType("Empresa")]
     public class Empresa
     {
-        [Display(Name = "Nombre Empresa", Prompt = "Nombre Empresa")]
+        [Display(Name = "Razon Social", Prompt = "Razon Social")]
         public string NombreEmpresa { get; set; }
         [Required(ErrorMessage = "Rut Empresa requerido.", AllowEmptyStrings = false)]
-        [Display(Name = "Razon Social", Prompt = "Razon Social")]
+        [Display(Name = "Rut Empresa", Prompt = "Rut Empresa")]
         public string RutEmpresa { get; set; }
 
         [Display(Name = "Nombre", Prompt = "Nombre")]
@@ -27,6 +27,7 @@ namespace istEncuestasMVC.Models
         public string RepTelefono { get; set; }
         [Required(ErrorMessage = "Email requerido.", AllowEmptyStrings = false)]
         [Display(Name = "E-Mail", Prompt = "E-Mail")]
+        [EmailAddress(ErrorMessage = "Dirección e-mail inválida")]
         public string RepEmail { get; set; }
 
         public int Codigo { get; set; }
