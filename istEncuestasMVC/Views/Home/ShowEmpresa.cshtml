@@ -17,7 +17,7 @@
         <div class="form-group">
             @*@Html.LabelFor(model => model.RutEmpresa, htmlAttributes: new { @class = "control-label col-md-2" })*@
             <div class="col-md-10">
-                @Html.EditorFor(model => model.RutEmpresa, new { htmlAttributes = new { @class = "form-control", placeholder = @Html.DisplayNameFor(model => model.RutEmpresa) } })
+                @Html.EditorFor(model => model.RutEmpresa, new { htmlAttributes = new { @class = "form-control", placeholder = @Html.DisplayNameFor(model => model.RutEmpresa), id = "txtRutEmpresa" } })
                 @Html.ValidationMessageFor(model => model.RutEmpresa, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -82,3 +82,28 @@
 }
 
 
+@section Scripts {
+    @Scripts.Render("~/Scripts/jquery-1.10.2.js")
+    @Scripts.Render("~/bundles/jqueryval")
+    @Scripts.Render("~/Scripts/bootstrap.min.js")
+
+   <script type='text/javascript'>
+        $(document).ready(function () {
+            $('#txtRutEmpresa').focusout(function () {
+
+                var url = '@Url.Action("RazonSocial", "Home")';
+                $.post(url, { rutempresa: "70015580-3" }, function (data) {
+                    debugger;
+                    alert(data);
+                });
+
+            });
+
+           
+
+
+    });
+
+</script>
+
+}

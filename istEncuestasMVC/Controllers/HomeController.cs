@@ -62,6 +62,24 @@ namespace istEncuestasMVC.Controllers
             return View();
         }
 
+        [HttpPost]
+        public ActionResult RazonSocial(string rutempresa)
+        {
+            servMEDAtencionProxy.servMEDAtencion obj = new servMEDAtencionProxy.servMEDAtencion();
+            var sRespuesta = obj.wsValidaEmpSiso(rutempresa);
+
+            return Json(new { result = "Redirect", url = Url.Action("RazonSocialView", "Home", new { rutempresa = sRespuesta }) });
+        }
+
+        public ActionResult RazonSocialView(string rutempresa)
+        {
+
+            servMEDAtencionProxy.servMEDAtencion obj = new servMEDAtencionProxy.servMEDAtencion();
+            var sRespuesta = obj.wsValidaEmpSiso(rutempresa);
+
+            return View(sRespuesta);
+        }
+
         public ActionResult About()
         {
             ViewBag.Message = "I like games.";

@@ -28,16 +28,18 @@ namespace istEncuestasMVC.Controllers
 
                 if (value != null)
                 {
-                    FormsAuthentication.SetAuthCookie(l.Username, l.RememberMe);
-                    if (Url.IsLocalUrl(ReturnUrl))
+                    if (value != "N")
                     {
-                        return Redirect(ReturnUrl);
+                        FormsAuthentication.SetAuthCookie(l.Username, l.RememberMe);
+                        if (Url.IsLocalUrl(ReturnUrl))
+                        {
+                            return Redirect(ReturnUrl);
+                        }
+                        else
+                        {
+                            return RedirectToAction("ShowEmpresa", "Home");
+                        }
                     }
-                    else
-                    {
-                        return RedirectToAction("ShowEmpresa", "Home");
-                    }
-
                 }
                 ModelState.Remove("Password");
 

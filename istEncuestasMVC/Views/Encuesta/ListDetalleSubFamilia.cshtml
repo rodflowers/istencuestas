@@ -98,8 +98,8 @@
                 <p>Ha finalizado encuesta.</p>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Finalizar</button>
-                <button type="button" id="btnGuardaEnc" data-encuestaid="@ViewBag.grupoen" class="btn btn-primary">Continuar</button>
+                <button type="button" id="btnFinEnc" class="btn btn-default" data-dismiss="modal">Finalizar</button>
+                <button type="button" id="btnContEnc" data-encuestaid="@ViewBag.grupoen" class="btn btn-primary">Continuar</button>
             </div>
         </div>
     </div>
@@ -192,22 +192,34 @@
 
             });
 
-            $('#btnGuardaEnc').click(function () {
-               
+            $('#btnContEnc').click(function () {
+
                 var eid = $(this).data('encuestaid');
                 onsave(eid);
+            });
+
+            $('#btnFinEnc').click(function () {
+
+                var eid = $(this).data('encuestaid');
+                onend(eid);
             });
 
 
         });
 
-        function onsave(encid) {                            
+        function onsave(encid) {
                 var url = '@Url.Action("SubFamilia", "Encuesta")';
-            $.post(url, { encuestaid: encid, finalizada: "S" }, function (response) {
-
+                $.post(url, { encuestaid: encid, finalizada: "S" }, function (response) {
                     window.location = response.url;
                     });
 
+        }
+
+        function onend() {
+            var url = '@Url.Action("FinIndex", "Encuesta")';
+                $.post(url, function (response) {
+                    window.location = response.url;
+                    });
         }
 
 

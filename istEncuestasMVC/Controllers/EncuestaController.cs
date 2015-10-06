@@ -9,6 +9,14 @@ namespace istEncuestasMVC.Controllers
 {
     public class EncuestaController : Controller
     {
+
+        [HttpPost]
+        public ActionResult FinIndex(string encuestaid, string finalizada)
+        {
+
+            return Json(new { result = "Redirect", url = Url.Action("Index", "Encuesta") });
+        }
+
         // GET: Encuesta
         public ActionResult Index()
         {
@@ -30,10 +38,20 @@ namespace istEncuestasMVC.Controllers
         // GET: Encuesta
         public ActionResult ListSubFamilia(string iddet, string finalizada)
         {
-            XMLReader readXML = new XMLReader();
-            var data = readXML.RetrunListOfSubFamilia();
 
+            var data = new List<Encuesta>();
 
+            if (TempData["ListSubFamilia"] == null)
+            { 
+                XMLReader readXML = new XMLReader();
+                data = readXML.RetrunListOfSubFamilia();
+                TempData["ListSubFamilia"] = data;
+            }
+            else
+            {
+                data = TempData["ListSubFamilia"] as List<Encuesta>;
+                TempData.Keep("ListSubFamilia");
+            }
 
             //inicializa datos de SubFamilia 
             var myEnc = data.ToList();
