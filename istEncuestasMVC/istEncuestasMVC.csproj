@@ -169,6 +169,7 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site_old.css" />
+    <Content Include="img\ajax-loader.gif" />
     <Content Include="img\arrow-left.png" />
     <Content Include="img\arrow-right.png" />
     <Content Include="img\foto_.png" />

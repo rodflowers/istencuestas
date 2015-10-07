@@ -20,12 +20,13 @@
                 @Html.EditorFor(model => model.RutEmpresa, new { htmlAttributes = new { @class = "form-control", placeholder = @Html.DisplayNameFor(model => model.RutEmpresa), id = "txtRutEmpresa" } })
                 @Html.ValidationMessageFor(model => model.RutEmpresa, "", new { @class = "text-danger" })
             </div>
+            <div id="divLoading"></div>
         </div>
 
         <div class="form-group">
             @*@Html.LabelFor(model => model.NombreEmpresa, htmlAttributes: new { @class = "control-label col-md-2" })*@
             <div class="col-md-10">
-                @Html.EditorFor(model => model.NombreEmpresa, new { htmlAttributes = new { @class = "form-control", placeholder = @Html.DisplayNameFor(model => model.NombreEmpresa) } })
+                @Html.EditorFor(model => model.NombreEmpresa, new { htmlAttributes = new { @class = "form-control", placeholder = @Html.DisplayNameFor(model => model.NombreEmpresa), id = "txtRazonSocial", @readonly = "readonly" } })
                 @Html.ValidationMessageFor(model => model.NombreEmpresa, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -75,11 +76,30 @@
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Aceptar" class="btn btn-default" />
+                <input type="submit" value="Aceptar" class="btn btn-default" id="btnAceptarEmp" />
             </div>
         </div>
     </div>
 }
+
+<!-- Modal -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myModalLabel">Atención!</h4>
+            </div>
+            <div class="modal-body">
+                <p>Rut empresa no válido.</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Aceptar</button>               
+            </div>
+        </div>
+    </div>
+</div>
+
 
 
 @section Scripts {
@@ -87,23 +107,40 @@
     @Scripts.Render("~/bundles/jqueryval")
     @Scripts.Render("~/Scripts/bootstrap.min.js")
 
-   <script type='text/javascript'>
+    <script type='text/javascript'>
         $(document).ready(function () {
             $('#txtRutEmpresa').focusout(function () {
 
+                $("#divLoading").html('<image src="../img/ajax-loader.gif" alt="Loading, please wait" />');
                 var url = '@Url.Action("RazonSocial", "Home")';
-                $.post(url, { rutempresa: "70015580-3" }, function (data) {
-                    debugger;
-                    alert(data);
+                var rut = $('#txtRutEmpresa').val();
+                
+                $.post(url, { rutempresa: rut }, function (data) {
+                    
+                    var razon = data['razonsocial'];
+                    $('#txtRazonSocial').val(razon);
+                    $("#divLoading").html('');
                 });
 
             });
 
-           
 
+            $('#btnAceptarEmp').click(function () {
+
+                var razsoc = $('#txtRazonSocial').val();
+                if (razsoc == 'Sin Antecedentes') {
+                    $('#myModal').modal('show');
+                    return false;
+                }
+                if (razsoc == null) {
+                    $('#myModal').modal('show');
+                    return false;
+                }
+               
+            });
 
     });
 
-</script>
+    </script>
 
 }

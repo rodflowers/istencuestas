@@ -25,10 +25,10 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>09/07/2015 22:25:24</publishTime>
     </File>
     <File Include="bin/istEncuestasMVC.dll">
-      <publishTime>10/05/2015 08:55:34</publishTime>
+      <publishTime>10/07/2015 00:37:36</publishTime>
     </File>
     <File Include="bin/istEncuestasMVC.XmlSerializers.dll">
-      <publishTime>10/05/2015 08:55:34</publishTime>
+      <publishTime>10/07/2015 00:37:39</publishTime>
     </File>
     <File Include="bin/Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll">
       <publishTime>09/07/2015 22:25:26</publishTime>
@@ -109,7 +109,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>09/27/2015 22:30:32</publishTime>
     </File>
     <File Include="Content/Site.css">
-      <publishTime>10/04/2015 07:38:29</publishTime>
+      <publishTime>10/06/2015 23:49:14</publishTime>
     </File>
     <File Include="Content/Site_old.css">
       <publishTime>09/26/2015 01:59:23</publishTime>
@@ -132,6 +132,9 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     <File Include="Global.asax">
       <publishTime>09/07/2015 22:25:21</publishTime>
     </File>
+    <File Include="img/ajax-loader.gif">
+      <publishTime>10/06/2015 23:04:57</publishTime>
+    </File>
     <File Include="img/arrow-left.png">
       <publishTime>10/01/2015 21:52:32</publishTime>
     </File>
@@ -139,7 +142,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>10/01/2015 21:52:32</publishTime>
     </File>
     <File Include="img/foto_.png">
-      <publishTime>09/22/2015 20:22:06</publishTime>
+      <publishTime>10/05/2015 23:00:42</publishTime>
     </File>
     <File Include="img/logo-small-white.png">
       <publishTime>10/01/2015 21:53:04</publishTime>
@@ -196,13 +199,13 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>09/23/2015 00:28:11</publishTime>
     </File>
     <File Include="Views/Encuesta/Index.cshtml">
-      <publishTime>10/05/2015 08:24:22</publishTime>
+      <publishTime>10/07/2015 00:35:06</publishTime>
     </File>
     <File Include="Views/Encuesta/ListDetalleSubFamilia.cshtml">
-      <publishTime>10/05/2015 08:50:17</publishTime>
+      <publishTime>10/07/2015 00:03:14</publishTime>
     </File>
     <File Include="Views/Encuesta/ListSubFamilia.cshtml">
-      <publishTime>10/05/2015 08:34:43</publishTime>
+      <publishTime>10/07/2015 00:16:12</publishTime>
     </File>
     <File Include="Views/Home/About.cshtml">
       <publishTime>09/07/2015 22:25:21</publishTime>
@@ -217,7 +220,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>10/05/2015 08:51:43</publishTime>
     </File>
     <File Include="Views/Home/ShowEmpresa.cshtml">
-      <publishTime>10/04/2015 09:41:53</publishTime>
+      <publishTime>10/06/2015 23:36:49</publishTime>
     </File>
     <File Include="Views/MiCuenta/Login.cshtml">
       <publishTime>10/04/2015 08:03:42</publishTime>
@@ -250,7 +253,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>09/22/2015 22:03:58</publishTime>
     </File>
     <File Include="Web.config">
-      <publishTime>10/05/2015 08:55:41</publishTime>
+      <publishTime>10/07/2015 00:37:50</publishTime>
     </File>
   </ItemGroup>
 </Project>

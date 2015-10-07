@@ -9,13 +9,6 @@ namespace istEncuestasMVC.Controllers
 {
     public class HomeController : Controller
     {
-        //public ActionResult Index()
-        //{
-        //    XMLReader readXML = new XMLReader();
-        //    var data = readXML.ReturnListOfNewDataSet();
-        //    return View(data.ToList());
-      
-        //}
 
         [AllowAnonymous]
         public ActionResult Index()
@@ -64,20 +57,41 @@ namespace istEncuestasMVC.Controllers
 
         [HttpPost]
         public ActionResult RazonSocial(string rutempresa)
-        {
+        {         
+            System.Xml.XmlDocument xDocumento = new System.Xml.XmlDocument();
             servMEDAtencionProxy.servMEDAtencion obj = new servMEDAtencionProxy.servMEDAtencion();
             var sRespuesta = obj.wsValidaEmpSiso(rutempresa);
 
-            return Json(new { result = "Redirect", url = Url.Action("RazonSocialView", "Home", new { rutempresa = sRespuesta }) });
+            if (sRespuesta != null)
+            {
+                xDocumento.LoadXml(sRespuesta);
+
+                XMLReader readXML = new XMLReader();
+                var data = readXML.ReturnListOfEmpresa(xDocumento);
+
+                if (data[0].GlsError != null)
+                {
+                    string razonsocial = data[0].GlsError;
+                    string[] razonsocial2 = razonsocial.Split(';');
+
+                    if (razonsocial2.Count() > 1)
+                    {
+                        return Json(new { razonsocial = razonsocial2[1] });
+                    }
+                    else
+                    {
+                        return Json(new { razonsocial = razonsocial2[0] });
+                    }
+                }
+            }
+
+            return Json(new { razonsocial = "No existe" });
+          
         }
 
-        public ActionResult RazonSocialView(string rutempresa)
+        public ActionResult RazonSocialView(string razonsocial)
         {
-
-            servMEDAtencionProxy.servMEDAtencion obj = new servMEDAtencionProxy.servMEDAtencion();
-            var sRespuesta = obj.wsValidaEmpSiso(rutempresa);
-
-            return View(sRespuesta);
+            return View(razonsocial);
         }
 
         public ActionResult About()

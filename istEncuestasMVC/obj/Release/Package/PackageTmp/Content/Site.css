@@ -204,7 +204,7 @@ a {
     margin: 0 auto;
     display: block;
 }
-.completed h5{
+.completed{
     text-decoration: line-through;
     color: #ABABAB !important;
     position: relative;
@@ -214,13 +214,14 @@ a {
     font-family: 'Glyphicons Halflings';
     position: absolute;
     right: 2px;
-    top: 1px;
+    top: 50%;
     color: green;
     width: 38px;
     height: 38px;
-    padding: 10px;
+    padding: 8px;
     background: #A7ECA7;
     border-radius: 50%;
+    margin-top: -19px;
 }
 
 /* MODAL */

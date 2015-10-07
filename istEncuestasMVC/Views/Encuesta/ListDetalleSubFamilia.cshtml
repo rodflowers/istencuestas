@@ -25,7 +25,7 @@
     <div class="list-group"> 
         @foreach (var item in Model)
         {
-            <h3>@Html.DisplayFor(modelItem => item.Num_Orden) .- @Html.DisplayFor(modelItem => item.Gls_Pregunta)</h3>
+            <h5>@Html.DisplayFor(modelItem => item.Num_Orden) .- @Html.DisplayFor(modelItem => item.Gls_Pregunta)</h5>
     
             ViewBag.grupoen = item.Val_Par_Alf_Num;
             ViewBag.idpregunta = item.Cod_Num;
