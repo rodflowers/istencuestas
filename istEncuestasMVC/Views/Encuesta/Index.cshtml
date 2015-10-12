@@ -30,12 +30,7 @@
     <br />
 </div>
 
-<nav>
-    <ul class="pager">
-        <li class="previous" id="btnBack"><a href="#"><span aria-hidden="true">&larr;</span> Volver</a></li>
-        @*<li class="next"><a href="#">Adelante <span aria-hidden="true">&rarr;</span></a></li>*@
-    </ul>
-</nav>
+
 
 @section Scripts {
     @Scripts.Render("~/Scripts/jquery-1.10.2.js")
@@ -53,10 +48,7 @@
 
             });
 
-            $('#btnBack').click(function () {
-                parent.history.back();
-                return false;
-            });
+          
 
               
     });       

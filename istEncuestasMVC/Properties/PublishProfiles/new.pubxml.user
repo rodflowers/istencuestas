@@ -25,10 +25,10 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>09/07/2015 22:25:24</publishTime>
     </File>
     <File Include="bin/istEncuestasMVC.dll">
-      <publishTime>10/07/2015 00:37:36</publishTime>
+      <publishTime>10/07/2015 23:12:34</publishTime>
     </File>
     <File Include="bin/istEncuestasMVC.XmlSerializers.dll">
-      <publishTime>10/07/2015 00:37:39</publishTime>
+      <publishTime>10/07/2015 23:12:35</publishTime>
     </File>
     <File Include="bin/Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll">
       <publishTime>09/07/2015 22:25:26</publishTime>
@@ -199,13 +199,16 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>09/23/2015 00:28:11</publishTime>
     </File>
     <File Include="Views/Encuesta/Index.cshtml">
-      <publishTime>10/07/2015 00:35:06</publishTime>
+      <publishTime>10/07/2015 23:10:43</publishTime>
     </File>
     <File Include="Views/Encuesta/ListDetalleSubFamilia.cshtml">
       <publishTime>10/07/2015 00:03:14</publishTime>
     </File>
     <File Include="Views/Encuesta/ListSubFamilia.cshtml">
-      <publishTime>10/07/2015 00:16:12</publishTime>
+      <publishTime>10/07/2015 23:08:18</publishTime>
+    </File>
+    <File Include="Views/Encuesta/Observacion.cshtml">
+      <publishTime>10/07/2015 22:41:46</publishTime>
     </File>
     <File Include="Views/Home/About.cshtml">
       <publishTime>09/07/2015 22:25:21</publishTime>
@@ -253,7 +256,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>09/22/2015 22:03:58</publishTime>
     </File>
     <File Include="Web.config">
-      <publishTime>10/07/2015 00:37:50</publishTime>
+      <publishTime>10/07/2015 23:12:49</publishTime>
     </File>
   </ItemGroup>
 </Project>

@@ -50,8 +50,14 @@
             });
 
              $('#btnBack').click(function () {
-                 parent.history.back();
-                 return false;
+                 //parent.history.back();
+                 //return false;
+
+                 var url = '@Url.Action("Enviar", "Encuesta")';
+                 $.post(url, function (response) {
+                     window.location = response.url;
+                 });
+
              });
 
             });

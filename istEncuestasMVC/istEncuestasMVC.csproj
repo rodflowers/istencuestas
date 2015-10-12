@@ -213,6 +213,7 @@
     <Content Include="Views\Encuesta\Index.cshtml" />
     <Content Include="Views\Encuesta\ListSubFamilia.cshtml" />
     <Content Include="Views\Encuesta\ListDetalleSubFamilia.cshtml" />
+    <Content Include="Views\Encuesta\Observacion.cshtml" />
     <None Include="Web References\Service700vipProxy\Service700vip.disco" />
     <Content Include="Web References\servMEDAtencionProxy\Reference.map">
       <Generator>MSDiscoCodeGenerator</Generator>

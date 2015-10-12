@@ -10,12 +10,7 @@ namespace istEncuestasMVC.Controllers
     public class EncuestaController : Controller
     {
 
-        [HttpPost]
-        public ActionResult FinIndex(string encuestaid, string finalizada)
-        {
-
-            return Json(new { result = "Redirect", url = Url.Action("Index", "Encuesta") });
-        }
+       
 
         // GET: Encuesta
         public ActionResult Index()
@@ -148,9 +143,27 @@ namespace istEncuestasMVC.Controllers
             return View();
         }
 
+        [HttpPost]
+        public ActionResult FinIndex(string encuestaid, string finalizada)
+        {
+            
+            return Json(new { result = "Redirect", url = Url.Action("Observacion", "Encuesta") });
+        }
 
 
+        // GET: Encuesta
+        public ActionResult Observacion()
+        {
+            return View();           
+        }
 
+        [HttpPost]
+        public ActionResult Enviar(string encuestaid, string finalizada)
+        {
+
+            return Json(new { result = "Redirect", url = Url.Action("Index", "Encuesta") });
+           
+        }
 
 
     }

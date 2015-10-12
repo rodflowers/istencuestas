@@ -1,0 +1,82 @@
+﻿
+@{
+    ViewBag.Title = "Observacion";
+}
+
+
+
+<div class="panel panel-primary">
+    <div class="panel-heading">
+        <h3 class="panel-title">Ingrese Observación</h3>
+    </div>
+
+    <div class="form-horizontal">
+        <div class="form-group">
+          
+            <br />
+            <h6>*Máximo de caracteres 500</h6>
+            <div class="col-md-10">
+                <textarea maxlength="500" rows="5" cols="30"></textarea>
+            </div>
+        </div>
+
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Enviar" class="btn btn-default" id="btnEnviar" />
+            </div>
+        </div>
+        
+    </div>
+
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myModalLabel">Enviar Encuesta</h4>
+            </div>
+            <div class="modal-body">
+                <p>Su encuesta ha sido enviada.</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" id="btnEnviarModal" class="btn btn-default" data-dismiss="modal">Aceptar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+@section Scripts {
+    @Scripts.Render("~/Scripts/jquery-1.10.2.js")
+    @Scripts.Render("~/bundles/jqueryval")
+    @Scripts.Render("~/Scripts/bootstrap.min.js")
+
+    <script type='text/javascript'>
+        $(document).ready(function () {
+         
+            $('#btnEnviar').click(function () {
+
+                $('#myModal').modal('show');
+
+            });
+
+            $('#btnEnviarModal').click(function () {
+
+                var url = '@Url.Action("Enviar", "Encuesta")';
+                $.post(url, function (response) {
+                    window.location = response.url;
+                });
+                   
+                   
+            });
+
+    });
+
+    </script>
+
+}
