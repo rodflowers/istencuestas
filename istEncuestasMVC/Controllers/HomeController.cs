@@ -28,6 +28,10 @@ namespace istEncuestasMVC.Controllers
         {
             if (ModelState.IsValid)
             {
+
+                
+                TempData.Add("Correo", e.RepEmail);
+
                 servMEDAtencionProxy.servMEDAtencion obj = new servMEDAtencionProxy.servMEDAtencion();
                 var sRespuesta = obj.wsValidaEmpSiso(e.RutEmpresa);
 

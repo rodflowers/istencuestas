@@ -44,6 +44,12 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="ClsCreaPdf">
+      <HintPath>C:\Users\Rodrigo\Downloads\Compressed\Envio\Envio\ClsCreaPdf.dll</HintPath>
+    </Reference>
+    <Reference Include="itextsharp">
+      <HintPath>C:\Users\Rodrigo\Downloads\Compressed\Envio\Envio\itextsharp.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
       <Private>True</Private>
@@ -129,6 +135,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Helpers\Correo.cs" />
     <Compile Include="Models\Empresa.cs" />
     <Compile Include="Models\Encuesta.cs" />
     <Compile Include="Models\Login.cs" />
@@ -172,6 +179,7 @@
     <Content Include="img\ajax-loader.gif" />
     <Content Include="img\arrow-left.png" />
     <Content Include="img\arrow-right.png" />
+    <Content Include="img\Fondo_Pdf.png" />
     <Content Include="img\foto_.png" />
     <Content Include="img\logo-small-white.png" />
     <Content Include="img\logo-small.png" />
@@ -280,7 +288,9 @@
       <CachedSettingsPropName>istEncuestasMVC_Service700vipProxy_Service700vip</CachedSettingsPropName>
     </WebReferenceUrl>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Report\" />
+  </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>

@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using istEncuestasMVC.Helpers;
 
 namespace istEncuestasMVC.Controllers
 {
@@ -160,6 +161,23 @@ namespace istEncuestasMVC.Controllers
         [HttpPost]
         public ActionResult Enviar(string encuestaid, string finalizada)
         {
+            Correo correo = new Correo();
+            ClsCreaPdf.ReportPdf clsrep = new ClsCreaPdf.ReportPdf();
+            string Str_Error = String.Empty;
+            string strruta_server = (Server.MapPath("~/Report/"));
+            string url = clsrep.GeneraPdf("ITL1",
+                                          "ISAPRE CONSALUD",
+                                          "1.111.111-1",
+                                          "PEDRO FONTOVA 6650",
+                                          "contacto@consalud.cl",
+                                          strruta_server,
+                                          "1,1;2,2;3,5;4,3;7,2;8,3",
+                                          ref Str_Error);
+
+            var mail2 = TempData["Correo"];
+            string mail = correo.SendEmail((string)mail2, url);
+            //string mail = Correo. SendEmail("jochin33@gmail.com", url);
+
 
             return Json(new { result = "Redirect", url = Url.Action("Index", "Encuesta") });
            
