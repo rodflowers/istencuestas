@@ -42,5 +42,15 @@ namespace istEncuestasMVC.Properties {
                 return ((string)(this["istEncuestasMVC_servMEDAtencionProxy_servMEDAtencion"]));
             }
         }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.WebServiceUrl)]
+        [global::System.Configuration.DefaultSettingValueAttribute("http://200.6.78.113/services/WebServiceITL/ServiceITL.asmx")]
+        public string istEncuestasMVC_ServiceITLProxy_ServiceITL {
+            get {
+                return ((string)(this["istEncuestasMVC_ServiceITLProxy_ServiceITL"]));
+            }
+        }
     }
 }

@@ -22,5 +22,9 @@ namespace istEncuestasMVC.Models
         public string Respuesta { get; set; }
         public int Cant_Preguntas { get; set; }
         public string Finalizada { get; set; }
+        public string ID_ENCUESTA { get; set; }
+        public string NOMBRE_ENCUESTA { get; set; }
+        public string ID_ENCUESTA_SUB { get; set; }
+        public string NOM_ENCUESTA_SUB { get; set; }
     }
 }

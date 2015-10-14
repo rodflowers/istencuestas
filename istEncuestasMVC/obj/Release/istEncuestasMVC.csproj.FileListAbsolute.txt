@@ -81,3 +81,4 @@ D:\Working\Projects\istEncuestasMVC\istEncuestasMVC\bin\Newtonsoft.Json.xml
 D:\Working\Projects\istEncuestasMVC\istEncuestasMVC\obj\Release\istEncuestasMVC.dll
 D:\Working\Projects\istEncuestasMVC\istEncuestasMVC\obj\Release\istEncuestasMVC.pdb
 D:\Working\Projects\istEncuestasMVC\istEncuestasMVC\obj\Release\istEncuestasMVC.XmlSerializers.dll
+d:\Working\Projects\istEncuestasMVC\istEncuestasMVC\obj\Release\istEncuestasMVC.csprojResolveAssemblyReference.cache

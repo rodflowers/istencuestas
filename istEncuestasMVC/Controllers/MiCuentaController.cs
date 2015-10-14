@@ -24,7 +24,7 @@ namespace istEncuestasMVC.Controllers
             { 
 
                 Service700vipProxy.Service700vip obj = new Service700vipProxy.Service700vip();
-                var value = obj.WsIstSemEmpIngreso(l.Username.PadLeft(15, '0'), l.Password);
+                var value = obj.WsIstSemEmpIngreso(l.Username.PadLeft(15, '0').Trim(), l.Password);
 
                 if (value != null)
                 {

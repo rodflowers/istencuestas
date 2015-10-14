@@ -31,6 +31,50 @@ namespace istEncuestasMVC.Models
             return newempresa;
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="xmlData2"></param>
+        /// <returns></returns>
+        public List<Encuesta> ReturnListOfEncuesta(System.Xml.XmlDocument xmlData2)
+        {
+            var xmlData = xmlData2.SelectSingleNode("//NewDataSet");
+
+            DataSet ds = new DataSet();//Using dataset to read xml file  
+            ds.ReadXml(new System.Xml.XmlNodeReader(xmlData));
+
+            var newempresa = new List<Encuesta>();
+            newempresa = (from rows in ds.Tables[0].AsEnumerable()
+                          select new Encuesta
+                          {
+                              ID_ENCUESTA = rows[0].ToString(), //Convert row to int  
+                              NOMBRE_ENCUESTA = rows[1].ToString(),                             
+                          }).ToList();
+
+            return newempresa;
+        }
+
+        public List<Encuesta> ReturnListOfSubFamilia(System.Xml.XmlDocument xmlData2)
+        {
+            var xmlData = xmlData2.SelectSingleNode("//NewDataSet");
+
+            DataSet ds = new DataSet();//Using dataset to read xml file  
+            ds.ReadXml(new System.Xml.XmlNodeReader(xmlData));
+
+            var newempresa = new List<Encuesta>();
+            newempresa = (from rows in ds.Tables[0].AsEnumerable()
+                          select new Encuesta
+                          {
+                              ID_ENCUESTA = rows[0].ToString(), //Convert row to int  
+                              ID_ENCUESTA_SUB = rows[1].ToString(),
+                              NOM_ENCUESTA_SUB = rows[2].ToString(),
+                              Cant_Preguntas = Convert.ToInt32(rows[3].ToString()),
+                          }).ToList();
+
+            return newempresa;
+        }
+
+
         public List<Encuesta> RetrunListOfEncuesta()
         {
             string xmlData = HttpContext.Current.Server.MapPath("~/App_Data/SelectEncuesta.xml");//Path of the xml script  

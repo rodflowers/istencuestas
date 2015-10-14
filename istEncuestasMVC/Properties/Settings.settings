@@ -8,5 +8,8 @@
     <Setting Name="istEncuestasMVC_servMEDAtencionProxy_servMEDAtencion" Type="(Web Service URL)" Scope="Application">
       <Value Profile="(Default)">http://200.6.78.112/ServiceMEDATE/servMEDAtencion.asmx</Value>
     </Setting>
+    <Setting Name="istEncuestasMVC_ServiceITLProxy_ServiceITL" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://200.6.78.113/services/WebServiceITL/ServiceITL.asmx</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

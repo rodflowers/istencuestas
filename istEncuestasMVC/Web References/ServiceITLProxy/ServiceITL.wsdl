@@ -1,0 +1,283 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://tempuri.org/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
+      <s:element name="Encuesta">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="id_Encuesta" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="EncuestaResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="EncuestaResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SubFamilia">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="id_Encuesta" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SubFamiliaResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="SubFamiliaResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Detalle">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="id_Encuesta" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="id_SubFamilia" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DetalleResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="DetalleResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="string" nillable="true" type="s:string" />
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="EncuestaSoapIn">
+    <wsdl:part name="parameters" element="tns:Encuesta" />
+  </wsdl:message>
+  <wsdl:message name="EncuestaSoapOut">
+    <wsdl:part name="parameters" element="tns:EncuestaResponse" />
+  </wsdl:message>
+  <wsdl:message name="SubFamiliaSoapIn">
+    <wsdl:part name="parameters" element="tns:SubFamilia" />
+  </wsdl:message>
+  <wsdl:message name="SubFamiliaSoapOut">
+    <wsdl:part name="parameters" element="tns:SubFamiliaResponse" />
+  </wsdl:message>
+  <wsdl:message name="DetalleSoapIn">
+    <wsdl:part name="parameters" element="tns:Detalle" />
+  </wsdl:message>
+  <wsdl:message name="DetalleSoapOut">
+    <wsdl:part name="parameters" element="tns:DetalleResponse" />
+  </wsdl:message>
+  <wsdl:message name="EncuestaHttpGetIn">
+    <wsdl:part name="id_Encuesta" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="EncuestaHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="SubFamiliaHttpGetIn">
+    <wsdl:part name="id_Encuesta" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="SubFamiliaHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="DetalleHttpGetIn">
+    <wsdl:part name="id_Encuesta" type="s:string" />
+    <wsdl:part name="id_SubFamilia" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="DetalleHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="EncuestaHttpPostIn">
+    <wsdl:part name="id_Encuesta" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="EncuestaHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="SubFamiliaHttpPostIn">
+    <wsdl:part name="id_Encuesta" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="SubFamiliaHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="DetalleHttpPostIn">
+    <wsdl:part name="id_Encuesta" type="s:string" />
+    <wsdl:part name="id_SubFamilia" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="DetalleHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:portType name="ServiceITLSoap">
+    <wsdl:operation name="Encuesta">
+      <wsdl:input message="tns:EncuestaSoapIn" />
+      <wsdl:output message="tns:EncuestaSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SubFamilia">
+      <wsdl:input message="tns:SubFamiliaSoapIn" />
+      <wsdl:output message="tns:SubFamiliaSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Detalle">
+      <wsdl:input message="tns:DetalleSoapIn" />
+      <wsdl:output message="tns:DetalleSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="ServiceITLHttpGet">
+    <wsdl:operation name="Encuesta">
+      <wsdl:input message="tns:EncuestaHttpGetIn" />
+      <wsdl:output message="tns:EncuestaHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SubFamilia">
+      <wsdl:input message="tns:SubFamiliaHttpGetIn" />
+      <wsdl:output message="tns:SubFamiliaHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Detalle">
+      <wsdl:input message="tns:DetalleHttpGetIn" />
+      <wsdl:output message="tns:DetalleHttpGetOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="ServiceITLHttpPost">
+    <wsdl:operation name="Encuesta">
+      <wsdl:input message="tns:EncuestaHttpPostIn" />
+      <wsdl:output message="tns:EncuestaHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SubFamilia">
+      <wsdl:input message="tns:SubFamiliaHttpPostIn" />
+      <wsdl:output message="tns:SubFamiliaHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Detalle">
+      <wsdl:input message="tns:DetalleHttpPostIn" />
+      <wsdl:output message="tns:DetalleHttpPostOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="ServiceITLSoap" type="tns:ServiceITLSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="Encuesta">
+      <soap:operation soapAction="http://tempuri.org/Encuesta" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SubFamilia">
+      <soap:operation soapAction="http://tempuri.org/SubFamilia" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Detalle">
+      <soap:operation soapAction="http://tempuri.org/Detalle" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="ServiceITLSoap12" type="tns:ServiceITLSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="Encuesta">
+      <soap12:operation soapAction="http://tempuri.org/Encuesta" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SubFamilia">
+      <soap12:operation soapAction="http://tempuri.org/SubFamilia" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Detalle">
+      <soap12:operation soapAction="http://tempuri.org/Detalle" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="ServiceITLHttpGet" type="tns:ServiceITLHttpGet">
+    <http:binding verb="GET" />
+    <wsdl:operation name="Encuesta">
+      <http:operation location="/Encuesta" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SubFamilia">
+      <http:operation location="/SubFamilia" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Detalle">
+      <http:operation location="/Detalle" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="ServiceITLHttpPost" type="tns:ServiceITLHttpPost">
+    <http:binding verb="POST" />
+    <wsdl:operation name="Encuesta">
+      <http:operation location="/Encuesta" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SubFamilia">
+      <http:operation location="/SubFamilia" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Detalle">
+      <http:operation location="/Detalle" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="ServiceITL">
+    <wsdl:port name="ServiceITLSoap" binding="tns:ServiceITLSoap">
+      <soap:address location="http://200.6.78.113/services/WebServiceITL/ServiceITL.asmx" />
+    </wsdl:port>
+    <wsdl:port name="ServiceITLSoap12" binding="tns:ServiceITLSoap12">
+      <soap12:address location="http://200.6.78.113/services/WebServiceITL/ServiceITL.asmx" />
+    </wsdl:port>
+    <wsdl:port name="ServiceITLHttpGet" binding="tns:ServiceITLHttpGet">
+      <http:address location="http://200.6.78.113/services/WebServiceITL/ServiceITL.asmx" />
+    </wsdl:port>
+    <wsdl:port name="ServiceITLHttpPost" binding="tns:ServiceITLHttpPost">
+      <http:address location="http://200.6.78.113/services/WebServiceITL/ServiceITL.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

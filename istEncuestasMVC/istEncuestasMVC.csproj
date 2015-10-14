@@ -157,6 +157,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.map</DependentUpon>
     </Compile>
+    <Compile Include="Web References\ServiceITLProxy\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.map</DependentUpon>
+    </Compile>
     <Compile Include="Web References\servMEDAtencionProxy\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -223,10 +228,16 @@
     <Content Include="Views\Encuesta\ListDetalleSubFamilia.cshtml" />
     <Content Include="Views\Encuesta\Observacion.cshtml" />
     <None Include="Web References\Service700vipProxy\Service700vip.disco" />
+    <Content Include="Web References\ServiceITLProxy\Reference.map">
+      <Generator>MSDiscoCodeGenerator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </Content>
+    <None Include="Web References\ServiceITLProxy\ServiceITL.disco" />
     <Content Include="Web References\servMEDAtencionProxy\Reference.map">
       <Generator>MSDiscoCodeGenerator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </Content>
+    <None Include="Web References\ServiceITLProxy\ServiceITL.wsdl" />
     <None Include="Web References\servMEDAtencionProxy\servMEDAtencion.disco" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
@@ -275,6 +286,17 @@
       </CachedDynamicPropName>
       <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
       <CachedSettingsPropName>istEncuestasMVC_servMEDAtencionProxy_servMEDAtencion</CachedSettingsPropName>
+    </WebReferenceUrl>
+    <WebReferenceUrl Include="http://200.6.78.113/services/WebServiceITL/ServiceITL.asmx">
+      <UrlBehavior>Dynamic</UrlBehavior>
+      <RelPath>Web References\ServiceITLProxy\</RelPath>
+      <UpdateFromURL>http://200.6.78.113/services/WebServiceITL/ServiceITL.asmx</UpdateFromURL>
+      <ServiceLocationURL>
+      </ServiceLocationURL>
+      <CachedDynamicPropName>
+      </CachedDynamicPropName>
+      <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
+      <CachedSettingsPropName>istEncuestasMVC_ServiceITLProxy_ServiceITL</CachedSettingsPropName>
     </WebReferenceUrl>
     <WebReferenceUrl Include="http://200.6.78.113/WebService700vip/Service700vip.asmx">
       <UrlBehavior>Dynamic</UrlBehavior>

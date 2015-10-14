@@ -17,11 +17,25 @@ namespace istEncuestasMVC.Controllers
         public ActionResult Index()
         {
 
-            XMLReader readXML = new XMLReader();
-            var data = readXML.RetrunListOfEncuesta();
+            //XMLReader readXML = new XMLReader();
+            //var data = readXML.RetrunListOfEncuesta();
+
+            System.Xml.XmlDocument xDocumento = new System.Xml.XmlDocument();
+            List<Encuesta> data = new List<Encuesta>();
+            ServiceITLProxy.ServiceITL  obj = new ServiceITLProxy.ServiceITL();
+            var sRespuesta = obj.Encuesta("");
+
+            if (sRespuesta != null)
+            {
+                xDocumento.LoadXml(sRespuesta);
+
+                XMLReader readXML = new XMLReader();
+                data = readXML.ReturnListOfEncuesta(xDocumento);
+                
+            }
 
             return View(data.ToList());
-            
+
         }
 
         [HttpPost]
@@ -38,10 +52,25 @@ namespace istEncuestasMVC.Controllers
             var data = new List<Encuesta>();
 
             if (TempData["ListSubFamilia"] == null)
-            { 
-                XMLReader readXML = new XMLReader();
-                data = readXML.RetrunListOfSubFamilia();
-                TempData["ListSubFamilia"] = data;
+            {
+                //XMLReader readXML = new XMLReader();
+                //data = readXML.RetrunListOfSubFamilia(iddet);
+
+                System.Xml.XmlDocument xDocumento = new System.Xml.XmlDocument();                
+                ServiceITLProxy.ServiceITL obj = new ServiceITLProxy.ServiceITL();
+                var sRespuesta = obj.SubFamilia(iddet);
+
+                if (sRespuesta != null)
+                {
+                    xDocumento.LoadXml(sRespuesta);
+
+                    XMLReader readXML = new XMLReader();
+                    data = readXML.ReturnListOfSubFamilia(xDocumento);
+                    TempData["ListSubFamilia"] = data;
+                }
+
+
+                
             }
             else
             {
