@@ -18,7 +18,7 @@
     <div class="list-group">
         @foreach (var item in Model)
         {
-            <button id="target" type="button" data-encuestaid="@item.ID_ENCUESTA_SUB" data-numpag="@item.Cant_Preguntas" class="@(@item.Finalizada=="S" ? "list-group-item completed":"list-group-item")" @if (@item.Finalizada == "S") {  @("disabled='1'") }> @Html.DisplayFor(modelItem => item.NOM_ENCUESTA_SUB)</button>
+            <button id="target" type="button" data-encuestaid="@item.ID_ENCUESTA" data-subencuestaid="@item.ID_ENCUESTA_SUB" data-numpag="@item.Cant_Preguntas" class="@(@item.Finalizada=="S" ? "list-group-item completed":"list-group-item")" @if (@item.Finalizada == "S") {  @("disabled='1'") }> @Html.DisplayFor(modelItem => item.NOM_ENCUESTA_SUB)</button>
         }
     </div>
     <br />
@@ -40,10 +40,11 @@
          $(document).ready(function () {
             $('.list-group-item').click(function () {
                 var eid = $(this).data('encuestaid');
+                var sid = $(this).data('subencuestaid');
                 var num = $(this).data('numpag');
                 var preg = 1;
                 var url = '@Url.Action("DetalleSubFamilia", "Encuesta")';
-                $.post(url, { subfamid: eid, totpreg: num, numpreg: preg }, function (response) {
+                $.post(url, { encid: eid, subfamid: sid, totpreg: num, numpreg: preg }, function (response) {
                     window.location = response.url;
                     });
 

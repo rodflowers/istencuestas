@@ -29,7 +29,12 @@ namespace istEncuestasMVC.Controllers
             if (ModelState.IsValid)
             {
 
-                
+
+                if (TempData["Correo"] != null)
+                {
+                    TempData.Remove("Correo");
+                }
+
                 TempData.Add("Correo", e.RepEmail);
 
                 servMEDAtencionProxy.servMEDAtencion obj = new servMEDAtencionProxy.servMEDAtencion();

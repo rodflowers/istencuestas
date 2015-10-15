@@ -66,10 +66,10 @@
         <nav>
             <div class="row">
                 <div class="col-xs-6">
-                    <a href="@Url.Action("ListDetalleSubFamilia","Encuesta", new { iddet = ViewBag.grupoen, totnum = ViewBag.totpreg, preg = ViewBag.numorden - 1 })" id="btnAnterior"><span class="arrow-left"></span></a>
+                    <a href="@Url.Action("ListDetalleSubFamilia","Encuesta", new { idenc = ViewBag.encuestaid, idsubenc = ViewBag.subencid, totnum = ViewBag.totpreg, preg = ViewBag.numorden - 1 })" id="btnAnterior"><span class="arrow-left"></span></a>
                 </div>
                 <div class="col-xs-6">
-                    <a href="@Url.Action("ListDetalleSubFamilia","Encuesta", new { iddet = ViewBag.grupoen, totnum = ViewBag.totpreg, preg = ViewBag.numorden + 1 })" id="btnSiguiente"><span class="arrow-right"></span></a>
+                    <a href="@Url.Action("ListDetalleSubFamilia","Encuesta", new { idenc = ViewBag.encuestaid, idsubenc = ViewBag.subencid, totnum = ViewBag.totpreg, preg = ViewBag.numorden + 1 })" id="btnSiguiente"><span class="arrow-right"></span></a>
                 </div>
             </div>
         </nav>
@@ -99,7 +99,7 @@
             </div>
             <div class="modal-footer">
                 <button type="button" id="btnFinEnc" class="btn btn-default" data-dismiss="modal">Finalizar</button>
-                <button type="button" id="btnContEnc" data-encuestaid="@ViewBag.grupoen" class="btn btn-primary">Continuar</button>
+                <button type="button" id="btnContEnc" data-encuestaid="@ViewBag.subencid" class="btn btn-primary">Continuar</button>
             </div>
         </div>
     </div>
