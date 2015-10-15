@@ -204,6 +204,14 @@ namespace istEncuestasMVC.Controllers
             //return Json(new { result = "Redirect", url = Url.Action("Index", "Encuesta") });
         }
 
+        [HttpPost]
+        public ActionResult FinBack(string encuestaid, string finalizada)
+        {
+
+            return Json(new { result = "Redirect", url = Url.Action("Index", "Encuesta") });
+
+        }
+
 
         // GET: Encuesta
         public ActionResult Observacion()
