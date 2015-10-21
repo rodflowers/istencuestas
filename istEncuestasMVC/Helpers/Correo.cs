@@ -76,7 +76,7 @@ namespace istEncuestasMVC.Helpers
                 message.From = new MailAddress(appSettings["UserName_correo"], "IST");  // replace with valid value
                 message.Subject = appSettings["Subject"];
                 message.Body = appSettings["Body"];
-                message.Attachments.Add(new Attachment(Url));
+                //message.Attachments.Add(new Attachment(Url));
                 message.IsBodyHtml = false;
 
                 using (var smtp = new SmtpClient())

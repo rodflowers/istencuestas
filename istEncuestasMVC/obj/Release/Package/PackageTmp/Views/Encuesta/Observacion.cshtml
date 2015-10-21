@@ -58,21 +58,27 @@
 
     <script type='text/javascript'>
         $(document).ready(function () {
-         
+
             $('#btnEnviar').click(function () {
 
-                $('#myModal').modal('show');
+                var url = '@Url.Action("Enviar", "Encuesta")';
+                $.post(url, function (response) {                    
+                   
+                    window.location = response.url;
+                });
+
+                //$('#myModal').modal('show');
 
             });
 
             $('#btnEnviarModal').click(function () {
 
-                var url = '@Url.Action("Enviar", "Encuesta")';
+                @*var url = '@Url.Action("Enviar", "Encuesta")';
                 $.post(url, function (response) {
                     window.location = response.url;
-                });
-                   
-                   
+                });*@
+
+
             });
 
     });

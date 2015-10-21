@@ -6,6 +6,10 @@ using System.Web;
 using System.Web.Mvc;
 using istEncuestasMVC.Helpers;
 using System.Threading.Tasks;
+using System.Configuration;
+using System.Net.Mail;
+using System.Net;
+using System.Web.Hosting;
 
 namespace istEncuestasMVC.Controllers
 {
@@ -17,7 +21,7 @@ namespace istEncuestasMVC.Controllers
         // GET: Encuesta
         public ActionResult Index()
         {
-
+            
             //XMLReader readXML = new XMLReader();
             //var data = readXML.RetrunListOfEncuesta();
 
@@ -216,16 +220,13 @@ namespace istEncuestasMVC.Controllers
         // GET: Encuesta
         public ActionResult Observacion()
         {
-            return View();
-        }
 
-        [HttpPost]
-        public async Task<ActionResult> Enviar(string encuestaid, string finalizada)
-        {
+            
             Correo correo = new Correo();
             ClsCreaPdf.ReportPdf clsrep = new ClsCreaPdf.ReportPdf();
             string Str_Error = String.Empty;
-            string strruta_server = (Server.MapPath("~/Report/"));
+            //string strruta_server = (Server.MapPath("~/Report/"));
+            string strruta_server = HostingEnvironment.ApplicationPhysicalPath + "Report";
             string url = clsrep.GeneraPdf("ITL1",
                                           "ISAPRE CONSALUD",
                                           "1.111.111-1",
@@ -238,15 +239,130 @@ namespace istEncuestasMVC.Controllers
             var mail2 = TempData["Correo"];
             TempData.Keep("Correo");
             //string mail = correo.SendEmail((string)mail2, url);
-            var mail = await correo.EnviaCorreo((string)mail2, url);
-            //string mail = Correo. SendEmail("jochin33@gmail.com", url);
+            //var mail = await correo.EnviaCorreo((string)mail2, url);
+            //mail2 = "rodrigo.flores01@gmail.com";
 
-            
+            var appSettings = ConfigurationManager.AppSettings;
+            MailAddress from = new MailAddress(appSettings["UserName_correo"], "IST");
+            var message = new MailMessage();
+            //var body = "";
+            try
+            {
 
+                message.To.Add(new MailAddress((string)mail2));  // replace with valid value 
+                message.From = new MailAddress(appSettings["UserName_correo"], "IST");  // replace with valid value
+                message.Subject = appSettings["Subject"];
+                message.Body = appSettings["Body"];
+                message.Attachments.Add(new Attachment(url));
+                message.IsBodyHtml = true;
+
+                using (var smtp = new SmtpClient())
+                {
+                    smtp.UseDefaultCredentials = false;
+                    smtp.DeliveryMethod = System.Net.Mail.SmtpDeliveryMethod.Network;
+                    var credential = new NetworkCredential
+                    {
+                        UserName = appSettings["UserName_correo"],  // replace with valid value
+                        Password = appSettings["Password_correo"]  // replace with valid value
+                    };
+                    smtp.UseDefaultCredentials = false;
+                    smtp.Credentials = credential;
+                    smtp.Host = appSettings["server_correo"];
+                    smtp.Port = Convert.ToInt16(appSettings["Puerto_correo"]);
+                    smtp.EnableSsl = Convert.ToBoolean(appSettings["Ssl_correo"]);
+
+                    smtp.Send(message);                  
+
+                    return View();
+                    
+                }
+            }
+            catch (SmtpException ex)
+            {
+                message.Dispose();
+                return RedirectToAction("Error", "Encuesta", new { desc_err = ex.Message });                
+            }
+        }
+
+
+
+        [HttpPost]
+        public ActionResult Enviar(string encuestaid, string finalizada)
+        {
             return Json(new { result = "Redirect", url = Url.Action("Index", "Encuesta") });
 
+            //Correo correo = new Correo();
+            //ClsCreaPdf.ReportPdf clsrep = new ClsCreaPdf.ReportPdf();
+            //string Str_Error = String.Empty;
+            //string strruta_server = (Server.MapPath("~/Report/"));
+            //string url = clsrep.GeneraPdf("ITL1",
+            //                              "ISAPRE CONSALUD",
+            //                              "1.111.111-1",
+            //                              "PEDRO FONTOVA 6650",
+            //                              "contacto@consalud.cl",
+            //                              strruta_server,
+            //                              "1,1;2,2;3,5;4,3;7,2;8,3",
+            //                              ref Str_Error);
+
+            //var mail2 = TempData["Correo"];
+            //TempData.Keep("Correo");
+            ////string mail = correo.SendEmail((string)mail2, url);
+            ////var mail = await correo.EnviaCorreo((string)mail2, url);
+            ////mail2 = "rodrigo.flores01@gmail.com";
+
+            //var appSettings = ConfigurationManager.AppSettings;
+            //MailAddress from = new MailAddress(appSettings["UserName_correo"], "IST");
+            //var message = new MailMessage();
+            ////var body = "";
+            //try
+            //{
+
+            //    message.To.Add(new MailAddress((string)mail2));  // replace with valid value 
+            //    message.From = new MailAddress(appSettings["UserName_correo"], "IST");  // replace with valid value
+            //    message.Subject = appSettings["Subject"];
+            //    message.Body = appSettings["Body"];
+            //    //message.Attachments.Add(new Attachment(Url));
+            //    message.IsBodyHtml = true;
+
+            //    using (var smtp = new SmtpClient())
+            //    {
+            //        smtp.UseDefaultCredentials = false;
+            //        smtp.DeliveryMethod = System.Net.Mail.SmtpDeliveryMethod.Network;
+            //        var credential = new NetworkCredential
+            //        {
+            //            UserName = appSettings["UserName_correo"],  // replace with valid value
+            //            Password = appSettings["Password_correo"]  // replace with valid value
+            //        };
+            //        smtp.UseDefaultCredentials = false;
+            //        smtp.Credentials = credential;
+            //        smtp.Host = appSettings["server_correo"];
+            //        smtp.Port = Convert.ToInt16(appSettings["Puerto_correo"]);
+            //        smtp.EnableSsl = Convert.ToBoolean(appSettings["Ssl_correo"]);
+
+
+            //        smtp.Send(message);
+            //        //smtp.SendMail(message);
+            //        //smtp.Send(message);
+
+
+            //        return Json(new { result = "Redirect", url = Url.Action("Index", "Encuesta") });
+            //    }
+            //}
+            //catch (SmtpException ex)
+            //{
+            //    //message.Dispose();               
+            //    return Json(new { result = "Redirect", url = Url.Action("Error", "Encuesta", new { desc_err = ex.Message }) });
+            //}
+        }
+
+
+        // GET: Encuesta
+        public ActionResult Error(string desc_err)
+        {
+            return View(desc_err);
         }
 
 
     }
+
 }

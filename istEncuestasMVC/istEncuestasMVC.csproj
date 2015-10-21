@@ -147,11 +147,6 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
       <DependentUpon>Settings.settings</DependentUpon>
     </Compile>
-    <Compile Include="Service References\UszipProxy\Reference.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Compile>
     <Compile Include="Web References\Service700vipProxy\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -188,6 +183,7 @@
     <Content Include="img\foto_.png" />
     <Content Include="img\logo-small-white.png" />
     <Content Include="img\logo-small.png" />
+    <Content Include="Report\Recovery.txt" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Properties\DataSources\System.Xml.XmlNode.datasource" />
@@ -208,12 +204,6 @@
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
     <Content Include="Scripts\_references.js" />
-    <None Include="Service References\UszipProxy\configuration91.svcinfo" />
-    <None Include="Service References\UszipProxy\configuration.svcinfo" />
-    <None Include="Service References\UszipProxy\Reference.svcmap">
-      <Generator>WCF Proxy Generator</Generator>
-      <LastGenOutput>Reference.cs</LastGenOutput>
-    </None>
     <Content Include="Web References\Service700vipProxy\Reference.map">
       <Generator>MSDiscoCodeGenerator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
@@ -227,6 +217,7 @@
     <Content Include="Views\Encuesta\ListSubFamilia.cshtml" />
     <Content Include="Views\Encuesta\ListDetalleSubFamilia.cshtml" />
     <Content Include="Views\Encuesta\Observacion.cshtml" />
+    <Content Include="Views\Encuesta\Error.cshtml" />
     <None Include="Web References\Service700vipProxy\Service700vip.disco" />
     <Content Include="Web References\ServiceITLProxy\Reference.map">
       <Generator>MSDiscoCodeGenerator</Generator>
@@ -254,7 +245,6 @@
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Home\Help.cshtml" />
-    <None Include="Service References\UszipProxy\uszip.wsdl" />
     <None Include="Web References\Service700vipProxy\Service700vip.wsdl" />
     <None Include="Web References\servMEDAtencionProxy\servMEDAtencion.wsdl" />
   </ItemGroup>
@@ -271,9 +261,6 @@
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Service References\" />
-  </ItemGroup>
-  <ItemGroup>
-    <WCFMetadataStorage Include="Service References\UszipProxy\" />
   </ItemGroup>
   <ItemGroup>
     <WebReferenceUrl Include="http://200.6.78.112/ServiceMEDATE/servMEDAtencion.asmx">
@@ -310,9 +297,7 @@
       <CachedSettingsPropName>istEncuestasMVC_Service700vipProxy_Service700vip</CachedSettingsPropName>
     </WebReferenceUrl>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Report\" />
-  </ItemGroup>
+  <ItemGroup />
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>

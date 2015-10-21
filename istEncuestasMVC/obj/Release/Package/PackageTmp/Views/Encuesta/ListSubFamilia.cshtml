@@ -54,7 +54,7 @@
                  //parent.history.back();
                  //return false;
 
-                 var url = '@Url.Action("Enviar", "Encuesta")';
+                 var url = '@Url.Action("FinBack", "Encuesta")';
                  $.post(url, function (response) {
                      window.location = response.url;
                  });
