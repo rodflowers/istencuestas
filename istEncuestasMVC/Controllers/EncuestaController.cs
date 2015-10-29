@@ -10,6 +10,7 @@ using System.Configuration;
 using System.Net.Mail;
 using System.Net;
 using System.Web.Hosting;
+using System.IO;
 
 namespace istEncuestasMVC.Controllers
 {
@@ -56,6 +57,7 @@ namespace istEncuestasMVC.Controllers
 
             var data = new List<Encuesta>();
 
+          
             if (TempData["ListSubFamilia"] == null)
             {
                 //XMLReader readXML = new XMLReader();
@@ -71,6 +73,8 @@ namespace istEncuestasMVC.Controllers
 
                     XMLReader readXML = new XMLReader();
                     data = readXML.ReturnListOfSubFamilia(xDocumento);
+                    //ViewBag.contadorSE = data.Count;
+                    Session["contadorSE"] = data.Count;
                     TempData["ListSubFamilia"] = data;
                 }
 
@@ -96,22 +100,31 @@ namespace istEncuestasMVC.Controllers
         }
 
         [HttpPost]
-        public ActionResult DetalleSubFamilia(string encid, string subfamid, int totpreg, int numpreg)
+        public ActionResult DetalleSubFamilia(string encid, string subfamid, int totpreg, int numpreg, int countse)
         {
+            if (Session["Click"] == null)
+            {
+                Session["Click"] = 0;
+            }
+            int click = (int)Session["Click"];
+            Session["Click"] = click + 1;
 
-            return Json(new { result = "Redirect", url = Url.Action("ListDetalleSubFamilia", "Encuesta", new { idenc = encid, idsubenc = subfamid, totnum = totpreg, preg = numpreg }) });
+            return Json(new { result = "Redirect", url = Url.Action("ListDetalleSubFamilia", "Encuesta", new { idenc = encid, idsubenc = subfamid, totnum = totpreg, preg = numpreg, contadorse = countse }) });
         }
 
         // GET: Encuesta
-        public ActionResult ListDetalleSubFamilia(string idenc, string idsubenc, int totnum, int preg)
+        public ActionResult ListDetalleSubFamilia(string idenc, string idsubenc, int totnum, int preg, int contadorse)
         {
-
+           
             ViewBag.encuestaid = idenc;
             ViewBag.grupoen = idenc;
             ViewBag.subencid = idsubenc;
             ViewBag.totpreg = totnum;
             ViewBag.pregunta = preg;
-
+            //contador sub encuestas
+            
+            //ViewBag.contadorse = contadorse;
+            //Session["ContadorSE"] = contadorse;
 
             List<Encuesta> data = new List<Encuesta>();
             System.Xml.XmlDocument xDocumento = new System.Xml.XmlDocument();
@@ -221,12 +234,91 @@ namespace istEncuestasMVC.Controllers
         public ActionResult Observacion()
         {
 
-            
+            new StreamWriter(Server.MapPath("~/Report/prueba.txt"), true);
+
+            return View();
+            //new StreamWriter(Server.MapPath("~/Report/release_notification_emails.txt"), true);
+
+            //Correo correo = new Correo();
+            //ClsCreaPdf.ReportPdf clsrep = new ClsCreaPdf.ReportPdf();
+            //string Str_Error = String.Empty;
+            //string strruta_server = (Server.MapPath("~/Report/"));
+            ////string strruta_server = HostingEnvironment.ApplicationPhysicalPath + "Report";
+            ////string strruta_server = AppDomain.CurrentDomain.GetData("Report").ToString();
+            //string url = clsrep.GeneraPdf("ITL1",
+            //                              "ISAPRE CONSALUD",
+            //                              "1.111.111-1",
+            //                              "PEDRO FONTOVA 6650",
+            //                              "contacto@consalud.cl",
+            //                              strruta_server,
+            //                              "1,1;2,2;3,5;4,3;7,2;8,3",
+            //                              ref Str_Error);
+
+            //var mail2 = TempData["Correo"];
+            //TempData.Keep("Correo");
+            ////string mail = correo.SendEmail((string)mail2, url);
+            ////var mail = await correo.EnviaCorreo((string)mail2, url);
+            ////mail2 = "rodrigo.flores01@gmail.com";
+
+            //var appSettings = ConfigurationManager.AppSettings;
+            //MailAddress from = new MailAddress(appSettings["UserName_correo"], "IST");
+            //var message = new MailMessage();
+            ////var body = "";
+            //try
+            //{
+
+            //    message.To.Add(new MailAddress((string)mail2));  // replace with valid value 
+            //    message.From = new MailAddress(appSettings["UserName_correo"], "IST");  // replace with valid value
+            //    message.Subject = appSettings["Subject"];
+            //    message.Body = appSettings["Body"];
+            //    message.Attachments.Add(new Attachment(url));
+            //    message.IsBodyHtml = true;
+
+            //    using (var smtp = new SmtpClient())
+            //    {
+            //        smtp.UseDefaultCredentials = false;
+            //        smtp.DeliveryMethod = System.Net.Mail.SmtpDeliveryMethod.Network;
+            //        var credential = new NetworkCredential
+            //        {
+            //            UserName = appSettings["UserName_correo"],  // replace with valid value
+            //            Password = appSettings["Password_correo"]  // replace with valid value
+            //        };
+            //        smtp.UseDefaultCredentials = false;
+            //        smtp.Credentials = credential;
+            //        smtp.Host = appSettings["server_correo"];
+            //        smtp.Port = Convert.ToInt16(appSettings["Puerto_correo"]);
+            //        smtp.EnableSsl = Convert.ToBoolean(appSettings["Ssl_correo"]);
+
+            //        smtp.Send(message);                  
+
+            //        return View();
+                    
+            //    }
+            //}
+            //catch (SmtpException ex)
+            //{
+            //    message.Dispose();
+            //    return RedirectToAction("Error", "Encuesta", new { desc_err = ex.Message });                
+            //}
+        }
+
+
+
+        [HttpPost]
+        public ActionResult Enviar(string encuestaid, string finalizada)
+        {
+
+            Session["Click"] = null;
+            Session["ContadorSE"] = null;
+
+            //new StreamWriter(Server.MapPath("~/Report/prueba.txt"), true);
+
             Correo correo = new Correo();
             ClsCreaPdf.ReportPdf clsrep = new ClsCreaPdf.ReportPdf();
             string Str_Error = String.Empty;
-            //string strruta_server = (Server.MapPath("~/Report/"));
-            string strruta_server = HostingEnvironment.ApplicationPhysicalPath + "Report";
+            string strruta_server = (Server.MapPath("~/Report/"));
+            //string strruta_server = HostingEnvironment.ApplicationPhysicalPath + "Report";
+            //string strruta_server = AppDomain.CurrentDomain.GetData("Report").ToString();
             string url = clsrep.GeneraPdf("ITL1",
                                           "ISAPRE CONSALUD",
                                           "1.111.111-1",
@@ -271,25 +363,20 @@ namespace istEncuestasMVC.Controllers
                     smtp.Port = Convert.ToInt16(appSettings["Puerto_correo"]);
                     smtp.EnableSsl = Convert.ToBoolean(appSettings["Ssl_correo"]);
 
-                    smtp.Send(message);                  
+                    smtp.Send(message);
 
-                    return View();
-                    
+                    return Json(new { result = "Redirect", url = Url.Action("Index", "Encuesta") });
+
                 }
             }
             catch (SmtpException ex)
             {
                 message.Dispose();
-                return RedirectToAction("Error", "Encuesta", new { desc_err = ex.Message });                
+                return Json(new { result = "Redirect", url = Url.Action("Error", "Encuesta") });
+                //return RedirectToAction("Error", "Encuesta", new { desc_err = ex.Message });
             }
-        }
 
-
-
-        [HttpPost]
-        public ActionResult Enviar(string encuestaid, string finalizada)
-        {
-            return Json(new { result = "Redirect", url = Url.Action("Index", "Encuesta") });
+            
 
             //Correo correo = new Correo();
             //ClsCreaPdf.ReportPdf clsrep = new ClsCreaPdf.ReportPdf();

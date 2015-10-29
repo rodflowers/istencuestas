@@ -8,7 +8,8 @@
     var min_width = string.Concat(porcentaje , "em");
     var width = string.Concat(porcentaje, "%");
     var cla = string.Concat("c100 p", porcentaje, " small center");
-   
+
+    //var countSE = ViewBag.CountSe;
 
 }
 
@@ -65,11 +66,11 @@
         
         <nav>
             <div class="row">
-                <div class="col-xs-6">
-                    <a href="@Url.Action("ListDetalleSubFamilia","Encuesta", new { idenc = ViewBag.encuestaid, idsubenc = ViewBag.subencid, totnum = ViewBag.totpreg, preg = ViewBag.numorden - 1 })" id="btnAnterior"><span class="arrow-left"></span></a>
+                <div class="col-xs-6" id="divAnterior">
+                    <a href="@Url.Action("ListDetalleSubFamilia","Encuesta", new { idenc = ViewBag.encuestaid, idsubenc = ViewBag.subencid, totnum = ViewBag.totpreg, preg = ViewBag.numorden - 1 , contadorse = Session["ContadorSE"] })" id="btnAnterior"><span class="arrow-left"></span></a>
                 </div>
-                <div class="col-xs-6">
-                    <a href="@Url.Action("ListDetalleSubFamilia","Encuesta", new { idenc = ViewBag.encuestaid, idsubenc = ViewBag.subencid, totnum = ViewBag.totpreg, preg = ViewBag.numorden + 1 })" id="btnSiguiente"><span class="arrow-right"></span></a>
+                <div class="col-xs-6" id="divSiguiente">
+                    <a href="@Url.Action("ListDetalleSubFamilia","Encuesta", new { idenc = ViewBag.encuestaid, idsubenc = ViewBag.subencid, totnum = ViewBag.totpreg, preg = ViewBag.numorden + 1 , contadorse = Session["ContadorSE"] })" id="btnSiguiente"><span class="arrow-right"></span></a>
                 </div>
             </div>
         </nav>
@@ -99,7 +100,7 @@
             </div>
             <div class="modal-footer">
                 <button type="button" id="btnFinEnc" class="btn btn-default" data-dismiss="modal">Finalizar</button>
-                <button type="button" id="btnContEnc" data-encuestaid="@ViewBag.subencid" class="btn btn-primary">Continuar</button>
+                <button type="button" id="btnContEnc" data-encuestaid="@ViewBag.subencid" data-countse="@ViewBag.contadorse" class="btn btn-primary">Continuar</button>
             </div>
         </div>
     </div>
@@ -117,7 +118,10 @@
             $('#btnCumpleSi').attr('disabled', true);
             $('#btnCumplePar').attr('disabled', true);
             $('#btnCumpleNo').attr('disabled', true);
-            $('#btnSiguiente').attr('disabled', true);
+            //$('#btnSiguiente').attr('disabled', true);
+            //$('#divSiguiente').attr('disabled', true);
+            $("#divSiguiente").children().prop('disabled', true);
+            
 
             //$('#myModal').modal('show');
 
@@ -125,8 +129,7 @@
             var tot_preg = parseInt(@ViewBag.totpreg);
             var grup_enc = parseInt(@ViewBag.grupoen);
 
-            if (num_preg == 1)
-            {
+            if (num_preg == 1) {
                 $('#btnAnterior').attr('disabled', true);
             }
 
@@ -138,7 +141,7 @@
                 $.post(url, { encuestaid: eid }, function (response) {
 
                     window.location = response.url;
-                    });
+                });
 
             });
 
@@ -180,7 +183,7 @@
             });
 
             $('#btnSiguiente').click(function () {
-                //var url = '@Url.Action("ListDetalleSubFamilia", "Encuesta")';
+                @*var url = '@Url.Action("ListDetalleSubFamilia", "Encuesta")';*@
 
                 num_preg++;
 
@@ -193,9 +196,17 @@
             });
 
             $('#btnContEnc').click(function () {
-
+                //debugger;
+                var clks = parseInt(@Session["Click"]);
+                var nse = parseInt(@Session["ContadorSE"]);
                 var eid = $(this).data('encuestaid');
-                onsave(eid);
+                var cse = $(this).data('countse');
+                if (clks < nse) {
+                    onsave(eid);
+                } else {
+                    onend(eid);
+                }
+                
             });
 
             $('#btnFinEnc').click(function () {
@@ -208,18 +219,18 @@
         });
 
         function onsave(encid) {
-                var url = '@Url.Action("SubFamilia", "Encuesta")';
-                $.post(url, { encuestaid: encid, finalizada: "S" }, function (response) {
-                    window.location = response.url;
-                    });
+            var url = '@Url.Action("SubFamilia", "Encuesta")';
+            $.post(url, { encuestaid: encid, finalizada: "S"}, function (response) {
+                window.location = response.url;
+            });
 
         }
 
         function onend() {
             var url = '@Url.Action("FinIndex", "Encuesta")';
-                $.post(url, function (response) {
-                    window.location = response.url;
-                    });
+            $.post(url, function (response) {
+                window.location = response.url;
+            });
         }
 
 

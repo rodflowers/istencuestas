@@ -1,12 +1,14 @@
 ﻿
 @{
     ViewBag.Title = "ListSubFamilia";
+    //var counter2 = ViewBag.contadorSE;
+    //ViewBag.contadorclick += 1;
 }
 
 @using istEncuestasMVC.Models;
 
 @model IEnumerable<istEncuestasMVC.Models.Encuesta>
-
+    
 <br />
 <div class="panel panel-primary">
     <div class="panel-heading">
@@ -18,8 +20,9 @@
     <div class="list-group">
         @foreach (var item in Model)
         {
-            <button id="target" type="button" data-encuestaid="@item.ID_ENCUESTA" data-subencuestaid="@item.ID_ENCUESTA_SUB" data-numpag="@item.Cant_Preguntas" class="@(@item.Finalizada=="S" ? "list-group-item completed":"list-group-item")" @if (@item.Finalizada == "S") {  @("disabled='1'") }> @Html.DisplayFor(modelItem => item.NOM_ENCUESTA_SUB)</button>
+            <button id="target" type="button" data-encuestaid="@item.ID_ENCUESTA" data-subencuestaid="@item.ID_ENCUESTA_SUB" data-numpag="@item.Cant_Preguntas" class="@(@item.Finalizada == "S" ? "list-group-item completed" : "list-group-item")" @if (@item.Finalizada == "S") {  @("disabled='1'") }> @Html.DisplayFor(modelItem => item.NOM_ENCUESTA_SUB)</button>
         }
+
     </div>
     <br />
 </div>
@@ -37,31 +40,33 @@
 
     <script type='text/javascript'>
 
-         $(document).ready(function () {
+        $(document).ready(function () {
             $('.list-group-item').click(function () {
+                
                 var eid = $(this).data('encuestaid');
                 var sid = $(this).data('subencuestaid');
                 var num = $(this).data('numpag');
+                var cse = parseInt(@Session["ContadorSE"]);
                 var preg = 1;
                 var url = '@Url.Action("DetalleSubFamilia", "Encuesta")';
-                $.post(url, { encid: eid, subfamid: sid, totpreg: num, numpreg: preg }, function (response) {
+                $.post(url, { encid: eid, subfamid: sid, totpreg: num, numpreg: preg, countse: cse }, function (response) {
                     window.location = response.url;
-                    });
+                });
 
             });
 
-             $('#btnBack').click(function () {
-                 //parent.history.back();
-                 //return false;
+            $('#btnBack').click(function () {
+                //parent.history.back();
+                //return false;
 
-                 var url = '@Url.Action("FinBack", "Encuesta")';
-                 $.post(url, function (response) {
-                     window.location = response.url;
-                 });
-
-             });
+                var url = '@Url.Action("FinBack", "Encuesta")';
+                $.post(url, function (response) {
+                    window.location = response.url;
+                });
 
             });
+
+        });
 
     </script>
 
