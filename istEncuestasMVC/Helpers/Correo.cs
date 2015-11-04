@@ -71,40 +71,85 @@ namespace istEncuestasMVC.Helpers
             //var body = "";
             try
             {
-                
-                message.To.Add(new MailAddress(Recip));  // replace with valid value 
+
+                message.To.Add(new MailAddress((string)Recip));  // replace with valid value 
                 message.From = new MailAddress(appSettings["UserName_correo"], "IST");  // replace with valid value
                 message.Subject = appSettings["Subject"];
                 message.Body = appSettings["Body"];
-                //message.Attachments.Add(new Attachment(Url));
-                message.IsBodyHtml = false;
+                message.Attachments.Add(new Attachment(Url));
+                message.IsBodyHtml = true;
 
                 using (var smtp = new SmtpClient())
                 {
                     smtp.UseDefaultCredentials = false;
+                    smtp.DeliveryMethod = System.Net.Mail.SmtpDeliveryMethod.Network;
                     var credential = new NetworkCredential
                     {
                         UserName = appSettings["UserName_correo"],  // replace with valid value
                         Password = appSettings["Password_correo"]  // replace with valid value
                     };
+                    smtp.UseDefaultCredentials = false;
                     smtp.Credentials = credential;
                     smtp.Host = appSettings["server_correo"];
                     smtp.Port = Convert.ToInt16(appSettings["Puerto_correo"]);
                     smtp.EnableSsl = Convert.ToBoolean(appSettings["Ssl_correo"]);
-   
-                    await smtp.SendMailAsync(message);
-                    //smtp.SendMail(message);
-                    //smtp.Send(message);
 
+                    await smtp.SendMailAsync(message);
 
                     return "S";
+
+                    //return Json(new { result = "Redirect", url = Url.Action("Index", "Encuesta") });
+
                 }
             }
             catch (SmtpException ex)
             {
                 message.Dispose();
-                return (ex.Message + "Smtp.");
+                return (ex.Message);
+
+                //return Json(new { result = "Redirect", url = Url.Action("Error", "Encuesta") });
+                //return RedirectToAction("Error", "Encuesta", new { desc_err = ex.Message });
             }
+            //var appSettings = ConfigurationManager.AppSettings;
+            //MailAddress from = new MailAddress(appSettings["UserName_correo"], "IST");
+            //var message = new MailMessage();
+            ////var body = "";
+            //try
+            //{
+
+            //    message.To.Add(new MailAddress(Recip));  // replace with valid value 
+            //    message.From = new MailAddress(appSettings["UserName_correo"], "IST");  // replace with valid value
+            //    message.Subject = appSettings["Subject"];
+            //    message.Body = appSettings["Body"];
+            //    //message.Attachments.Add(new Attachment(Url));
+            //    message.IsBodyHtml = false;
+
+            //    using (var smtp = new SmtpClient())
+            //    {
+            //        smtp.UseDefaultCredentials = false;
+            //        var credential = new NetworkCredential
+            //        {
+            //            UserName = appSettings["UserName_correo"],  // replace with valid value
+            //            Password = appSettings["Password_correo"]  // replace with valid value
+            //        };
+            //        smtp.Credentials = credential;
+            //        smtp.Host = appSettings["server_correo"];
+            //        smtp.Port = Convert.ToInt16(appSettings["Puerto_correo"]);
+            //        smtp.EnableSsl = Convert.ToBoolean(appSettings["Ssl_correo"]);
+
+            //        await smtp.SendMailAsync(message);
+            //        //smtp.SendMail(message);
+            //        //smtp.Send(message);
+
+
+            //        return "S";
+            //    }
+            //}
+            //catch (SmtpException ex)
+            //{
+            //    message.Dispose();
+            //    return (ex.Message + "Smtp.");
+            //}
         }
     }
 

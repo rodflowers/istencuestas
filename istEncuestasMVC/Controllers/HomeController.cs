@@ -29,6 +29,15 @@ namespace istEncuestasMVC.Controllers
             if (ModelState.IsValid)
             {
 
+                Session["RutEmpresa"] = e.RutEmpresa;
+                Session["NombreEmpresa"] = e.NombreEmpresa;
+                Session["RutEmpresa"] = e.RutEmpresa;
+                Session["RepCargo"] = e.RepCargo;
+                Session["RepEmail"] = e.RepEmail;
+                Session["RepNombre"] = e.RepNombre;
+                Session["RepRut"] = e.RepRut;
+                Session["RepTelefono"] = e.RepTelefono;
+
 
                 if (TempData["Correo"] != null)
                 {

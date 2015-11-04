@@ -36,8 +36,8 @@
         
         <h5>Aplica</h5>
         <div class="btn-group" role="group" aria-label="...">
-            <button type="button" id="btnAplicaSi" class="btn btn-primary">Si</button>
-            <button type="button" id="btnAplicaNo" class="btn btn-primary">No</button>            
+            <button type="button" id="btnAplicaSi" data-numpreg="@ViewBag.idpregunta" class="btn btn-primary">Si</button>
+            <button type="button" id="btnAplicaNo" data-numpreg="@ViewBag.idpregunta" class="btn btn-primary">No</button>            
         </div>
         
         <br />
@@ -151,6 +151,15 @@
                 $('#btnCumpleSi').attr('disabled', false);
                 $('#btnCumplePar').attr('disabled', false);
                 $('#btnCumpleNo').attr('disabled', false);
+
+                var cse = $(this).data('numpreg');
+                $.ajax({
+                    async: true,
+                    type: "post",
+                    url: "@Url.Action("ActualizaRespuesta", "Encuesta")",
+                    data: { codnum: cse, resp: 1 }
+                });
+
             });
 
             $('#btnAplicaNo').click(function () {
@@ -158,6 +167,14 @@
                 $('#btnCumpleSi').attr('disabled', true);
                 $('#btnCumplePar').attr('disabled', true);
                 $('#btnCumpleNo').attr('disabled', true);
+
+                var cse = $(this).data('numpreg');
+                $.ajax({
+                    async: true,
+                    type: "post",
+                    url: "@Url.Action("ActualizaRespuesta", "Encuesta")",
+                    data: { codnum: cse, resp: 2 }
+                });
             });
 
             $('#btnCumpleSi').click(function () {
@@ -168,7 +185,7 @@
                     async: true,
                     type: "post",
                     url: "@Url.Action("ActualizaRespuesta", "Encuesta")",
-                    data: { codnum: cse, resp: 1 }
+                    data: { codnum: cse, resp: 3 }
                 });
 
 
@@ -181,7 +198,7 @@
                     async: true,
                     type: "post",
                     url: "@Url.Action("ActualizaRespuesta", "Encuesta")",
-                    data: { codnum: cse, resp: 2 }
+                    data: { codnum: cse, resp: 4 }
             });
 
             });
@@ -193,7 +210,7 @@
                     async: true,
                     type: "post",
                     url: "@Url.Action("ActualizaRespuesta", "Encuesta")",
-                    data: { codnum: cse, resp: 3 }
+                    data: { codnum: cse, resp: 5 }
             });
 
             });
