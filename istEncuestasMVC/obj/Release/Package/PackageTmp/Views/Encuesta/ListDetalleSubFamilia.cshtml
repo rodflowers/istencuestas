@@ -43,9 +43,9 @@
         <br />
         <h5>Cumple</h5>
         <div class="btn-group" role="group" aria-label="...">
-            <button type="button" id="btnCumpleSi" class="btn btn-primary">Si</button>
-            <button type="button" id="btnCumplePar" class="btn btn-primary">Parcial</button>
-            <button type="button" id="btnCumpleNo" class="btn btn-primary">No</button>
+            <button type="button" id="btnCumpleSi" data-numpreg="@ViewBag.idpregunta" class="btn btn-primary">Si</button>
+            <button type="button" id="btnCumplePar" data-numpreg="@ViewBag.idpregunta" class="btn btn-primary">Parcial</button>
+            <button type="button" id="btnCumpleNo" data-numpreg="@ViewBag.idpregunta" class="btn btn-primary">No</button>
         </div>
 
         <br />
@@ -163,12 +163,12 @@
             $('#btnCumpleSi').click(function () {
                 $('#btnSiguiente').attr('disabled', false);
                 //debugger;
-
+                var cse = $(this).data('numpreg');
                 $.ajax({
                     async: true,
                     type: "post",
                     url: "@Url.Action("ActualizaRespuesta", "Encuesta")",
-                    data: { codnum: 1, resp: 2 }
+                    data: { codnum: cse, resp: 1 }
                 });
 
 
@@ -176,10 +176,26 @@
 
             $('#btnCumplePar').click(function () {
                 $('#btnSiguiente').attr('disabled', false);
+                var cse = $(this).data('numpreg');
+                $.ajax({
+                    async: true,
+                    type: "post",
+                    url: "@Url.Action("ActualizaRespuesta", "Encuesta")",
+                    data: { codnum: cse, resp: 2 }
+            });
+
             });
 
             $('#btnCumpleNo').click(function () {
                 $('#btnSiguiente').attr('disabled', false);
+                var cse = $(this).data('numpreg');
+                $.ajax({
+                    async: true,
+                    type: "post",
+                    url: "@Url.Action("ActualizaRespuesta", "Encuesta")",
+                    data: { codnum: cse, resp: 3 }
+            });
+
             });
 
             $('#btnSiguiente').click(function () {

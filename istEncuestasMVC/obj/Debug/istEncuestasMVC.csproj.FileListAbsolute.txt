@@ -79,4 +79,3 @@ D:\Working\Projects\istEncuestasMVC\istEncuestasMVC\bin\Antlr3.Runtime.pdb
 D:\Working\Projects\istEncuestasMVC\istEncuestasMVC\bin\Newtonsoft.Json.xml
 D:\Working\Projects\istEncuestasMVC\istEncuestasMVC\obj\Debug\istEncuestasMVC.dll
 D:\Working\Projects\istEncuestasMVC\istEncuestasMVC\obj\Debug\istEncuestasMVC.pdb
-D:\Working\Projects\istEncuestasMVC\istEncuestasMVC\obj\Debug\istEncuestasMVC.csprojResolveAssemblyReference.cache

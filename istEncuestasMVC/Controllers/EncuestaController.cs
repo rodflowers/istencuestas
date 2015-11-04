@@ -22,9 +22,11 @@ namespace istEncuestasMVC.Controllers
         // GET: Encuesta
         public ActionResult Index()
         {
-            
+
             //XMLReader readXML = new XMLReader();
             //var data = readXML.RetrunListOfEncuesta();
+
+            Session["Resp"] = null;
 
             System.Xml.XmlDocument xDocumento = new System.Xml.XmlDocument();
             List<Encuesta> data = new List<Encuesta>();
@@ -102,12 +104,13 @@ namespace istEncuestasMVC.Controllers
         [HttpPost]
         public ActionResult DetalleSubFamilia(string encid, string subfamid, int totpreg, int numpreg, int countse)
         {
+           
             if (Session["Click"] == null)
             {
                 Session["Click"] = 0;
             }
             int click = (int)Session["Click"];
-            Session["Click"] = click + 1;
+            Session["Click"] = click + 1;           
 
             return Json(new { result = "Redirect", url = Url.Action("ListDetalleSubFamilia", "Encuesta", new { idenc = encid, idsubenc = subfamid, totnum = totpreg, preg = numpreg, contadorse = countse }) });
         }
@@ -122,9 +125,10 @@ namespace istEncuestasMVC.Controllers
             ViewBag.totpreg = totnum;
             ViewBag.pregunta = preg;
             //contador sub encuestas
-            
+
             //ViewBag.contadorse = contadorse;
             //Session["ContadorSE"] = contadorse;
+           
 
             List<Encuesta> data = new List<Encuesta>();
             System.Xml.XmlDocument xDocumento = new System.Xml.XmlDocument();
@@ -210,6 +214,18 @@ namespace istEncuestasMVC.Controllers
                 TempData["Encuesta"] = obj2;
             }
 
+
+            //Guarda respuesta
+            string _resp = "";
+            if (Session["Resp"] != null)
+            {
+                _resp = string.Concat(Session["Resp"].ToString(), ";");
+            }
+
+            _resp = string.Concat(_resp, codnum, ",", resp);
+
+            Session["Resp"] = _resp;
+
             return View();
         }
 
@@ -234,7 +250,8 @@ namespace istEncuestasMVC.Controllers
         public ActionResult Observacion()
         {
 
-            new StreamWriter(Server.MapPath("~/Report/prueba.txt"), true);
+
+            //new StreamWriter(Server.MapPath(@"~/Report/prueba.txt"), true);
 
             return View();
             //new StreamWriter(Server.MapPath("~/Report/release_notification_emails.txt"), true);
@@ -316,16 +333,18 @@ namespace istEncuestasMVC.Controllers
             Correo correo = new Correo();
             ClsCreaPdf.ReportPdf clsrep = new ClsCreaPdf.ReportPdf();
             string Str_Error = String.Empty;
-            string strruta_server = (Server.MapPath("~/Report/"));
+            
+            string strruta_server = (Server.MapPath(@"~/Report/"));
             //string strruta_server = HostingEnvironment.ApplicationPhysicalPath + "Report";
             //string strruta_server = AppDomain.CurrentDomain.GetData("Report").ToString();
+            string _respuestas = Session["Resp"].ToString();
             string url = clsrep.GeneraPdf("ITL1",
                                           "ISAPRE CONSALUD",
                                           "1.111.111-1",
                                           "PEDRO FONTOVA 6650",
                                           "contacto@consalud.cl",
                                           strruta_server,
-                                          "1,1;2,2;3,5;4,3;7,2;8,3",
+                                          _respuestas,
                                           ref Str_Error);
 
             var mail2 = TempData["Correo"];
