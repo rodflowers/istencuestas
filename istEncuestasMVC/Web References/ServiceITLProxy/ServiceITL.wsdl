@@ -45,6 +45,46 @@
           </s:sequence>
         </s:complexType>
       </s:element>
+      <s:element name="IngresarRespEncuesta">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="folEnc" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="codClase" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="glsRsp" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="glsObservacion" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="rutEmp" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="rutEje" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="rutEjeEmp" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="glsNomEjeEmp" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="glsCargoEjeEmp" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="glsCorreoEjeEmp" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="glsFonoEjeEmp" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="idUsu" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="idFun" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="IngresarRespEncuestaResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="IngresarRespEncuestaResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="TrabajadorNominado">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="rutPer" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="TrabajadorNominadoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="TrabajadorNominadoResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
       <s:element name="string" nillable="true" type="s:string" />
     </s:schema>
   </wsdl:types>
@@ -66,6 +106,18 @@
   <wsdl:message name="DetalleSoapOut">
     <wsdl:part name="parameters" element="tns:DetalleResponse" />
   </wsdl:message>
+  <wsdl:message name="IngresarRespEncuestaSoapIn">
+    <wsdl:part name="parameters" element="tns:IngresarRespEncuesta" />
+  </wsdl:message>
+  <wsdl:message name="IngresarRespEncuestaSoapOut">
+    <wsdl:part name="parameters" element="tns:IngresarRespEncuestaResponse" />
+  </wsdl:message>
+  <wsdl:message name="TrabajadorNominadoSoapIn">
+    <wsdl:part name="parameters" element="tns:TrabajadorNominado" />
+  </wsdl:message>
+  <wsdl:message name="TrabajadorNominadoSoapOut">
+    <wsdl:part name="parameters" element="tns:TrabajadorNominadoResponse" />
+  </wsdl:message>
   <wsdl:message name="EncuestaHttpGetIn">
     <wsdl:part name="id_Encuesta" type="s:string" />
   </wsdl:message>
@@ -83,6 +135,30 @@
     <wsdl:part name="id_SubFamilia" type="s:string" />
   </wsdl:message>
   <wsdl:message name="DetalleHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="IngresarRespEncuestaHttpGetIn">
+    <wsdl:part name="folEnc" type="s:string" />
+    <wsdl:part name="codClase" type="s:string" />
+    <wsdl:part name="glsRsp" type="s:string" />
+    <wsdl:part name="glsObservacion" type="s:string" />
+    <wsdl:part name="rutEmp" type="s:string" />
+    <wsdl:part name="rutEje" type="s:string" />
+    <wsdl:part name="rutEjeEmp" type="s:string" />
+    <wsdl:part name="glsNomEjeEmp" type="s:string" />
+    <wsdl:part name="glsCargoEjeEmp" type="s:string" />
+    <wsdl:part name="glsCorreoEjeEmp" type="s:string" />
+    <wsdl:part name="glsFonoEjeEmp" type="s:string" />
+    <wsdl:part name="idUsu" type="s:string" />
+    <wsdl:part name="idFun" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="IngresarRespEncuestaHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="TrabajadorNominadoHttpGetIn">
+    <wsdl:part name="rutPer" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="TrabajadorNominadoHttpGetOut">
     <wsdl:part name="Body" element="tns:string" />
   </wsdl:message>
   <wsdl:message name="EncuestaHttpPostIn">
@@ -104,6 +180,30 @@
   <wsdl:message name="DetalleHttpPostOut">
     <wsdl:part name="Body" element="tns:string" />
   </wsdl:message>
+  <wsdl:message name="IngresarRespEncuestaHttpPostIn">
+    <wsdl:part name="folEnc" type="s:string" />
+    <wsdl:part name="codClase" type="s:string" />
+    <wsdl:part name="glsRsp" type="s:string" />
+    <wsdl:part name="glsObservacion" type="s:string" />
+    <wsdl:part name="rutEmp" type="s:string" />
+    <wsdl:part name="rutEje" type="s:string" />
+    <wsdl:part name="rutEjeEmp" type="s:string" />
+    <wsdl:part name="glsNomEjeEmp" type="s:string" />
+    <wsdl:part name="glsCargoEjeEmp" type="s:string" />
+    <wsdl:part name="glsCorreoEjeEmp" type="s:string" />
+    <wsdl:part name="glsFonoEjeEmp" type="s:string" />
+    <wsdl:part name="idUsu" type="s:string" />
+    <wsdl:part name="idFun" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="IngresarRespEncuestaHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="TrabajadorNominadoHttpPostIn">
+    <wsdl:part name="rutPer" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="TrabajadorNominadoHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
   <wsdl:portType name="ServiceITLSoap">
     <wsdl:operation name="Encuesta">
       <wsdl:input message="tns:EncuestaSoapIn" />
@@ -116,6 +216,14 @@
     <wsdl:operation name="Detalle">
       <wsdl:input message="tns:DetalleSoapIn" />
       <wsdl:output message="tns:DetalleSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="IngresarRespEncuesta">
+      <wsdl:input message="tns:IngresarRespEncuestaSoapIn" />
+      <wsdl:output message="tns:IngresarRespEncuestaSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="TrabajadorNominado">
+      <wsdl:input message="tns:TrabajadorNominadoSoapIn" />
+      <wsdl:output message="tns:TrabajadorNominadoSoapOut" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:portType name="ServiceITLHttpGet">
@@ -131,6 +239,14 @@
       <wsdl:input message="tns:DetalleHttpGetIn" />
       <wsdl:output message="tns:DetalleHttpGetOut" />
     </wsdl:operation>
+    <wsdl:operation name="IngresarRespEncuesta">
+      <wsdl:input message="tns:IngresarRespEncuestaHttpGetIn" />
+      <wsdl:output message="tns:IngresarRespEncuestaHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="TrabajadorNominado">
+      <wsdl:input message="tns:TrabajadorNominadoHttpGetIn" />
+      <wsdl:output message="tns:TrabajadorNominadoHttpGetOut" />
+    </wsdl:operation>
   </wsdl:portType>
   <wsdl:portType name="ServiceITLHttpPost">
     <wsdl:operation name="Encuesta">
@@ -144,6 +260,14 @@
     <wsdl:operation name="Detalle">
       <wsdl:input message="tns:DetalleHttpPostIn" />
       <wsdl:output message="tns:DetalleHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="IngresarRespEncuesta">
+      <wsdl:input message="tns:IngresarRespEncuestaHttpPostIn" />
+      <wsdl:output message="tns:IngresarRespEncuestaHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="TrabajadorNominado">
+      <wsdl:input message="tns:TrabajadorNominadoHttpPostIn" />
+      <wsdl:output message="tns:TrabajadorNominadoHttpPostOut" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="ServiceITLSoap" type="tns:ServiceITLSoap">
@@ -168,6 +292,24 @@
     </wsdl:operation>
     <wsdl:operation name="Detalle">
       <soap:operation soapAction="http://tempuri.org/Detalle" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="IngresarRespEncuesta">
+      <soap:operation soapAction="http://tempuri.org/IngresarRespEncuesta" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TrabajadorNominado">
+      <soap:operation soapAction="http://tempuri.org/TrabajadorNominado" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -205,6 +347,24 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="IngresarRespEncuesta">
+      <soap12:operation soapAction="http://tempuri.org/IngresarRespEncuesta" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TrabajadorNominado">
+      <soap12:operation soapAction="http://tempuri.org/TrabajadorNominado" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
   </wsdl:binding>
   <wsdl:binding name="ServiceITLHttpGet" type="tns:ServiceITLHttpGet">
     <http:binding verb="GET" />
@@ -235,6 +395,24 @@
         <mime:mimeXml part="Body" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="IngresarRespEncuesta">
+      <http:operation location="/IngresarRespEncuesta" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TrabajadorNominado">
+      <http:operation location="/TrabajadorNominado" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
   </wsdl:binding>
   <wsdl:binding name="ServiceITLHttpPost" type="tns:ServiceITLHttpPost">
     <http:binding verb="POST" />
@@ -258,6 +436,24 @@
     </wsdl:operation>
     <wsdl:operation name="Detalle">
       <http:operation location="/Detalle" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="IngresarRespEncuesta">
+      <http:operation location="/IngresarRespEncuesta" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TrabajadorNominado">
+      <http:operation location="/TrabajadorNominado" />
       <wsdl:input>
         <mime:content type="application/x-www-form-urlencoded" />
       </wsdl:input>

@@ -44,8 +44,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="ClsCreaPdf">
-      <HintPath>C:\Users\Rodrigo\Downloads\Compressed\Envio\Envio\ClsCreaPdf.dll</HintPath>
+    <Reference Include="ClsCreaPdf, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\DLL\ClsCreaPdf.dll</HintPath>
     </Reference>
     <Reference Include="itextsharp, Version=5.5.7.0, Culture=neutral, PublicKeyToken=8354ae6d2174ddca, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -219,10 +220,10 @@
     <Content Include="Views\Encuesta\Observacion.cshtml" />
     <Content Include="Views\Encuesta\Error.cshtml" />
     <None Include="Web References\Service700vipProxy\Service700vip.disco" />
-    <Content Include="Web References\ServiceITLProxy\Reference.map">
+    <None Include="Web References\ServiceITLProxy\Reference.map">
       <Generator>MSDiscoCodeGenerator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
-    </Content>
+    </None>
     <None Include="Web References\ServiceITLProxy\ServiceITL.disco" />
     <Content Include="Web References\servMEDAtencionProxy\Reference.map">
       <Generator>MSDiscoCodeGenerator</Generator>

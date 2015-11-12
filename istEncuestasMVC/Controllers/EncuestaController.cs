@@ -284,11 +284,15 @@ namespace istEncuestasMVC.Controllers
 
 
         [HttpPost]
-        public async Task<ActionResult> Enviar(string encuestaid, string finalizada)
+        public async Task<ActionResult> Enviar(string observacion)
+        //public async Task<ActionResult> Enviar(string encuestaid, string finalizada)
+        
         {
-
+            Session["observacion"] = observacion;
             Session["Click"] = null;
             Session["ContadorSE"] = null;
+
+           
 
             Dictionary<string, string> dictionary = (Dictionary<string, string>)Session["dictionary"];
             string respuestas = "";
@@ -308,7 +312,10 @@ namespace istEncuestasMVC.Controllers
                 
             }
 
-                //new StreamWriter(Server.MapPath("~/Report/prueba.txt"), true);
+            Session["Resp"] = respuestas; 
+            GuardaEncuesta();
+
+            //new StreamWriter(Server.MapPath("~/Report/prueba.txt"), true);
 
             Correo correo = new Correo();
             ClsCreaPdf.ReportPdf clsrep = new ClsCreaPdf.ReportPdf();
@@ -316,20 +323,22 @@ namespace istEncuestasMVC.Controllers
 
             string strruta_server = (Server.MapPath(@"~/Report/"));
 
-            string _respuestas = Session["Resp"].ToString();
+            //string _respuestas = Session["Resp"].ToString();
             string url = clsrep.GeneraPdf(Session["ENCUESTA_ID"].ToString(),
                                            Session["NombreEmpresa"].ToString(),
                                           Session["RutEmpresa"].ToString(),
-                                          "PEDRO FONTOVA 6650",
+                                          "",
                                           Session["RepEmail"].ToString(),
                                           strruta_server,
                                           respuestas,
+                                          Session["RepNombre"].ToString(),
+                                          observacion,
                                           ref Str_Error);
 
             var mail2 = Session["RepEmail"]; //TempData["Correo"];
             TempData.Keep("Correo");
             //string mail = correo.SendEmail((string)mail2, url);
-            var mail = await correo.EnviaCorreo((string)mail2, url);
+            var mail = await correo.EnviaCorreo((string)mail2, url, Session["RepNombre"].ToString(), Session["RepCargo"].ToString(), Session["NombreEmpresa"].ToString());
             //mail2 = "rodrigo.flores01@gmail.com";
 
            if (mail == "S")
@@ -350,7 +359,37 @@ namespace istEncuestasMVC.Controllers
             return View(desc_err);
         }
 
+        public void GuardaEncuesta()
+        {
+            ServiceITLProxy.ServiceITL obj = new ServiceITLProxy.ServiceITL();
+           
+            try
+            {
+                string[] rutemp = Session["RutEmpresa"].ToString().Split('-');
+                string eid = Session["ENCUESTA_ID"].ToString();
+                string res = Session["Resp"].ToString();
+                string obs = Session["observacion"].ToString();
+                string rute = rutemp[0].PadLeft(15, '0').Trim();
+                string reprut = Session["RepRut"].ToString().PadLeft(15, '0').Trim();
+                string rnom = Session["RepNombre"].ToString();
+                string rcar = Session["RepCargo"].ToString();
+                string remail = Session["RepEmail"].ToString();
+                string tele = Session["RepTelefono"].ToString();
+                
+                string resp = obj.IngresarRespEncuesta(0, eid, res, obs, rute, rute, rute, rnom, rcar, remail, tele, eid, eid);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("{0} Exception caught.", e);
+            }
+            finally
+            {
+                obj = null;
+            }
+        }
 
     }
+
+    
 
 }

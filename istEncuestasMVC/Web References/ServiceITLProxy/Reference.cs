@@ -35,6 +35,10 @@ namespace istEncuestasMVC.ServiceITLProxy {
         
         private System.Threading.SendOrPostCallback DetalleOperationCompleted;
         
+        private System.Threading.SendOrPostCallback IngresarRespEncuestaOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback TrabajadorNominadoOperationCompleted;
+        
         private bool useDefaultCredentialsSetExplicitly;
         
         /// <remarks/>
@@ -81,6 +85,12 @@ namespace istEncuestasMVC.ServiceITLProxy {
         
         /// <remarks/>
         public event DetalleCompletedEventHandler DetalleCompleted;
+        
+        /// <remarks/>
+        public event IngresarRespEncuestaCompletedEventHandler IngresarRespEncuestaCompleted;
+        
+        /// <remarks/>
+        public event TrabajadorNominadoCompletedEventHandler TrabajadorNominadoCompleted;
         
         /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/Encuesta", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
@@ -172,6 +182,88 @@ namespace istEncuestasMVC.ServiceITLProxy {
         }
         
         /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/IngresarRespEncuesta", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public string IngresarRespEncuesta(int folEnc, string codClase, string glsRsp, string glsObservacion, string rutEmp, string rutEje, string rutEjeEmp, string glsNomEjeEmp, string glsCargoEjeEmp, string glsCorreoEjeEmp, string glsFonoEjeEmp, string idUsu, string idFun) {
+            object[] results = this.Invoke("IngresarRespEncuesta", new object[] {
+                        folEnc,
+                        codClase,
+                        glsRsp,
+                        glsObservacion,
+                        rutEmp,
+                        rutEje,
+                        rutEjeEmp,
+                        glsNomEjeEmp,
+                        glsCargoEjeEmp,
+                        glsCorreoEjeEmp,
+                        glsFonoEjeEmp,
+                        idUsu,
+                        idFun});
+            return ((string)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void IngresarRespEncuestaAsync(int folEnc, string codClase, string glsRsp, string glsObservacion, string rutEmp, string rutEje, string rutEjeEmp, string glsNomEjeEmp, string glsCargoEjeEmp, string glsCorreoEjeEmp, string glsFonoEjeEmp, string idUsu, string idFun) {
+            this.IngresarRespEncuestaAsync(folEnc, codClase, glsRsp, glsObservacion, rutEmp, rutEje, rutEjeEmp, glsNomEjeEmp, glsCargoEjeEmp, glsCorreoEjeEmp, glsFonoEjeEmp, idUsu, idFun, null);
+        }
+        
+        /// <remarks/>
+        public void IngresarRespEncuestaAsync(int folEnc, string codClase, string glsRsp, string glsObservacion, string rutEmp, string rutEje, string rutEjeEmp, string glsNomEjeEmp, string glsCargoEjeEmp, string glsCorreoEjeEmp, string glsFonoEjeEmp, string idUsu, string idFun, object userState) {
+            if ((this.IngresarRespEncuestaOperationCompleted == null)) {
+                this.IngresarRespEncuestaOperationCompleted = new System.Threading.SendOrPostCallback(this.OnIngresarRespEncuestaOperationCompleted);
+            }
+            this.InvokeAsync("IngresarRespEncuesta", new object[] {
+                        folEnc,
+                        codClase,
+                        glsRsp,
+                        glsObservacion,
+                        rutEmp,
+                        rutEje,
+                        rutEjeEmp,
+                        glsNomEjeEmp,
+                        glsCargoEjeEmp,
+                        glsCorreoEjeEmp,
+                        glsFonoEjeEmp,
+                        idUsu,
+                        idFun}, this.IngresarRespEncuestaOperationCompleted, userState);
+        }
+        
+        private void OnIngresarRespEncuestaOperationCompleted(object arg) {
+            if ((this.IngresarRespEncuestaCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.IngresarRespEncuestaCompleted(this, new IngresarRespEncuestaCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/TrabajadorNominado", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public string TrabajadorNominado(string rutPer) {
+            object[] results = this.Invoke("TrabajadorNominado", new object[] {
+                        rutPer});
+            return ((string)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void TrabajadorNominadoAsync(string rutPer) {
+            this.TrabajadorNominadoAsync(rutPer, null);
+        }
+        
+        /// <remarks/>
+        public void TrabajadorNominadoAsync(string rutPer, object userState) {
+            if ((this.TrabajadorNominadoOperationCompleted == null)) {
+                this.TrabajadorNominadoOperationCompleted = new System.Threading.SendOrPostCallback(this.OnTrabajadorNominadoOperationCompleted);
+            }
+            this.InvokeAsync("TrabajadorNominado", new object[] {
+                        rutPer}, this.TrabajadorNominadoOperationCompleted, userState);
+        }
+        
+        private void OnTrabajadorNominadoOperationCompleted(object arg) {
+            if ((this.TrabajadorNominadoCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.TrabajadorNominadoCompleted(this, new TrabajadorNominadoCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
         public new void CancelAsync(object userState) {
             base.CancelAsync(userState);
         }
@@ -255,6 +347,58 @@ namespace istEncuestasMVC.ServiceITLProxy {
         private object[] results;
         
         internal DetalleCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public string Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((string)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.79.0")]
+    public delegate void IngresarRespEncuestaCompletedEventHandler(object sender, IngresarRespEncuestaCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.79.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class IngresarRespEncuestaCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal IngresarRespEncuestaCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public string Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((string)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.79.0")]
+    public delegate void TrabajadorNominadoCompletedEventHandler(object sender, TrabajadorNominadoCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.79.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class TrabajadorNominadoCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal TrabajadorNominadoCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
                 base(exception, cancelled, userState) {
             this.results = results;
         }

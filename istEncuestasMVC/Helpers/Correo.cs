@@ -63,19 +63,30 @@ namespace istEncuestasMVC.Helpers
         }
 
 
-        public async System.Threading.Tasks.Task<string> EnviaCorreo(string Recip, string Url)
+        public async System.Threading.Tasks.Task<string> EnviaCorreo(string Recip, string Url, string repemp, string cargemp, string razsoc)
         {
             var appSettings = ConfigurationManager.AppSettings;
             MailAddress from = new MailAddress(appSettings["UserName_correo"], "IST");
+            MailAddress StrCC = new MailAddress(appSettings["ConCopia"], "IST");
             var message = new MailMessage();
             //var body = "";
             try
             {
+                const string quote = "\"";
+                var StrCuerpoMailIni = "<!DOCTYPE html PUBLIC " + quote + "-//W3C//DTD XHTML 1.0 Transitional//EN" + quote + " " + quote + "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd" + quote + "><html xmlns=" + quote + "http://www.w3.org/1999/xhtml" + quote + "><head><title></title><style TYPE=" + quote + "text/css" + quote + "><!--PageIntro{font-family: Verdana, Arial, Helvetica, sans-serif;font-SIZE: 11px;font-weight: NORMAL;color: #666666;text-align: left;}--></style></head><body>";
+                var StrCuerpo = appSettings["CorreoBody"];
+                var StrCuerpoMailFin = "</body></html>";
+                
+                StrCuerpo = StrCuerpo.Replace("representante_empresa", repemp).Replace("cargo_empresa", cargemp).Replace("razon_social", razsoc);
 
+              
                 message.To.Add(new MailAddress((string)Recip));  // replace with valid value 
                 message.From = new MailAddress(appSettings["UserName_correo"], "IST");  // replace with valid value
+
+                message.CC.Add(StrCC);
+
                 message.Subject = appSettings["Subject"];
-                message.Body = appSettings["Body"];
+                message.Body = StrCuerpoMailIni + StrCuerpo + StrCuerpoMailFin;
                 message.Attachments.Add(new Attachment(Url));
                 message.IsBodyHtml = true;
 

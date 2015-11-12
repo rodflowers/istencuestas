@@ -16,7 +16,7 @@
             <br />
             <h6>*Máximo de caracteres 500</h6>
             <div class="col-md-10">
-                <textarea maxlength="500" rows="5" cols="30"></textarea>
+                <textarea maxlength="500" rows="5" cols="30" id="txtObservacion"></textarea>
             </div>
         </div>
 
@@ -64,7 +64,8 @@
 
                 $("#divLoading").html('<image src="../img/ajax-loader.gif" alt="Loading, please wait" />');
                 var url = '@Url.Action("Enviar", "Encuesta")';
-                $.post(url, function (response) {                    
+                var obs = $('#txtObservacion').val();
+                $.post(url, { observacion: obs} , function (response) {
                    
                     window.location = response.url;
                     $("#divLoading").html('');
