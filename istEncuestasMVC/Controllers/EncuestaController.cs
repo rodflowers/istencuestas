@@ -366,17 +366,18 @@ namespace istEncuestasMVC.Controllers
             try
             {
                 string[] rutemp = Session["RutEmpresa"].ToString().Split('-');
+                string[] rutrep = Session["RepRut"].ToString().Split('-');
                 string eid = Session["ENCUESTA_ID"].ToString();
                 string res = Session["Resp"].ToString();
                 string obs = Session["observacion"].ToString();
                 string rute = rutemp[0].PadLeft(15, '0').Trim();
-                string reprut = Session["RepRut"].ToString().PadLeft(15, '0').Trim();
+                string reprut = rutrep[0].PadLeft(15, '0').Trim();
                 string rnom = Session["RepNombre"].ToString();
                 string rcar = Session["RepCargo"].ToString();
                 string remail = Session["RepEmail"].ToString();
                 string tele = Session["RepTelefono"].ToString();
                 
-                string resp = obj.IngresarRespEncuesta(0, eid, res, obs, rute, rute, rute, rnom, rcar, remail, tele, eid, eid);
+                string resp = obj.IngresarRespEncuesta(0, eid, res, obs, rute, reprut, reprut, rnom, rcar, remail, tele, reprut, "GrabaEnc");
             }
             catch (Exception e)
             {
